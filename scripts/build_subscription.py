@@ -1,10 +1,13 @@
 #!/usr/bin/env python3
 
 import base64
-import hashlib
 import json
+import os
 import re
 import socket
+import subprocess
+import tempfile
+import threading
 import time
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
@@ -12,13 +15,11 @@ from statistics import median
 from urllib.parse import parse_qs, unquote, urlsplit
 from urllib.request import Request, urlopen
 
-
 ROOT = Path(__file__).resolve().parents[1]
 SOURCES = ROOT / "sources.txt"
 OUT = ROOT / "output"
 
 OUT.mkdir(exist_ok=True)
-
 
 SUPPORTED = (
     "vless://",
@@ -29,32 +30,30 @@ SUPPORTED = (
     "hysteria2://",
 )
 
-
-# ============================================================
-# SETTINGS
-# ============================================================
-
 FETCH_TIMEOUT = 8
 
-PING_TIMEOUT = 2
-PING_ATTEMPTS = 3
+TCP_TIMEOUT = 2.5
+TCP_ATTEMPTS = 3
 
-WORKERS = 40
+REAL_TEST_ATTEMPTS = 3
+REAL_TEST_TIMEOUT = 8
 
-MAX_TOTAL_CHECK = 600
+MAX_TOTAL_CHECK = 300
+MAX_REAL_TEST = 80
 MAX_PUBLISHED = 100
 
-# Один и тот же host:port
-# не может занять больше этого количества мест.
-MAX_SAME_HOST = 2
+WORKERS = 30
+REAL_WORKERS = 8
 
-# Очень похожие конфигурации
-# тоже ограничиваем.
-MAX_SAME_FINGERPRINT = 2
+MAX_SAME_ENDPOINT = 2
+MAX_SAME_IDENTITY = 3
 
-HISTORY_FILE = OUT / "history.json"
+XRAY = os.environ.get("XRAY_BIN", "xray")
 
-MAX_HISTORY = 12
+TEST_URL = "https://www.gstatic.com/generate_204"
+
+history_file = OUT / "history.json"
+MAX_HISTORY = 20
 
 
 # ============================================================
@@ -62,49 +61,27 @@ MAX_HISTORY = 12
 # ============================================================
 
 def fetch(url):
-
-    request = Request(
+    req = Request(
         url,
         headers={
             "User-Agent": "FreeForYoung/4.0"
         },
     )
 
-    with urlopen(
-        request,
-        timeout=FETCH_TIMEOUT,
-    ) as response:
-
+    with urlopen(req, timeout=FETCH_TIMEOUT) as response:
         raw = response.read()
 
-    text = raw.decode(
-        "utf-8",
-        "ignore",
-    )
+    text = raw.decode("utf-8", "ignore")
 
-    # Некоторые источники публикуют
-    # base64 вместо обычного текста.
-    compact = re.sub(
-        r"\s+",
-        "",
-        text,
-    )
+    compact = re.sub(r"\s+", "", text)
 
     if (
         len(compact) > 40
-        and re.fullmatch(
-            r"[A-Za-z0-9+/=_-]+",
-            compact,
-        )
+        and re.fullmatch(r"[A-Za-z0-9+/=_-]+", compact)
     ):
-
         try:
-
             decoded = base64.b64decode(
-                compact
-                + "=" * (
-                    -len(compact) % 4
-                ),
+                compact + "=" * (-len(compact) % 4),
                 validate=False,
             )
 
@@ -122,263 +99,556 @@ def fetch(url):
     return text
 
 
-# ============================================================
-# EXTRACT
-# ============================================================
-
 def extract(text):
-
     pattern = re.compile(
         r"(?:vless|vmess|trojan|ss|hy2|hysteria2)://[^\s<>\"']+",
         re.IGNORECASE,
     )
 
-    nodes = []
+    result = []
 
     for line in text.splitlines():
-
         line = line.strip().strip("`")
 
         if not line:
             continue
 
         for match in pattern.finditer(line):
+            uri = match.group(0).rstrip("),;")
 
-            uri = match.group(0).rstrip(
-                "),;]"
-            )
+            if uri.lower().startswith(SUPPORTED):
+                result.append(uri)
 
-            if uri.lower().startswith(
-                SUPPORTED
-            ):
+                if len(result) >= MAX_TOTAL_CHECK:
+                    return result
 
-                nodes.append(uri)
-
-                if len(nodes) >= MAX_TOTAL_CHECK:
-                    return nodes
-
-    return nodes
+    return result
 
 
 # ============================================================
-# ENDPOINT
+# BASIC URI HELPERS
 # ============================================================
 
 def endpoint(uri):
-
     try:
+        p = urlsplit(uri)
 
-        parsed = urlsplit(uri)
-
-        host = parsed.hostname
-        port = parsed.port
-
-        if not host or not port:
+        if not p.hostname or not p.port:
             return None
 
-        return host.lower(), port
+        return p.hostname, p.port
 
     except Exception:
-
         return None
 
 
-# ============================================================
-# CONFIG FINGERPRINT
-# ============================================================
+def endpoint_key(uri):
+    ep = endpoint(uri)
 
-def config_fingerprint(uri):
+    if not ep:
+        return uri
 
+    return f"{ep[0].lower()}:{ep[1]}"
+
+
+def identity_key(uri):
     """
-    Группирует конфиги, которые очень похожи.
-
-    Например несколько URI с одинаковым:
-      - host
-      - port
-      - SNI
-      - path
-      - protocol
-
-    Это помогает не заполнять TOP
-    десятками почти одинаковых конфигураций.
+    Groups copies of the same configuration which differ only
+    by IP/port where possible.
     """
 
     try:
+        p = urlsplit(uri)
+        q = parse_qs(p.query)
 
-        parsed = urlsplit(uri)
+        scheme = p.scheme.lower()
 
-        protocol = (
-            parsed.scheme
-            .lower()
-        )
-
-        host = (
-            parsed.hostname
-            or ""
-        ).lower()
-
-        port = (
-            parsed.port
-            or ""
-        )
-
-        query = parse_qs(
-            parsed.query,
-            keep_blank_values=True,
-        )
-
-        sni = (
-            query.get(
-                "sni",
-                [""],
-            )[0]
-            or query.get(
-                "host",
-                [""],
-            )[0]
-        )
-
-        path = (
-            query.get(
-                "path",
-                [""],
-            )[0]
-        )
-
-        sni = unquote(
-            str(sni)
-        ).lower()
-
-        path = unquote(
-            str(path)
-        )
-
-        raw = (
-            f"{protocol}|"
-            f"{host}|"
-            f"{port}|"
-            f"{sni}|"
-            f"{path}"
-        )
-
-        return hashlib.sha1(
-            raw.encode(
-                "utf-8"
+        if scheme == "vless":
+            return (
+                "vless",
+                unquote(p.username or ""),
+                q.get("security", [""])[0],
+                q.get("sni", [""])[0],
+                q.get("pbk", [""])[0],
+                q.get("sid", [""])[0],
             )
-        ).hexdigest()
+
+        if scheme == "trojan":
+            return (
+                "trojan",
+                unquote(p.username or ""),
+                q.get("security", [""])[0],
+                q.get("sni", [""])[0],
+                q.get("path", [""])[0],
+            )
+
+        return (
+            scheme,
+            unquote(p.username or ""),
+            q.get("sni", [""])[0],
+        )
 
     except Exception:
-
-        return hashlib.sha1(
-            uri.encode(
-                "utf-8"
-            )
-        ).hexdigest()
+        return uri
 
 
 # ============================================================
-# TCP CHECK
+# TCP TEST
 # ============================================================
 
-def single_ping(uri):
+def tcp_ping(uri):
+    ep = endpoint(uri)
 
-    target = endpoint(uri)
-
-    if not target:
+    if not ep:
         return None
 
-    host, port = target
+    host, port = ep
 
     started = time.perf_counter()
 
     try:
-
         with socket.create_connection(
             (host, port),
-            timeout=PING_TIMEOUT,
+            timeout=TCP_TIMEOUT,
         ):
-
-            elapsed = (
-                time.perf_counter()
-                - started
-            ) * 1000
-
             return round(
-                elapsed,
+                (time.perf_counter() - started) * 1000,
                 1,
             )
 
     except Exception:
-
         return None
 
 
-def check_server(uri):
+def tcp_check(uri):
+    values = []
 
-    results = []
+    for _ in range(TCP_ATTEMPTS):
+        value = tcp_ping(uri)
 
-    for _ in range(
-        PING_ATTEMPTS
-    ):
+        if value is not None:
+            values.append(value)
 
-        latency = single_ping(
-            uri
-        )
-
-        if latency is not None:
-            results.append(
-                latency
-            )
-
-    successful = len(
-        results
-    )
-
-    success_rate = (
-        successful
-        / PING_ATTEMPTS
-    )
-
-    if results:
-
-        avg_ping = round(
-            sum(results)
-            / len(results),
-            1,
-        )
-
-        median_ping = round(
-            median(results),
-            1,
-        )
-
-        worst_ping = round(
-            max(results),
-            1,
-        )
-
-        best_ping = round(
-            min(results),
-            1,
-        )
-
-    else:
-
-        avg_ping = None
-        median_ping = None
-        worst_ping = None
-        best_ping = None
+    if not values:
+        return {
+            "uri": uri,
+            "tcp_success": 0,
+            "tcp_attempts": TCP_ATTEMPTS,
+            "tcp_rate": 0,
+            "tcp_median": None,
+            "tcp_worst": None,
+        }
 
     return {
         "uri": uri,
-        "attempts": PING_ATTEMPTS,
-        "successful": successful,
-        "success_rate": success_rate,
-        "avg_ping": avg_ping,
-        "median_ping": median_ping,
-        "worst_ping": worst_ping,
-        "best_ping": best_ping,
+        "tcp_success": len(values),
+        "tcp_attempts": TCP_ATTEMPTS,
+        "tcp_rate": len(values) / TCP_ATTEMPTS,
+        "tcp_median": round(median(values), 1),
+        "tcp_worst": round(max(values), 1),
     }
+
+
+# ============================================================
+# XRAY CONFIG
+# ============================================================
+
+def first(q, key, default=None):
+    values = q.get(key)
+
+    if not values:
+        return default
+
+    return values[0]
+
+
+def make_xray_config(uri, socks_port):
+    p = urlsplit(uri)
+    scheme = p.scheme.lower()
+
+    q = parse_qs(
+        p.query,
+        keep_blank_values=True,
+    )
+
+    host = p.hostname
+    port = p.port
+
+    if not host or not port:
+        return None
+
+    stream = {
+        "network": "tcp"
+    }
+
+    security = first(q, "security", "")
+
+    # ----------------------------
+    # VLESS
+    # ----------------------------
+
+    if scheme == "vless":
+
+        uuid = unquote(p.username or "")
+
+        if not uuid:
+            return None
+
+        outbound = {
+            "protocol": "vless",
+            "settings": {
+                "vnext": [
+                    {
+                        "address": host,
+                        "port": port,
+                        "users": [
+                            {
+                                "id": uuid,
+                                "encryption": "none",
+                            }
+                        ],
+                    }
+                ]
+            },
+            "streamSettings": stream,
+        }
+
+        flow = first(q, "flow")
+
+        if flow:
+            outbound["settings"]["vnext"][0]["users"][0]["flow"] = flow
+
+        network = first(q, "type", first(q, "network", "tcp"))
+
+        stream["network"] = network
+
+        if network == "ws":
+            stream["wsSettings"] = {
+                "path": unquote(first(q, "path", "/")),
+                "headers": {},
+            }
+
+            ws_host = first(q, "host")
+
+            if ws_host:
+                stream["wsSettings"]["headers"]["Host"] = ws_host
+
+        if security == "tls":
+            stream["security"] = "tls"
+
+            stream["tlsSettings"] = {
+                "serverName": first(q, "sni", host),
+                "allowInsecure": False,
+            }
+
+            fp = first(q, "fp")
+
+            if fp:
+                stream["tlsSettings"]["fingerprint"] = fp
+
+        elif security == "reality":
+            stream["security"] = "reality"
+
+            pbk = first(q, "pbk")
+
+            if not pbk:
+                return None
+
+            reality = {
+                "serverName": first(q, "sni", host),
+                "publicKey": pbk,
+                "shortId": first(q, "sid", ""),
+            }
+
+            fp = first(q, "fp")
+
+            if fp:
+                reality["fingerprint"] = fp
+
+            stream["realitySettings"] = reality
+
+        else:
+            stream.pop("security", None)
+
+        return {
+            "log": {
+                "loglevel": "error"
+            },
+            "inbounds": [
+                {
+                    "listen": "127.0.0.1",
+                    "port": socks_port,
+                    "protocol": "socks",
+                    "settings": {
+                        "udp": True
+                    },
+                }
+            ],
+            "outbounds": [
+                outbound
+            ]
+        }
+
+    # ----------------------------
+    # TROJAN
+    # ----------------------------
+
+    if scheme == "trojan":
+
+        password = unquote(p.username or "")
+
+        if not password:
+            return None
+
+        outbound = {
+            "protocol": "trojan",
+            "settings": {
+                "servers": [
+                    {
+                        "address": host,
+                        "port": port,
+                        "password": password,
+                    }
+                ]
+            },
+            "streamSettings": stream,
+        }
+
+        network = first(q, "type", first(q, "network", "tcp"))
+
+        stream["network"] = network
+
+        if network == "ws":
+            stream["wsSettings"] = {
+                "path": unquote(
+                    first(q, "path", "/")
+                ),
+                "headers": {},
+            }
+
+            ws_host = first(q, "host")
+
+            if ws_host:
+                stream["wsSettings"]["headers"]["Host"] = ws_host
+
+        if security == "tls" or port == 443:
+            stream["security"] = "tls"
+
+            stream["tlsSettings"] = {
+                "serverName": first(q, "sni", host),
+                "allowInsecure": False,
+            }
+
+        return {
+            "log": {
+                "loglevel": "error"
+            },
+            "inbounds": [
+                {
+                    "listen": "127.0.0.1",
+                    "port": socks_port,
+                    "protocol": "socks",
+                    "settings": {
+                        "udp": True
+                    },
+                }
+            ],
+            "outbounds": [
+                outbound
+            ]
+        }
+
+    return None
+
+
+# ============================================================
+# REAL XRAY TEST
+# ============================================================
+
+def wait_port(port, timeout=5):
+    deadline = time.time() + timeout
+
+    while time.time() < deadline:
+
+        try:
+            with socket.create_connection(
+                ("127.0.0.1", port),
+                timeout=0.25,
+            ):
+                return True
+
+        except Exception:
+            time.sleep(0.05)
+
+    return False
+
+
+def real_test(uri, index):
+    """
+    Real HTTP test through Xray.
+
+    Only VLESS and Trojan are tested here.
+    Unsupported protocols fall back to TCP result.
+    """
+
+    scheme = uri.split("://", 1)[0].lower()
+
+    if scheme not in ("vless", "trojan"):
+        return {
+            "real_supported": False,
+            "real_success": 0,
+            "real_attempts": REAL_TEST_ATTEMPTS,
+            "real_rate": 0,
+            "real_median": None,
+            "real_worst": None,
+        }
+
+    port = 20000 + (index % 2000)
+
+    config = make_xray_config(
+        uri,
+        port,
+    )
+
+    if not config:
+        return {
+            "real_supported": False,
+            "real_success": 0,
+            "real_attempts": REAL_TEST_ATTEMPTS,
+            "real_rate": 0,
+            "real_median": None,
+            "real_worst": None,
+        }
+
+    with tempfile.TemporaryDirectory() as tmp:
+
+        config_path = Path(tmp) / "config.json"
+
+        config_path.write_text(
+            json.dumps(config),
+            encoding="utf-8",
+        )
+
+        try:
+
+            process = subprocess.Popen(
+                [
+                    XRAY,
+                    "run",
+                    "-config",
+                    str(config_path),
+                ],
+                stdout=subprocess.DEVNULL,
+                stderr=subprocess.DEVNULL,
+            )
+
+        except Exception:
+
+            return {
+                "real_supported": False,
+                "real_success": 0,
+                "real_attempts": REAL_TEST_ATTEMPTS,
+                "real_rate": 0,
+                "real_median": None,
+                "real_worst": None,
+            }
+
+        try:
+
+            if not wait_port(port, 5):
+
+                return {
+                    "real_supported": True,
+                    "real_success": 0,
+                    "real_attempts": REAL_TEST_ATTEMPTS,
+                    "real_rate": 0,
+                    "real_median": None,
+                    "real_worst": None,
+                }
+
+            values = []
+
+            for _ in range(
+                REAL_TEST_ATTEMPTS
+            ):
+
+                started = time.perf_counter()
+
+                try:
+
+                    proxy = (
+                        f"socks5h://127.0.0.1:{port}"
+                    )
+
+                    result = subprocess.run(
+                        [
+                            "curl",
+                            "-L",
+                            "--silent",
+                            "--show-error",
+                            "--max-time",
+                            str(REAL_TEST_TIMEOUT),
+                            "--proxy",
+                            proxy,
+                            "-o",
+                            "/dev/null",
+                            "-w",
+                            "%{http_code}",
+                            TEST_URL,
+                        ],
+                        capture_output=True,
+                        text=True,
+                        timeout=REAL_TEST_TIMEOUT + 2,
+                    )
+
+                    elapsed = (
+                        time.perf_counter()
+                        - started
+                    ) * 1000
+
+                    code = result.stdout.strip()
+
+                    if (
+                        result.returncode == 0
+                        and code.isdigit()
+                        and 100 <= int(code) < 600
+                    ):
+                        values.append(
+                            round(elapsed, 1)
+                        )
+
+                except Exception:
+                    pass
+
+            success = len(values)
+
+            return {
+                "real_supported": True,
+                "real_success": success,
+                "real_attempts": REAL_TEST_ATTEMPTS,
+                "real_rate": (
+                    success / REAL_TEST_ATTEMPTS
+                ),
+                "real_median": (
+                    round(median(values), 1)
+                    if values
+                    else None
+                ),
+                "real_worst": (
+                    round(max(values), 1)
+                    if values
+                    else None
+                ),
+            }
+
+        finally:
+
+            process.terminate()
+
+            try:
+                process.wait(timeout=2)
+            except Exception:
+                process.kill()
 
 
 # ============================================================
@@ -387,25 +657,23 @@ def check_server(uri):
 
 def load_history():
 
-    if not HISTORY_FILE.exists():
+    if not history_file.exists():
         return {}
 
     try:
-
         return json.loads(
-            HISTORY_FILE.read_text(
-                encoding="utf-8",
+            history_file.read_text(
+                encoding="utf-8"
             )
         )
 
     except Exception:
-
         return {}
 
 
 def save_history(history):
 
-    HISTORY_FILE.write_text(
+    history_file.write_text(
         json.dumps(
             history,
             indent=2,
@@ -415,10 +683,7 @@ def save_history(history):
     )
 
 
-def update_history(
-    history,
-    result,
-):
+def update_history(history, result):
 
     uri = result["uri"]
 
@@ -428,50 +693,35 @@ def update_history(
             "runs": 0,
             "successes": 0,
             "failures": 0,
+            "real_successes": 0,
+            "real_attempts": 0,
             "last_ping": None,
-            "last_success": False,
         },
     )
 
     old["runs"] += 1
 
-    old["successes"] += (
-        result["successful"]
-    )
+    old["successes"] += result["tcp_success"]
 
     old["failures"] += (
-        result["attempts"]
-        - result["successful"]
+        result["tcp_attempts"]
+        - result["tcp_success"]
+    )
+
+    old["real_successes"] += result.get(
+        "real_success",
+        0,
+    )
+
+    old["real_attempts"] += result.get(
+        "real_attempts",
+        0,
     )
 
     old["last_ping"] = (
-        result["median_ping"]
+        result.get("real_median")
+        or result.get("tcp_median")
     )
-
-    old["last_success"] = (
-        result["successful"] > 0
-    )
-
-    # Ограничиваем размер исторической
-    # статистики примерно последними 12 запусками.
-    if old["runs"] > MAX_HISTORY:
-
-        factor = (
-            MAX_HISTORY
-            / old["runs"]
-        )
-
-        old["successes"] = round(
-            old["successes"]
-            * factor
-        )
-
-        old["failures"] = round(
-            old["failures"]
-            * factor
-        )
-
-        old["runs"] = MAX_HISTORY
 
     history[uri] = old
 
@@ -479,51 +729,10 @@ def update_history(
 
 
 # ============================================================
-# PROTOCOL
+# SCORE
 # ============================================================
 
-def protocol_name(uri):
-
-    lower = uri.lower()
-
-    if lower.startswith(
-        "vless://"
-    ):
-        return "VLESS"
-
-    if lower.startswith(
-        "vmess://"
-    ):
-        return "VMESS"
-
-    if lower.startswith(
-        "trojan://"
-    ):
-        return "TROJAN"
-
-    if (
-        lower.startswith("hy2://")
-        or lower.startswith("hysteria2://")
-    ):
-        return "HYSTERIA2"
-
-    if lower.startswith(
-        "ss://"
-    ):
-        return "SS"
-
-    return "OTHER"
-
-
-def protocol_quality(uri):
-
-    """
-    Небольшой бонус протоколу.
-
-    Важно:
-    протокол НЕ может сам по себе
-    поднять плохой сервер выше стабильного.
-    """
+def protocol_score(uri):
 
     lower = uri.lower()
 
@@ -532,275 +741,133 @@ def protocol_quality(uri):
         and "security=reality" in lower
         and "type=tcp" in lower
     ):
-        return 35
+        return 10
 
-    if (
-        lower.startswith("vless://")
-        and "security=tls" in lower
-        and "type=tcp" in lower
-    ):
-        return 25
+    if lower.startswith("vless://"):
+        return 7
 
-    if lower.startswith(
-        "trojan://"
-    ):
-        return 20
+    if lower.startswith("trojan://"):
+        return 6
 
     if (
         lower.startswith("hy2://")
         or lower.startswith("hysteria2://")
     ):
-        return 25
+        return 6
 
-    if (
-        lower.startswith("vless://")
-        and "security=tls" in lower
-    ):
-        return 15
+    if lower.startswith("vmess://"):
+        return 4
 
-    if lower.startswith(
-        "vmess://"
-    ):
-        return 10
-
-    if lower.startswith(
-        "ss://"
-    ):
-        return 5
+    if lower.startswith("ss://"):
+        return 3
 
     return 0
 
 
-# ============================================================
-# PING SCORE
-# ============================================================
+def score(result, history):
 
-def ping_score(ping):
+    tcp_rate = result["tcp_rate"]
 
-    if ping is None:
-        return 0
-
-    if ping <= 10:
-        return 450
-
-    if ping <= 20:
-        return 430
-
-    if ping <= 30:
-        return 410
-
-    if ping <= 40:
-        return 390
-
-    if ping <= 60:
-        return 360
-
-    if ping <= 80:
-        return 320
-
-    if ping <= 100:
-        return 280
-
-    if ping <= 150:
-        return 220
-
-    if ping <= 200:
-        return 150
-
-    if ping <= 300:
-        return 80
-
-    return 20
-
-
-# ============================================================
-# STABILITY SCORE
-# ============================================================
-
-def stability_score(
-    result
-):
-
-    rate = result[
-        "success_rate"
-    ]
-
-    # 3/3 -> 600
-    # 2/3 -> 400
-    # 1/3 -> 200
-    return rate * 600
-
-
-# ============================================================
-# HISTORICAL SCORE
-# ============================================================
-
-def historical_score(
-    uri,
-    history,
-):
-
-    old = history.get(
-        uri
+    real_supported = result.get(
+        "real_supported",
+        False,
     )
 
-    if not old:
-        return 0
-
-    successes = old.get(
-        "successes",
+    real_rate = result.get(
+        "real_rate",
         0,
     )
 
-    failures = old.get(
-        "failures",
-        0,
+    ping = (
+        result.get("real_median")
+        if real_supported
+        and result.get("real_median") is not None
+        else result.get("tcp_median")
     )
-
-    total = (
-        successes
-        + failures
-    )
-
-    if total <= 0:
-        return 0
-
-    rate = (
-        successes
-        / total
-    )
-
-    return rate * 250
-
-
-# ============================================================
-# CONSISTENCY
-# ============================================================
-
-def consistency_penalty(
-    result
-):
-
-    median_ping = result[
-        "median_ping"
-    ]
-
-    worst_ping = result[
-        "worst_ping"
-    ]
-
-    best_ping = result[
-        "best_ping"
-    ]
-
-    if (
-        median_ping is None
-        or worst_ping is None
-        or best_ping is None
-    ):
-        return 0
-
-    spread = (
-        worst_ping
-        - best_ping
-    )
-
-    if spread <= 5:
-        return 0
-
-    if spread <= 15:
-        return 5
-
-    if spread <= 30:
-        return 15
-
-    if spread <= 60:
-        return 30
-
-    if spread <= 100:
-        return 60
-
-    return 100
-
-
-# ============================================================
-# SMART SCORE
-# ============================================================
-
-def smart_score(
-    result,
-    history,
-):
-
-    ping = result[
-        "median_ping"
-    ]
 
     if ping is None:
         return -999999
 
-    current = (
-        stability_score(
-            result
+    # REAL TEST HAS PRIORITY
+    if real_supported:
+
+        if real_rate <= 0:
+            return -999999
+
+        stability = real_rate * 55
+
+        latency = max(
+            0,
+            30
+            - min(ping, 300) / 10,
         )
+
+        worst = result.get(
+            "real_worst"
+        )
+
+        consistency = 10
+
+        if worst is not None:
+            spread = worst - ping
+
+            if spread > 1000:
+                consistency = 0
+            elif spread > 500:
+                consistency = 2
+            elif spread > 250:
+                consistency = 4
+            elif spread > 100:
+                consistency = 6
+            elif spread > 50:
+                consistency = 8
+
+        base = (
+            stability
+            + latency
+            + consistency
+            + protocol_score(result["uri"])
+        )
+
+    else:
+
+        stability = tcp_rate * 45
+
+        latency = max(
+            0,
+            35
+            - min(ping, 300) / 10,
+        )
+
+        base = (
+            stability
+            + latency
+            + protocol_score(result["uri"])
+        )
+
+    old = history.get(
+        result["uri"]
     )
 
-    latency = (
-        ping_score(
-            ping
-        )
-    )
+    historical = 0
 
-    historical = (
-        historical_score(
-            result["uri"],
-            history,
-        )
-    )
+    if old:
 
-    protocol = (
-        protocol_quality(
-            result["uri"]
+        total = (
+            old["successes"]
+            + old["failures"]
         )
-    )
 
-    penalty = (
-        consistency_penalty(
-            result
-        )
-    )
-
-    score = (
-        current
-        + latency
-        + historical
-        + protocol
-        - penalty
-    )
+        if total:
+            historical = (
+                old["successes"]
+                / total
+                * 10
+            )
 
     return round(
-        score,
-        2,
-    )
-
-
-# ============================================================
-# DEDUPLICATION
-# ============================================================
-
-def host_key(uri):
-
-    target = endpoint(
-        uri
-    )
-
-    if not target:
-        return uri
-
-    host, port = target
-
-    return (
-        f"{host}:{port}"
+        base + historical,
+        3,
     )
 
 
@@ -814,215 +881,90 @@ def main():
 
     history = load_history()
 
-    # ========================================================
-    # READ SOURCES
-    # ========================================================
-
     source_urls = []
 
-    if not SOURCES.exists():
-
-        raise FileNotFoundError(
-            "sources.txt not found"
-        )
-
     for line in SOURCES.read_text(
-        encoding="utf-8",
+        encoding="utf-8"
     ).splitlines():
 
         line = line.strip()
 
-        if (
-            line
-            and not line.startswith("#")
-        ):
+        if line and not line.startswith("#"):
+            source_urls.append(line)
 
-            source_urls.append(
-                line
-            )
+    print(
+        f"FreeForYoung v4"
+    )
 
     print(
         f"Sources: {len(source_urls)}"
     )
 
-    # ========================================================
-    # DOWNLOAD SOURCES
-    # ========================================================
+    # ----------------------------
+    # DOWNLOAD
+    # ----------------------------
 
     all_nodes = []
 
-    source_stats = {}
-
-    source_workers = min(
-        10,
-        max(
-            1,
-            len(source_urls),
-        ),
-    )
-
     with ThreadPoolExecutor(
-        max_workers=source_workers
+        max_workers=min(
+            10,
+            max(1, len(source_urls)),
+        )
     ) as executor:
 
         jobs = {
-            executor.submit(
-                fetch,
-                url,
-            ): url
+            executor.submit(fetch, url): url
             for url in source_urls
         }
 
-        for future in as_completed(
-            jobs
-        ):
+        for future in as_completed(jobs):
 
-            source = jobs[
-                future
-            ]
+            source = jobs[future]
 
             try:
 
-                text = future.result()
-
                 nodes = extract(
-                    text
+                    future.result()
                 )
 
-                source_stats[
-                    source
-                ] = {
-                    "found": len(nodes)
-                }
-
-                all_nodes.extend(
-                    nodes
-                )
+                all_nodes.extend(nodes)
 
                 print(
-                    f"[SOURCE OK] "
+                    f"[OK] "
                     f"{len(nodes)} nodes"
                 )
 
             except Exception as error:
 
-                source_stats[
-                    source
-                ] = {
-                    "error": str(error)[
-                        :200
-                    ]
-                }
-
                 print(
-                    f"[SOURCE ERROR] "
+                    f"[ERROR] "
                     f"{source}: "
-                    f"{error}"
+                    f"{str(error)[:150]}"
                 )
 
-    # ========================================================
-    # UNIQUE
-    # ========================================================
+    unique = list(
+        dict.fromkeys(all_nodes)
+    )
 
-    unique_nodes = list(
-        dict.fromkeys(
-            all_nodes
-        )
+    candidates = unique[
+        :MAX_TOTAL_CHECK
+    ]
+
+    print(
+        f"Unique: {len(unique)}"
     )
 
     print(
-        f"Unique nodes: "
-        f"{len(unique_nodes)}"
-    )
-
-    # ========================================================
-    # PRE-CHECK DIVERSITY
-    # ========================================================
-
-    # Сначала стараемся получить разные
-    # endpoint'ы, чтобы 600 проверок не
-    # ушли на одну и ту же группу.
-    candidates = []
-
-    candidate_hosts = set()
-    candidate_fingerprints = set()
-
-    # Первый проход:
-    # уникальные host + fingerprint.
-    for uri in unique_nodes:
-
-        host = host_key(
-            uri
-        )
-
-        fingerprint = (
-            config_fingerprint(
-                uri
-            )
-        )
-
-        if host in candidate_hosts:
-            continue
-
-        if fingerprint in candidate_fingerprints:
-            continue
-
-        candidates.append(
-            uri
-        )
-
-        candidate_hosts.add(
-            host
-        )
-
-        candidate_fingerprints.add(
-            fingerprint
-        )
-
-        if len(candidates) >= MAX_TOTAL_CHECK:
-            break
-
-    # Если не набрали лимит —
-    # добираем остальные.
-    if len(candidates) < MAX_TOTAL_CHECK:
-
-        selected_set = set(
-            candidates
-        )
-
-        for uri in unique_nodes:
-
-            if uri in selected_set:
-                continue
-
-            candidates.append(
-                uri
-            )
-
-            if len(candidates) >= MAX_TOTAL_CHECK:
-                break
-
-    print(
-        f"Candidates: "
+        f"TCP candidates: "
         f"{len(candidates)}"
     )
 
-    # ========================================================
-    # CHECK
-    # ========================================================
+    # ----------------------------
+    # TCP
+    # ----------------------------
 
-    print(
-        f"Checking "
-        f"{len(candidates)} nodes"
-    )
-
-    print(
-        f"{PING_ATTEMPTS} attempts "
-        f"per server / "
-        f"{WORKERS} workers"
-    )
-
-    checked = []
+    tcp_results = []
 
     with ThreadPoolExecutor(
         max_workers=WORKERS
@@ -1030,204 +972,219 @@ def main():
 
         jobs = {
             executor.submit(
-                check_server,
+                tcp_check,
                 uri,
             ): uri
             for uri in candidates
         }
 
-        for future in as_completed(
-            jobs
-        ):
-
-            uri = jobs[
-                future
-            ]
+        for future in as_completed(jobs):
 
             try:
 
-                result = (
-                    future.result()
-                )
+                result = future.result()
+
+                if result["tcp_success"] > 0:
+                    tcp_results.append(result)
 
             except Exception:
+                pass
 
-                result = {
-                    "uri": uri,
-                    "attempts": PING_ATTEMPTS,
-                    "successful": 0,
-                    "success_rate": 0,
-                    "avg_ping": None,
-                    "median_ping": None,
-                    "worst_ping": None,
-                    "best_ping": None,
+    tcp_results.sort(
+        key=lambda x: (
+            x["tcp_rate"],
+            -(x["tcp_median"] or 999999),
+        ),
+        reverse=True,
+    )
+
+    # ----------------------------
+    # REAL TEST CANDIDATES
+    # ----------------------------
+
+    real_candidates = []
+
+    identity_counts = {}
+
+    for item in tcp_results:
+
+        uri = item["uri"]
+
+        identity = identity_key(uri)
+
+        count = identity_counts.get(
+            identity,
+            0,
+        )
+
+        if count >= MAX_SAME_IDENTITY:
+            continue
+
+        identity_counts[identity] = count + 1
+
+        real_candidates.append(uri)
+
+        if len(real_candidates) >= MAX_REAL_TEST:
+            break
+
+    print(
+        f"Real Xray tests: "
+        f"{len(real_candidates)}"
+    )
+
+    # ----------------------------
+    # REAL TEST
+    # ----------------------------
+
+    results = []
+
+    with ThreadPoolExecutor(
+        max_workers=REAL_WORKERS
+    ) as executor:
+
+        jobs = {
+            executor.submit(
+                real_test,
+                uri,
+                i,
+            ): uri
+            for i, uri in enumerate(
+                real_candidates
+            )
+        }
+
+        for future in as_completed(jobs):
+
+            uri = jobs[future]
+
+            base = next(
+                (
+                    x for x in tcp_results
+                    if x["uri"] == uri
+                ),
+                None,
+            )
+
+            if not base:
+                continue
+
+            try:
+                real = future.result()
+            except Exception:
+                real = {
+                    "real_supported": False,
+                    "real_success": 0,
+                    "real_attempts": REAL_TEST_ATTEMPTS,
+                    "real_rate": 0,
+                    "real_median": None,
+                    "real_worst": None,
                 }
+
+            result = {
+                **base,
+                **real,
+            }
 
             history = update_history(
                 history,
                 result,
             )
 
-            if result[
-                "successful"
-            ] > 0:
+            result["score"] = score(
+                result,
+                history,
+            )
 
-                result[
-                    "fingerprint"
-                ] = config_fingerprint(
-                    uri
-                )
+            if result["score"] > -999000:
+                results.append(result)
 
-                result[
-                    "host_key"
-                ] = host_key(
-                    uri
-                )
+    # Add remaining TCP-only nodes.
+    already = {
+        x["uri"]
+        for x in results
+    }
 
-                result[
-                    "protocol"
-                ] = protocol_name(
-                    uri
-                )
+    for item in tcp_results:
 
-                result[
-                    "score"
-                ] = smart_score(
-                    result,
-                    history,
-                )
+        if item["uri"] in already:
+            continue
 
-                checked.append(
-                    result
-                )
+        item["real_supported"] = False
+        item["real_success"] = 0
+        item["real_attempts"] = 0
+        item["real_rate"] = 0
+        item["real_median"] = None
+        item["real_worst"] = None
 
-    # ========================================================
-    # RANK
-    # ========================================================
+        history = update_history(
+            history,
+            item,
+        )
 
-    ranked = sorted(
-        checked,
-        key=lambda item: (
-            item["score"],
-            item["success_rate"],
+        item["score"] = score(
+            item,
+            history,
+        )
+
+        if item["score"] > -999000:
+            results.append(item)
+
+    # ----------------------------
+    # SORT
+    # ----------------------------
+
+    results.sort(
+        key=lambda x: (
+            x["score"],
+            x.get("real_rate", 0),
+            x.get("tcp_rate", 0),
             -(
-                item["median_ping"]
-                or 999999
-            ),
-            -(
-                item["worst_ping"]
+                x.get("real_median")
+                or x.get("tcp_median")
                 or 999999
             ),
         ),
         reverse=True,
     )
 
-    # ========================================================
+    # ----------------------------
     # DIVERSIFIED TOP
-    # ========================================================
+    # ----------------------------
 
     selected = []
 
-    host_counts = {}
+    endpoint_counts = {}
 
-    fingerprint_counts = {}
+    for item in results:
 
-    for item in ranked:
+        ep = endpoint_key(
+            item["uri"]
+        )
 
-        host = item[
-            "host_key"
-        ]
+        count = endpoint_counts.get(
+            ep,
+            0,
+        )
 
-        fingerprint = item[
-            "fingerprint"
-        ]
-
-        if (
-            host_counts.get(
-                host,
-                0,
-            )
-            >= MAX_SAME_HOST
-        ):
+        if count >= MAX_SAME_ENDPOINT:
             continue
 
-        if (
-            fingerprint_counts.get(
-                fingerprint,
-                0,
-            )
-            >= MAX_SAME_FINGERPRINT
-        ):
-            continue
+        endpoint_counts[ep] = count + 1
 
-        selected.append(
-            item
-        )
-
-        host_counts[
-            host
-        ] = (
-            host_counts.get(
-                host,
-                0,
-            )
-            + 1
-        )
-
-        fingerprint_counts[
-            fingerprint
-        ] = (
-            fingerprint_counts.get(
-                fingerprint,
-                0,
-            )
-            + 1
-        )
+        selected.append(item)
 
         if len(selected) >= MAX_PUBLISHED:
             break
 
-    # ========================================================
-    # FALLBACK
-    # ========================================================
+    # ----------------------------
+    # SAVE
+    # ----------------------------
 
-    if len(selected) < MAX_PUBLISHED:
-
-        selected_uris = {
-            item["uri"]
-            for item in selected
-        }
-
-        for item in ranked:
-
-            if (
-                item["uri"]
-                in selected_uris
-            ):
-                continue
-
-            selected.append(
-                item
-            )
-
-            if len(selected) >= MAX_PUBLISHED:
-                break
-
-    # ========================================================
-    # SAVE HISTORY
-    # ========================================================
-
-    save_history(
-        history
-    )
-
-    # ========================================================
-    # SUBSCRIPTION
-    # ========================================================
+    save_history(history)
 
     lines = [
         "#profile-title: FreeForYoung",
-        "#announce: FreeForYoung - stable public nodes",
+        "#announce: FreeForYoung - real tested public nodes",
         "#subscription-auto-update-enable: 1",
         "#subscription-auto-update-open-enable: 1",
         "#subscription-ping-onopen-enabled: 1",
@@ -1236,100 +1193,89 @@ def main():
     ]
 
     lines.extend(
-        item["uri"]
-        for item in selected
+        x["uri"]
+        for x in selected
     )
 
     (
         OUT / "subscription.txt"
     ).write_text(
-        "\n".join(
-            lines
-        )
-        + "\n",
+        "\n".join(lines) + "\n",
         encoding="utf-8",
     )
 
-    # ========================================================
+    # ----------------------------
     # REPORT
-    # ========================================================
+    # ----------------------------
 
-    diagnostic = []
+    report = []
 
-    for index, item in enumerate(
+    for i, item in enumerate(
         selected,
-        start=1,
+        1,
     ):
 
-        diagnostic.append(
-            (
-                f"{index}. "
-                f"score={item['score']} | "
-                f"ping={item['median_ping']}ms | "
-                f"success="
-                f"{item['successful']}/"
-                f"{item['attempts']} | "
-                f"protocol="
-                f"{item['protocol']} | "
-                f"uri={item['uri']}"
-            )
+        protocol = (
+            item["uri"]
+            .split("://", 1)[0]
+            .upper()
+        )
+
+        ping = (
+            item.get("real_median")
+            or item.get("tcp_median")
+        )
+
+        success = (
+            f"{item.get('real_success', 0)}/"
+            f"{item.get('real_attempts', 0)}"
+            if item.get("real_supported")
+            else
+            f"{item['tcp_success']}/"
+            f"{item['tcp_attempts']}"
+        )
+
+        test_type = (
+            "REAL"
+            if item.get("real_supported")
+            else "TCP"
+        )
+
+        report.append(
+            f"{i}. "
+            f"score={item['score']} | "
+            f"ping={ping}ms | "
+            f"success={success} | "
+            f"test={test_type} | "
+            f"protocol={protocol} | "
+            f"uri={item['uri']}"
         )
 
     (
         OUT / "servers.txt"
     ).write_text(
-        "\n".join(
-            diagnostic
-        )
-        + (
-            "\n"
-            if diagnostic
-            else ""
+        "\n".join(report) + (
+            "\n" if report else ""
         ),
         encoding="utf-8",
     )
 
-    # ========================================================
-    # STATS
-    # ========================================================
-
     stats = {
         "project": "FreeForYoung",
-        "sources": len(
-            source_urls
-        ),
-        "raw_nodes": len(
-            all_nodes
-        ),
-        "unique_nodes": len(
-            unique_nodes
-        ),
-        "candidates": len(
-            candidates
-        ),
-        "checked_nodes": len(
-            candidates
-        ),
-        "working_nodes": len(
-            checked
-        ),
-        "published_nodes": len(
-            selected
-        ),
-        "ping_attempts": PING_ATTEMPTS,
-        "workers": WORKERS,
-        "max_same_host": MAX_SAME_HOST,
-        "max_same_fingerprint": (
-            MAX_SAME_FINGERPRINT
-        ),
-        "generated_at": int(
-            time.time()
-        ),
+        "sources": len(source_urls),
+        "raw_nodes": len(all_nodes),
+        "unique_nodes": len(unique),
+        "tcp_working": len(tcp_results),
+        "real_candidates": len(real_candidates),
+        "final_ranked": len(results),
+        "published": len(selected),
+        "tcp_attempts": TCP_ATTEMPTS,
+        "real_attempts": REAL_TEST_ATTEMPTS,
         "duration_seconds": round(
             time.time() - started,
             2,
         ),
-        "source_stats": source_stats,
+        "generated_at": int(time.time()),
     }
 
     (
@@ -1338,35 +1284,26 @@ def main():
         json.dumps(
             stats,
             indent=2,
-            ensure_ascii=False,
-        )
-        + "\n",
+        ) + "\n",
         encoding="utf-8",
     )
 
-    # ========================================================
-    # CONSOLE
-    # ========================================================
-
     print()
+    print("=" * 50)
+    print("        FreeForYoung READY")
+    print("=" * 50)
+
     print(
-        "================================"
-    )
-    print(
-        "       FreeForYoung READY"
-    )
-    print(
-        "================================"
+        f"TCP working: {len(tcp_results)}"
     )
 
     print(
-        f"Working: "
-        f"{len(checked)}"
+        f"Real candidates: "
+        f"{len(real_candidates)}"
     )
 
     print(
-        f"Published: "
-        f"{len(selected)}"
+        f"Published: {len(selected)}"
     )
 
     print(
@@ -1375,22 +1312,23 @@ def main():
     )
 
     print()
-    print(
-        "TOP SERVERS:"
-    )
+    print("TOP SERVERS:")
 
-    for index, item in enumerate(
+    for i, item in enumerate(
         selected[:20],
-        start=1,
+        1,
     ):
 
+        ping = (
+            item.get("real_median")
+            or item.get("tcp_median")
+        )
+
         print(
-            f"{index}. "
-            f"{item['protocol']} | "
-            f"{item['median_ping']}ms | "
-            f"{item['successful']}/"
-            f"{item['attempts']} | "
-            f"score={item['score']}"
+            f"{i}. "
+            f"score={item['score']} | "
+            f"{ping}ms | "
+            f"{item['uri'][:80]}"
         )
 
 
