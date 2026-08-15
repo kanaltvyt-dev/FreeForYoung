@@ -1,33 +1,33 @@
 {
   "project": "FreeForYoung",
   "sources": 5,
-  "raw_nodes": 1313,
-  "unique_nodes": 1209,
+  "raw_nodes": 1312,
+  "unique_nodes": 1205,
   "candidates": 600,
   "checked_nodes": 600,
-  "working_nodes": 506,
+  "working_nodes": 511,
   "published_nodes": 100,
   "ping_attempts": 3,
   "workers": 40,
   "max_same_host": 2,
   "max_same_fingerprint": 2,
-  "generated_at": 1786801610,
-  "duration_seconds": 14.36,
+  "generated_at": 1786821057,
+  "duration_seconds": 10.13,
   "source_stats": {
+    "https://raw.githubusercontent.com/hamedcode/port-based-v2ray-configs/main/README.md": {
+      "found": 0
+    },
     "https://raw.githubusercontent.com/Pawdroid/Free-servers/main/README.md": {
-      "found": 13
+      "found": 12
     },
     "https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/v2ray-base64.txt": {
       "found": 600
     },
-    "https://raw.githubusercontent.com/hamedcode/port-based-v2ray-configs/main/README.md": {
-      "found": 0
+    "https://raw.githubusercontent.com/ninjastrikers/Nexus-nodes/main/configs/all.txt": {
+      "found": 600
     },
     "https://raw.githubusercontent.com/ninjastrikers/Nexus-nodes/main/configs/light.txt": {
       "found": 100
-    },
-    "https://raw.githubusercontent.com/ninjastrikers/Nexus-nodes/main/configs/all.txt": {
-      "found": 600
     }
   }
 }
