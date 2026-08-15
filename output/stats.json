@@ -1,14 +1,17 @@
 {
   "project": "FreeForYoung",
+  "version": 5,
   "sources": 5,
-  "raw_nodes": 720,
-  "unique_nodes": 620,
-  "tcp_working": 275,
-  "real_candidates": 80,
-  "final_ranked": 275,
-  "published": 100,
-  "tcp_attempts": 3,
+  "raw_nodes": 1319,
+  "unique_nodes": 1212,
+  "tcp_candidates": 570,
+  "real_tested": 100,
+  "real_working": 81,
+  "published": 77,
+  "tcp_attempts": 2,
   "real_attempts": 3,
-  "duration_seconds": 26.04,
-  "generated_at": 1786835295
+  "tcp_workers": 40,
+  "real_workers": 8,
+  "generated_at": 1786836597,
+  "duration_seconds": 26.55
 }
