@@ -26,37 +26,35 @@ SUPPORTED = (
     "hysteria2://",
 )
 
-# ---------- SETTINGS ----------
+# =========================
+# SETTINGS
+# =========================
 
 FETCH_TIMEOUT = 8
-
-# Проверяем каждый сервер несколько раз.
-PING_ATTEMPTS = 3
 PING_TIMEOUT = 2
-
-# Параллельная проверка.
+PING_ATTEMPTS = 3
 WORKERS = 40
 
-# Максимальное количество кандидатов для проверки.
 MAX_TOTAL_CHECK = 600
-
-# Сколько лучших серверов публикуем.
 MAX_PUBLISHED = 100
 
-# История сохраняется между GitHub Actions запусками.
-HISTORY_FILE = OUT / "history.json"
+# Не позволяем одному endpoint
+# занять весь список.
+MAX_SAME_HOST = 3
 
-# Сколько запусков помним для каждого сервера.
+HISTORY_FILE = OUT / "history.json"
 MAX_HISTORY = 12
 
 
-# ---------- SOURCES ----------
+# =========================
+# FETCH SOURCES
+# =========================
 
 def fetch(url):
     request = Request(
         url,
         headers={
-            "User-Agent": "FreeForYoung/2.0"
+            "User-Agent": "FreeForYoung/3.0"
         },
     )
 
@@ -64,7 +62,6 @@ def fetch(url):
         request,
         timeout=FETCH_TIMEOUT
     ) as response:
-
         raw = response.read()
 
     text = raw.decode(
@@ -72,7 +69,7 @@ def fetch(url):
         "ignore"
     )
 
-    # Некоторые источники используют base64.
+    # Некоторые источники отдают base64.
     compact = re.sub(
         r"\s+",
         "",
@@ -141,7 +138,9 @@ def extract(text):
     return nodes
 
 
-# ---------- ENDPOINT ----------
+# =========================
+# ENDPOINT
+# =========================
 
 def endpoint(uri):
 
@@ -162,7 +161,9 @@ def endpoint(uri):
         return None
 
 
-# ---------- SINGLE PING ----------
+# =========================
+# TCP CHECK
+# =========================
 
 def single_ping(uri):
 
@@ -197,13 +198,13 @@ def single_ping(uri):
         return None
 
 
-# ---------- STABILITY TEST ----------
-
 def check_server(uri):
 
     results = []
 
-    for _ in range(PING_ATTEMPTS):
+    for _ in range(
+        PING_ATTEMPTS
+    ):
 
         latency = single_ping(uri)
 
@@ -252,29 +253,9 @@ def check_server(uri):
     }
 
 
-# ---------- PROTOCOL BONUS ----------
-
-def protocol_bonus(uri):
-
-    protocol = uri.split(
-        ":",
-        1
-    )[0].lower()
-
-    return {
-        "vless": 20,
-        "trojan": 15,
-        "hy2": 12,
-        "hysteria2": 12,
-        "vmess": 8,
-        "ss": 5,
-    }.get(
-        protocol,
-        0
-    )
-
-
-# ---------- HISTORY ----------
+# =========================
+# HISTORY
+# =========================
 
 def load_history():
 
@@ -324,9 +305,11 @@ def update_history(
     )
 
     old["runs"] += 1
-    old["successes"] += result[
-        "successful"
-    ]
+
+    old["successes"] += (
+        result["successful"]
+    )
+
     old["failures"] += (
         result["attempts"]
         - result["successful"]
@@ -336,9 +319,7 @@ def update_history(
         result["median_ping"]
     )
 
-    # Ограничиваем историю.
-    # Храним агрегированную статистику,
-    # поэтому файл не разрастается.
+    # Не даём истории бесконечно расти.
     if old["runs"] > MAX_HISTORY:
 
         factor = (
@@ -363,18 +344,74 @@ def update_history(
     return history
 
 
-# ---------- SCORE ----------
+# =========================
+# PROTOCOL QUALITY
+# =========================
 
-def calculate_score(
+def protocol_quality(uri):
+
+    lower = uri.lower()
+
+    # VLESS Reality TCP
+    if (
+        lower.startswith("vless://")
+        and "security=reality" in lower
+        and "type=tcp" in lower
+    ):
+        return 80
+
+    # VLESS TLS TCP
+    if (
+        lower.startswith("vless://")
+        and "security=tls" in lower
+        and "type=tcp" in lower
+    ):
+        return 55
+
+    # VLESS TLS WS
+    if (
+        lower.startswith("vless://")
+        and "security=tls" in lower
+        and "type=ws" in lower
+    ):
+        return 35
+
+    # Trojan
+    if lower.startswith(
+        "trojan://"
+    ):
+        return 45
+
+    # Hysteria
+    if (
+        lower.startswith("hy2://")
+        or lower.startswith("hysteria2://")
+    ):
+        return 45
+
+    # VMess
+    if lower.startswith(
+        "vmess://"
+    ):
+        return 20
+
+    # Shadowsocks
+    if lower.startswith(
+        "ss://"
+    ):
+        return 15
+
+    return 0
+
+
+# =========================
+# SMART SCORE
+# =========================
+
+def smart_score(
     result,
     history,
 ):
-
-    if result[
-        "successful"
-    ] == 0:
-
-        return -999999
 
     uri = result["uri"]
 
@@ -386,35 +423,57 @@ def calculate_score(
         "success_rate"
     ]
 
-    # Текущая стабильность.
+    if (
+        ping is None
+        or success_rate <= 0
+    ):
+        return -999999
+
+    # ---------------------
+    # CURRENT STABILITY
+    # ---------------------
+
     stability_score = (
-        success_rate * 500
+        success_rate * 600
     )
 
-    # Чем меньше ping — тем лучше.
-    if ping <= 30:
-        ping_score = 500
-    elif ping <= 60:
+    # ---------------------
+    # PING
+    # ---------------------
+
+    if ping <= 20:
+        ping_score = 450
+
+    elif ping <= 40:
         ping_score = 400
+
+    elif ping <= 60:
+        ping_score = 350
+
     elif ping <= 100:
-        ping_score = 300
+        ping_score = 280
+
     elif ping <= 150:
         ping_score = 200
+
     elif ping <= 250:
         ping_score = 100
-    else:
-        ping_score = 30
 
-    # Дополнительный плавный бонус.
+    else:
+        ping_score = 20
+
     ping_score += max(
         0,
-        100 - ping / 5
+        80 - ping / 5
     )
 
-    # Историческая стабильность.
-    old = history.get(uri)
+    # ---------------------
+    # HISTORICAL STABILITY
+    # ---------------------
 
     history_score = 0
+
+    old = history.get(uri)
 
     if old:
 
@@ -431,31 +490,38 @@ def calculate_score(
             )
 
             history_score = (
-                historical_rate
-                * 300
+                historical_rate * 300
             )
 
-    # Небольшой бонус протоколу.
+    # ---------------------
+    # PROTOCOL
+    # ---------------------
+
     protocol_score = (
-        protocol_bonus(uri)
+        protocol_quality(uri)
     )
 
-    # Штраф за большой разброс ping.
+    # ---------------------
+    # PING CONSISTENCY
+    # ---------------------
+
+    spread_penalty = 0
+
     worst = result[
         "worst_ping"
     ]
 
-    spread_penalty = 0
+    if worst is not None:
 
-    if (
-        worst is not None
-        and ping is not None
-    ):
+        spread = (
+            worst - ping
+        )
 
-        spread = worst - ping
+        if spread > 150:
+            spread_penalty = 100
 
-        if spread > 100:
-            spread_penalty = 80
+        elif spread > 100:
+            spread_penalty = 70
 
         elif spread > 50:
             spread_penalty = 40
@@ -463,27 +529,45 @@ def calculate_score(
         elif spread > 25:
             spread_penalty = 15
 
-    score = (
+    return round(
         stability_score
         + ping_score
         + history_score
         + protocol_score
-        - spread_penalty
-    )
-
-    return round(
-        score,
-        2
+        - spread_penalty,
+        2,
     )
 
 
-# ---------- MAIN ----------
+# =========================
+# GROUPING
+# =========================
+
+def host_key(uri):
+
+    target = endpoint(uri)
+
+    if not target:
+        return uri
+
+    host, port = target
+
+    return f"{host}:{port}"
+
+
+# =========================
+# MAIN
+# =========================
 
 def main():
 
     started = time.time()
 
     history = load_history()
+
+    # ---------------------
+    # READ SOURCES
+    # ---------------------
 
     source_urls = []
 
@@ -503,7 +587,9 @@ def main():
         f"Sources: {len(source_urls)}"
     )
 
-    # ---------- DOWNLOAD SOURCES ----------
+    # ---------------------
+    # DOWNLOAD
+    # ---------------------
 
     all_nodes = []
 
@@ -566,10 +652,13 @@ def main():
 
                 print(
                     f"[SOURCE ERROR] "
-                    f"{source}"
+                    f"{source}: "
+                    f"{error}"
                 )
 
-    # ---------- DEDUP ----------
+    # ---------------------
+    # DEDUPLICATE
+    # ---------------------
 
     unique_nodes = list(
         dict.fromkeys(
@@ -586,7 +675,9 @@ def main():
         :MAX_TOTAL_CHECK
     ]
 
-    # ---------- CHECK ----------
+    # ---------------------
+    # CHECK SERVERS
+    # ---------------------
 
     print(
         f"Checking "
@@ -645,7 +736,7 @@ def main():
             ] > 0:
 
                 result["score"] = (
-                    calculate_score(
+                    smart_score(
                         result,
                         history
                     )
@@ -655,31 +746,89 @@ def main():
                     result
                 )
 
-    # ---------- SORT ----------
+    # ---------------------
+    # SORT
+    # ---------------------
 
-    checked.sort(
-        key=lambda x: (
-            x["score"],
-            x["success_rate"],
+    ranked = sorted(
+        checked,
+        key=lambda item: (
+            item["score"],
+            item["success_rate"],
             -(
-                x["median_ping"]
+                item["median_ping"]
                 or 999999
             ),
         ),
         reverse=True,
     )
 
-    selected = checked[
-        :MAX_PUBLISHED
-    ]
+    # ---------------------
+    # DIVERSIFIED SELECTION
+    # ---------------------
 
-    # ---------- SAVE HISTORY ----------
+    selected = []
+
+    host_counts = {}
+
+    for item in ranked:
+
+        host = host_key(
+            item["uri"]
+        )
+
+        current = host_counts.get(
+            host,
+            0
+        )
+
+        if current >= MAX_SAME_HOST:
+            continue
+
+        selected.append(
+            item
+        )
+
+        host_counts[host] = (
+            current + 1
+        )
+
+        if len(selected) >= MAX_PUBLISHED:
+            break
+
+    # Если разнообразный список
+    # получился меньше лимита,
+    # добираем оставшиеся.
+    if len(selected) < MAX_PUBLISHED:
+
+        selected_uris = {
+            item["uri"]
+            for item in selected
+        }
+
+        for item in ranked:
+
+            if item["uri"] in selected_uris:
+                continue
+
+            selected.append(
+                item
+            )
+
+            if len(selected) >= MAX_PUBLISHED:
+                break
+
+    # ---------------------
+    # SAVE HISTORY
+    # ---------------------
 
     save_history(
         history
     )
 
-    # ---------- SUBSCRIPTION ----------
+    # ---------------------
+    # SUBSCRIPTION
+    # ---------------------
 
     lines = [
         "#profile-title: FreeForYoung",
@@ -704,7 +853,9 @@ def main():
         encoding="utf-8",
     )
 
-    # ---------- DIAGNOSTIC LIST ----------
+    # ---------------------
+    # SERVERS REPORT
+    # ---------------------
 
     diagnostic = []
 
@@ -739,7 +890,9 @@ def main():
         encoding="utf-8",
     )
 
-    # ---------- STATS ----------
+    # ---------------------
+    # STATS
+    # ---------------------
 
     stats = {
         "project": "FreeForYoung",
@@ -763,6 +916,7 @@ def main():
         ),
         "ping_attempts": PING_ATTEMPTS,
         "workers": WORKERS,
+        "max_same_host": MAX_SAME_HOST,
         "generated_at": int(
             time.time()
         ),
@@ -785,7 +939,9 @@ def main():
         encoding="utf-8",
     )
 
-    # ---------- CONSOLE ----------
+    # ---------------------
+    # CONSOLE
+    # ---------------------
 
     print()
     print(
@@ -814,13 +970,12 @@ def main():
     )
 
     print()
-
     print(
         "TOP SERVERS:"
     )
 
     for index, item in enumerate(
-        selected[:10],
+        selected[:15],
         start=1
     ):
 
