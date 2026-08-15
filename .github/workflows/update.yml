@@ -8,6 +8,10 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: freeforyoung-update
+  cancel-in-progress: true
+
 jobs:
   update:
     runs-on: ubuntu-latest
@@ -15,38 +19,66 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
 
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+          cache: "pip"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
 
       - name: Install Xray
         shell: bash
         run: |
-          set -e
+          set -euo pipefail
 
           XRAY_VERSION="1.8.24"
           URL="https://github.com/XTLS/Xray-core/releases/download/v${XRAY_VERSION}/Xray-linux-64.zip"
 
-          curl -L --fail --retry 3 "$URL" -o /tmp/xray.zip
+          curl -fL --retry 5 --retry-delay 2 "$URL" -o /tmp/xray.zip
 
+          rm -rf "$HOME/xray"
           mkdir -p "$HOME/xray"
-          unzip -o /tmp/xray.zip -d "$HOME/xray"
 
+          unzip -q -o /tmp/xray.zip -d "$HOME/xray"
           chmod +x "$HOME/xray/xray"
 
           "$HOME/xray/xray" version
 
           echo "XRAY_PATH=$HOME/xray/xray" >> "$GITHUB_ENV"
 
-      - name: Run FreeForYoung
+      - name: Build subscription
+        shell: bash
         run: |
+          set -euo pipefail
           python scripts/build_subscription.py
+
+      - name: Validate generated files
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          test -s output/subscription.txt
+          test -s output/servers.txt
+          test -s output/stats.json
+
+          echo "Generated files:"
+          ls -lh output/
+
+          echo
+          echo "Stats:"
+          cat output/stats.json
 
       - name: Commit generated subscription
         shell: bash
         run: |
+          set -euo pipefail
+
           git config user.name "FreeForYoung Bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
