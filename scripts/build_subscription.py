@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import base64
+import hashlib
 import json
 import re
 import socket
@@ -8,14 +9,16 @@ import time
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 from statistics import median
-from urllib.parse import urlsplit
+from urllib.parse import parse_qs, unquote, urlsplit
 from urllib.request import Request, urlopen
+
 
 ROOT = Path(__file__).resolve().parents[1]
 SOURCES = ROOT / "sources.txt"
 OUT = ROOT / "output"
 
 OUT.mkdir(exist_ok=True)
+
 
 SUPPORTED = (
     "vless://",
@@ -26,64 +29,77 @@ SUPPORTED = (
     "hysteria2://",
 )
 
-# =========================
+
+# ============================================================
 # SETTINGS
-# =========================
+# ============================================================
 
 FETCH_TIMEOUT = 8
+
 PING_TIMEOUT = 2
 PING_ATTEMPTS = 3
+
 WORKERS = 40
 
 MAX_TOTAL_CHECK = 600
 MAX_PUBLISHED = 100
 
-# Не позволяем одному endpoint
-# занять весь список.
-MAX_SAME_HOST = 3
+# Один и тот же host:port
+# не может занять больше этого количества мест.
+MAX_SAME_HOST = 2
+
+# Очень похожие конфигурации
+# тоже ограничиваем.
+MAX_SAME_FINGERPRINT = 2
 
 HISTORY_FILE = OUT / "history.json"
+
 MAX_HISTORY = 12
 
 
-# =========================
-# FETCH SOURCES
-# =========================
+# ============================================================
+# FETCH
+# ============================================================
 
 def fetch(url):
+
     request = Request(
         url,
         headers={
-            "User-Agent": "FreeForYoung/3.0"
+            "User-Agent": "FreeForYoung/4.0"
         },
     )
 
     with urlopen(
         request,
-        timeout=FETCH_TIMEOUT
+        timeout=FETCH_TIMEOUT,
     ) as response:
+
         raw = response.read()
 
     text = raw.decode(
         "utf-8",
-        "ignore"
+        "ignore",
     )
 
-    # Некоторые источники отдают base64.
+    # Некоторые источники публикуют
+    # base64 вместо обычного текста.
     compact = re.sub(
         r"\s+",
         "",
-        text
+        text,
     )
 
     if (
         len(compact) > 40
         and re.fullmatch(
             r"[A-Za-z0-9+/=_-]+",
-            compact
+            compact,
         )
     ):
+
         try:
+
             decoded = base64.b64decode(
                 compact
                 + "=" * (
@@ -94,7 +110,7 @@ def fetch(url):
 
             decoded_text = decoded.decode(
                 "utf-8",
-                "ignore"
+                "ignore",
             )
 
             if "://" in decoded_text:
@@ -106,9 +122,14 @@ def fetch(url):
     return text
 
 
+# ============================================================
+# EXTRACT
+# ============================================================
+
 def extract(text):
+
     pattern = re.compile(
-        r"(?:vless|vmess|trojan|ss|hy2|hysteria2)://[^\s<>\"]+",
+        r"(?:vless|vmess|trojan|ss|hy2|hysteria2)://[^\s<>\"']+",
         re.IGNORECASE,
     )
 
@@ -124,12 +145,13 @@ def extract(text):
         for match in pattern.finditer(line):
 
             uri = match.group(0).rstrip(
-                "),;"
+                "),;]"
             )
 
             if uri.lower().startswith(
                 SUPPORTED
             ):
+
                 nodes.append(uri)
 
                 if len(nodes) >= MAX_TOTAL_CHECK:
@@ -138,9 +160,9 @@ def extract(text):
     return nodes
 
 
-# =========================
+# ============================================================
 # ENDPOINT
-# =========================
+# ============================================================
 
 def endpoint(uri):
 
@@ -154,16 +176,109 @@ def endpoint(uri):
         if not host or not port:
             return None
 
-        return host, port
+        return host.lower(), port
 
     except Exception:
 
         return None
 
 
-# =========================
+# ============================================================
+# CONFIG FINGERPRINT
+# ============================================================
+
+def config_fingerprint(uri):
+
+    """
+    Группирует конфиги, которые очень похожи.
+
+    Например несколько URI с одинаковым:
+      - host
+      - port
+      - SNI
+      - path
+      - protocol
+
+    Это помогает не заполнять TOP
+    десятками почти одинаковых конфигураций.
+    """
+
+    try:
+
+        parsed = urlsplit(uri)
+
+        protocol = (
+            parsed.scheme
+            .lower()
+        )
+
+        host = (
+            parsed.hostname
+            or ""
+        ).lower()
+
+        port = (
+            parsed.port
+            or ""
+        )
+
+        query = parse_qs(
+            parsed.query,
+            keep_blank_values=True,
+        )
+
+        sni = (
+            query.get(
+                "sni",
+                [""],
+            )[0]
+            or query.get(
+                "host",
+                [""],
+            )[0]
+        )
+
+        path = (
+            query.get(
+                "path",
+                [""],
+            )[0]
+        )
+
+        sni = unquote(
+            str(sni)
+        ).lower()
+
+        path = unquote(
+            str(path)
+        )
+
+        raw = (
+            f"{protocol}|"
+            f"{host}|"
+            f"{port}|"
+            f"{sni}|"
+            f"{path}"
+        )
+
+        return hashlib.sha1(
+            raw.encode(
+                "utf-8"
+            )
+        ).hexdigest()
+
+    except Exception:
+
+        return hashlib.sha1(
+            uri.encode(
+                "utf-8"
+            )
+        ).hexdigest()
+
+
+# ============================================================
 # TCP CHECK
-# =========================
+# ============================================================
 
 def single_ping(uri):
 
@@ -190,7 +305,7 @@ def single_ping(uri):
 
             return round(
                 elapsed,
-                1
+                1,
             )
 
     except Exception:
@@ -206,12 +321,18 @@ def check_server(uri):
         PING_ATTEMPTS
     ):
 
-        latency = single_ping(uri)
+        latency = single_ping(
+            uri
+        )
 
         if latency is not None:
-            results.append(latency)
+            results.append(
+                latency
+            )
 
-    successful = len(results)
+    successful = len(
+        results
+    )
 
     success_rate = (
         successful
@@ -223,17 +344,22 @@ def check_server(uri):
         avg_ping = round(
             sum(results)
             / len(results),
-            1
+            1,
         )
 
         median_ping = round(
             median(results),
-            1
+            1,
         )
 
         worst_ping = round(
             max(results),
-            1
+            1,
+        )
+
+        best_ping = round(
+            min(results),
+            1,
         )
 
     else:
@@ -241,6 +367,7 @@ def check_server(uri):
         avg_ping = None
         median_ping = None
         worst_ping = None
+        best_ping = None
 
     return {
         "uri": uri,
@@ -250,12 +377,13 @@ def check_server(uri):
         "avg_ping": avg_ping,
         "median_ping": median_ping,
         "worst_ping": worst_ping,
+        "best_ping": best_ping,
     }
 
 
-# =========================
+# ============================================================
 # HISTORY
-# =========================
+# ============================================================
 
 def load_history():
 
@@ -266,7 +394,7 @@ def load_history():
 
         return json.loads(
             HISTORY_FILE.read_text(
-                encoding="utf-8"
+                encoding="utf-8",
             )
         )
 
@@ -289,7 +417,7 @@ def save_history(history):
 
 def update_history(
     history,
-    result
+    result,
 ):
 
     uri = result["uri"]
@@ -301,6 +429,7 @@ def update_history(
             "successes": 0,
             "failures": 0,
             "last_ping": None,
+            "last_success": False,
         },
     )
 
@@ -319,7 +448,12 @@ def update_history(
         result["median_ping"]
     )
 
-    # Не даём истории бесконечно расти.
+    old["last_success"] = (
+        result["successful"] > 0
+    )
+
+    # Ограничиваем размер исторической
+    # статистики примерно последними 12 запусками.
     if old["runs"] > MAX_HISTORY:
 
         factor = (
@@ -344,220 +478,335 @@ def update_history(
     return history
 
 
-# =========================
-# PROTOCOL QUALITY
-# =========================
+# ============================================================
+# PROTOCOL
+# ============================================================
 
-def protocol_quality(uri):
+def protocol_name(uri):
 
     lower = uri.lower()
 
-    # VLESS Reality TCP
+    if lower.startswith(
+        "vless://"
+    ):
+        return "VLESS"
+
+    if lower.startswith(
+        "vmess://"
+    ):
+        return "VMESS"
+
+    if lower.startswith(
+        "trojan://"
+    ):
+        return "TROJAN"
+
+    if (
+        lower.startswith("hy2://")
+        or lower.startswith("hysteria2://")
+    ):
+        return "HYSTERIA2"
+
+    if lower.startswith(
+        "ss://"
+    ):
+        return "SS"
+
+    return "OTHER"
+
+
+def protocol_quality(uri):
+
+    """
+    Небольшой бонус протоколу.
+
+    Важно:
+    протокол НЕ может сам по себе
+    поднять плохой сервер выше стабильного.
+    """
+
+    lower = uri.lower()
+
     if (
         lower.startswith("vless://")
         and "security=reality" in lower
         and "type=tcp" in lower
     ):
-        return 80
+        return 35
 
-    # VLESS TLS TCP
     if (
         lower.startswith("vless://")
         and "security=tls" in lower
         and "type=tcp" in lower
     ):
-        return 55
+        return 25
 
-    # VLESS TLS WS
-    if (
-        lower.startswith("vless://")
-        and "security=tls" in lower
-        and "type=ws" in lower
-    ):
-        return 35
-
-    # Trojan
     if lower.startswith(
         "trojan://"
     ):
-        return 45
+        return 20
 
-    # Hysteria
     if (
         lower.startswith("hy2://")
         or lower.startswith("hysteria2://")
     ):
-        return 45
+        return 25
 
-    # VMess
+    if (
+        lower.startswith("vless://")
+        and "security=tls" in lower
+    ):
+        return 15
+
     if lower.startswith(
         "vmess://"
     ):
-        return 20
+        return 10
 
-    # Shadowsocks
     if lower.startswith(
         "ss://"
     ):
-        return 15
+        return 5
 
     return 0
 
 
-# =========================
+# ============================================================
+# PING SCORE
+# ============================================================
+
+def ping_score(ping):
+
+    if ping is None:
+        return 0
+
+    if ping <= 10:
+        return 450
+
+    if ping <= 20:
+        return 430
+
+    if ping <= 30:
+        return 410
+
+    if ping <= 40:
+        return 390
+
+    if ping <= 60:
+        return 360
+
+    if ping <= 80:
+        return 320
+
+    if ping <= 100:
+        return 280
+
+    if ping <= 150:
+        return 220
+
+    if ping <= 200:
+        return 150
+
+    if ping <= 300:
+        return 80
+
+    return 20
+
+
+# ============================================================
+# STABILITY SCORE
+# ============================================================
+
+def stability_score(
+    result
+):
+
+    rate = result[
+        "success_rate"
+    ]
+
+    # 3/3 -> 600
+    # 2/3 -> 400
+    # 1/3 -> 200
+    return rate * 600
+
+
+# ============================================================
+# HISTORICAL SCORE
+# ============================================================
+
+def historical_score(
+    uri,
+    history,
+):
+
+    old = history.get(
+        uri
+    )
+
+    if not old:
+        return 0
+
+    successes = old.get(
+        "successes",
+        0,
+    )
+
+    failures = old.get(
+        "failures",
+        0,
+    )
+
+    total = (
+        successes
+        + failures
+    )
+
+    if total <= 0:
+        return 0
+
+    rate = (
+        successes
+        / total
+    )
+
+    return rate * 250
+
+
+# ============================================================
+# CONSISTENCY
+# ============================================================
+
+def consistency_penalty(
+    result
+):
+
+    median_ping = result[
+        "median_ping"
+    ]
+
+    worst_ping = result[
+        "worst_ping"
+    ]
+
+    best_ping = result[
+        "best_ping"
+    ]
+
+    if (
+        median_ping is None
+        or worst_ping is None
+        or best_ping is None
+    ):
+        return 0
+
+    spread = (
+        worst_ping
+        - best_ping
+    )
+
+    if spread <= 5:
+        return 0
+
+    if spread <= 15:
+        return 5
+
+    if spread <= 30:
+        return 15
+
+    if spread <= 60:
+        return 30
+
+    if spread <= 100:
+        return 60
+
+    return 100
+
+
+# ============================================================
 # SMART SCORE
-# =========================
+# ============================================================
 
 def smart_score(
     result,
     history,
 ):
 
-    uri = result["uri"]
-
     ping = result[
         "median_ping"
     ]
 
-    success_rate = result[
-        "success_rate"
-    ]
-
-    if (
-        ping is None
-        or success_rate <= 0
-    ):
+    if ping is None:
         return -999999
 
-    # ---------------------
-    # CURRENT STABILITY
-    # ---------------------
-
-    stability_score = (
-        success_rate * 600
-    )
-
-    # ---------------------
-    # PING
-    # ---------------------
-
-    if ping <= 20:
-        ping_score = 450
-
-    elif ping <= 40:
-        ping_score = 400
-
-    elif ping <= 60:
-        ping_score = 350
-
-    elif ping <= 100:
-        ping_score = 280
-
-    elif ping <= 150:
-        ping_score = 200
-
-    elif ping <= 250:
-        ping_score = 100
-
-    else:
-        ping_score = 20
-
-    ping_score += max(
-        0,
-        80 - ping / 5
-    )
-
-    # ---------------------
-    # HISTORICAL STABILITY
-    # ---------------------
-
-    history_score = 0
-
-    old = history.get(uri)
-
-    if old:
-
-        total = (
-            old["successes"]
-            + old["failures"]
+    current = (
+        stability_score(
+            result
         )
-
-        if total > 0:
-
-            historical_rate = (
-                old["successes"]
-                / total
-            )
-
-            history_score = (
-                historical_rate * 300
-            )
-
-    # ---------------------
-    # PROTOCOL
-    # ---------------------
-
-    protocol_score = (
-        protocol_quality(uri)
     )
 
-    # ---------------------
-    # PING CONSISTENCY
-    # ---------------------
-
-    spread_penalty = 0
-
-    worst = result[
-        "worst_ping"
-    ]
-
-    if worst is not None:
-
-        spread = (
-            worst - ping
+    latency = (
+        ping_score(
+            ping
         )
+    )
 
-        if spread > 150:
-            spread_penalty = 100
+    historical = (
+        historical_score(
+            result["uri"],
+            history,
+        )
+    )
 
-        elif spread > 100:
-            spread_penalty = 70
+    protocol = (
+        protocol_quality(
+            result["uri"]
+        )
+    )
 
-        elif spread > 50:
-            spread_penalty = 40
+    penalty = (
+        consistency_penalty(
+            result
+        )
+    )
 
-        elif spread > 25:
-            spread_penalty = 15
+    score = (
+        current
+        + latency
+        + historical
+        + protocol
+        - penalty
+    )
 
     return round(
-        stability_score
-        + ping_score
-        + history_score
-        + protocol_score
-        - spread_penalty,
+        score,
         2,
     )
 
 
-# =========================
-# GROUPING
-# =========================
+# ============================================================
+# DEDUPLICATION
+# ============================================================
 
 def host_key(uri):
 
-    target = endpoint(uri)
+    target = endpoint(
+        uri
+    )
 
     if not target:
         return uri
 
     host, port = target
 
-    return f"{host}:{port}"
+    return (
+        f"{host}:{port}"
+    )
 
 
-# =========================
+# ============================================================
 # MAIN
-# =========================
+# ============================================================
 
 def main():
 
@@ -565,14 +814,20 @@ def main():
 
     history = load_history()
 
-    # ---------------------
+    # ========================================================
     # READ SOURCES
-    # ---------------------
+    # ========================================================
 
     source_urls = []
 
+    if not SOURCES.exists():
+
+        raise FileNotFoundError(
+            "sources.txt not found"
+        )
+
     for line in SOURCES.read_text(
-        encoding="utf-8"
+        encoding="utf-8",
     ).splitlines():
 
         line = line.strip()
@@ -581,28 +836,33 @@ def main():
             line
             and not line.startswith("#")
         ):
-            source_urls.append(line)
+
+            source_urls.append(
+                line
+            )
 
     print(
         f"Sources: {len(source_urls)}"
     )
 
-    # ---------------------
-    # DOWNLOAD
-    # ---------------------
+    # ========================================================
+    # DOWNLOAD SOURCES
+    # ========================================================
 
     all_nodes = []
 
     source_stats = {}
 
+    source_workers = min(
+        10,
+        max(
+            1,
+            len(source_urls),
+        ),
+    )
+
     with ThreadPoolExecutor(
-        max_workers=min(
-            10,
-            max(
-                1,
-                len(source_urls)
-            )
-        )
+        max_workers=source_workers
     ) as executor:
 
         jobs = {
@@ -617,13 +877,17 @@ def main():
             jobs
         ):
 
-            source = jobs[future]
+            source = jobs[
+                future
+            ]
 
             try:
 
                 text = future.result()
 
-                nodes = extract(text)
+                nodes = extract(
+                    text
+                )
 
                 source_stats[
                     source
@@ -656,9 +920,9 @@ def main():
                     f"{error}"
                 )
 
-    # ---------------------
-    # DEDUPLICATE
-    # ---------------------
+    # ========================================================
+    # UNIQUE
+    # ========================================================
 
     unique_nodes = list(
         dict.fromkeys(
@@ -671,13 +935,81 @@ def main():
         f"{len(unique_nodes)}"
     )
 
-    candidates = unique_nodes[
-        :MAX_TOTAL_CHECK
-    ]
+    # ========================================================
+    # PRE-CHECK DIVERSITY
+    # ========================================================
 
-    # ---------------------
-    # CHECK SERVERS
-    # ---------------------
+    # Сначала стараемся получить разные
+    # endpoint'ы, чтобы 600 проверок не
+    # ушли на одну и ту же группу.
+    candidates = []
+
+    candidate_hosts = set()
+    candidate_fingerprints = set()
+
+    # Первый проход:
+    # уникальные host + fingerprint.
+    for uri in unique_nodes:
+
+        host = host_key(
+            uri
+        )
+
+        fingerprint = (
+            config_fingerprint(
+                uri
+            )
+        )
+
+        if host in candidate_hosts:
+            continue
+
+        if fingerprint in candidate_fingerprints:
+            continue
+
+        candidates.append(
+            uri
+        )
+
+        candidate_hosts.add(
+            host
+        )
+
+        candidate_fingerprints.add(
+            fingerprint
+        )
+
+        if len(candidates) >= MAX_TOTAL_CHECK:
+            break
+
+    # Если не набрали лимит —
+    # добираем остальные.
+    if len(candidates) < MAX_TOTAL_CHECK:
+
+        selected_set = set(
+            candidates
+        )
+
+        for uri in unique_nodes:
+
+            if uri in selected_set:
+                continue
+
+            candidates.append(
+                uri
+            )
+
+            if len(candidates) >= MAX_TOTAL_CHECK:
+                break
+
+    print(
+        f"Candidates: "
+        f"{len(candidates)}"
+    )
+
+    # ========================================================
+    # CHECK
+    # ========================================================
 
     print(
         f"Checking "
@@ -708,11 +1040,15 @@ def main():
             jobs
         ):
 
-            uri = jobs[future]
+            uri = jobs[
+                future
+            ]
 
             try:
 
-                result = future.result()
+                result = (
+                    future.result()
+                )
 
             except Exception:
 
@@ -724,31 +1060,50 @@ def main():
                     "avg_ping": None,
                     "median_ping": None,
                     "worst_ping": None,
+                    "best_ping": None,
                 }
 
             history = update_history(
                 history,
-                result
+                result,
             )
 
             if result[
                 "successful"
             ] > 0:
 
-                result["score"] = (
-                    smart_score(
-                        result,
-                        history
-                    )
+                result[
+                    "fingerprint"
+                ] = config_fingerprint(
+                    uri
+                )
+
+                result[
+                    "host_key"
+                ] = host_key(
+                    uri
+                )
+
+                result[
+                    "protocol"
+                ] = protocol_name(
+                    uri
+                )
+
+                result[
+                    "score"
+                ] = smart_score(
+                    result,
+                    history,
                 )
 
                 checked.append(
                     result
                 )
 
-    # ---------------------
-    # SORT
-    # ---------------------
+    # ========================================================
+    # RANK
+    # ========================================================
 
     ranked = sorted(
         checked,
@@ -759,46 +1114,83 @@ def main():
                 item["median_ping"]
                 or 999999
             ),
+            -(
+                item["worst_ping"]
+                or 999999
+            ),
         ),
         reverse=True,
     )
 
-    # ---------------------
-    # DIVERSIFIED SELECTION
-    # ---------------------
+    # ========================================================
+    # DIVERSIFIED TOP
+    # ========================================================
 
     selected = []
 
     host_counts = {}
 
+    fingerprint_counts = {}
+
     for item in ranked:
 
-        host = host_key(
-            item["uri"]
-        )
+        host = item[
+            "host_key"
+        ]
 
-        current = host_counts.get(
-            host,
-            0
-        )
+        fingerprint = item[
+            "fingerprint"
+        ]
 
-        if current >= MAX_SAME_HOST:
+        if (
+            host_counts.get(
+                host,
+                0,
+            )
+            >= MAX_SAME_HOST
+        ):
+            continue
+
+        if (
+            fingerprint_counts.get(
+                fingerprint,
+                0,
+            )
+            >= MAX_SAME_FINGERPRINT
+        ):
             continue
 
         selected.append(
             item
         )
 
-        host_counts[host] = (
-            current + 1
+        host_counts[
+            host
+        ] = (
+            host_counts.get(
+                host,
+                0,
+            )
+            + 1
+        )
+
+        fingerprint_counts[
+            fingerprint
+        ] = (
+            fingerprint_counts.get(
+                fingerprint,
+                0,
+            )
+            + 1
         )
 
         if len(selected) >= MAX_PUBLISHED:
             break
 
-    # Если разнообразный список
-    # получился меньше лимита,
-    # добираем оставшиеся.
+    # ========================================================
+    # FALLBACK
+    # ========================================================
+
     if len(selected) < MAX_PUBLISHED:
 
         selected_uris = {
@@ -808,7 +1200,10 @@ def main():
 
         for item in ranked:
 
-            if item["uri"] in selected_uris:
+            if (
+                item["uri"]
+                in selected_uris
+            ):
                 continue
 
             selected.append(
@@ -818,17 +1213,17 @@ def main():
             if len(selected) >= MAX_PUBLISHED:
                 break
 
-    # ---------------------
+    # ========================================================
     # SAVE HISTORY
-    # ---------------------
+    # ========================================================
 
     save_history(
         history
     )
 
-    # ---------------------
+    # ========================================================
     # SUBSCRIPTION
-    # ---------------------
+    # ========================================================
 
     lines = [
         "#profile-title: FreeForYoung",
@@ -848,20 +1243,22 @@ def main():
     (
         OUT / "subscription.txt"
     ).write_text(
-        "\n".join(lines)
+        "\n".join(
+            lines
+        )
         + "\n",
         encoding="utf-8",
     )
 
-    # ---------------------
-    # SERVERS REPORT
-    # ---------------------
+    # ========================================================
+    # REPORT
+    # ========================================================
 
     diagnostic = []
 
     for index, item in enumerate(
         selected,
-        start=1
+        start=1,
     ):
 
         diagnostic.append(
@@ -872,6 +1269,8 @@ def main():
                 f"success="
                 f"{item['successful']}/"
                 f"{item['attempts']} | "
+                f"protocol="
+                f"{item['protocol']} | "
                 f"uri={item['uri']}"
             )
         )
@@ -890,9 +1289,9 @@ def main():
         encoding="utf-8",
     )
 
-    # ---------------------
+    # ========================================================
     # STATS
-    # ---------------------
+    # ========================================================
 
     stats = {
         "project": "FreeForYoung",
@@ -904,6 +1303,9 @@ def main():
         ),
         "unique_nodes": len(
             unique_nodes
+        ),
+        "candidates": len(
+            candidates
         ),
         "checked_nodes": len(
             candidates
@@ -917,6 +1319,9 @@ def main():
         "ping_attempts": PING_ATTEMPTS,
         "workers": WORKERS,
         "max_same_host": MAX_SAME_HOST,
+        "max_same_fingerprint": (
+            MAX_SAME_FINGERPRINT
+        ),
         "generated_at": int(
             time.time()
         ),
@@ -939,9 +1344,9 @@ def main():
         encoding="utf-8",
     )
 
-    # ---------------------
+    # ========================================================
     # CONSOLE
-    # ---------------------
+    # ========================================================
 
     print()
     print(
@@ -975,12 +1380,13 @@ def main():
     )
 
     for index, item in enumerate(
-        selected[:15],
-        start=1
+        selected[:20],
+        start=1,
     ):
 
         print(
             f"{index}. "
+            f"{item['protocol']} | "
             f"{item['median_ping']}ms | "
             f"{item['successful']}/"
             f"{item['attempts']} | "
