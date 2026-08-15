@@ -4,26 +4,27 @@
   "raw_nodes": 1311,
   "unique_nodes": 1205,
   "checked_nodes": 600,
-  "working_nodes": 552,
+  "working_nodes": 440,
   "published_nodes": 100,
   "ping_attempts": 3,
   "workers": 40,
-  "generated_at": 1786781519,
-  "duration_seconds": 12.81,
+  "max_same_host": 3,
+  "generated_at": 1786781759,
+  "duration_seconds": 2.01,
   "source_stats": {
+    "https://raw.githubusercontent.com/ninjastrikers/Nexus-nodes/main/configs/light.txt": {
+      "found": 100
+    },
     "https://raw.githubusercontent.com/Pawdroid/Free-servers/main/README.md": {
       "found": 11
     },
     "https://raw.githubusercontent.com/hamedcode/port-based-v2ray-configs/main/README.md": {
       "found": 0
     },
-    "https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/v2ray-base64.txt": {
+    "https://raw.githubusercontent.com/ninjastrikers/Nexus-nodes/main/configs/all.txt": {
       "found": 600
     },
-    "https://raw.githubusercontent.com/ninjastrikers/Nexus-nodes/main/configs/light.txt": {
-      "found": 100
-    },
-    "https://raw.githubusercontent.com/ninjastrikers/Nexus-nodes/main/configs/all.txt": {
+    "https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/v2ray-base64.txt": {
       "found": 600
     }
   }
