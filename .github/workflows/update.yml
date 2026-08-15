@@ -2,143 +2,60 @@ name: Update FreeForYoung
 
 on:
   workflow_dispatch:
-
   schedule:
-    - cron: "17 */6 * * *"
-
-  push:
-    branches:
-      - main
+    - cron: "0 */6 * * *"
 
 permissions:
   contents: write
 
 jobs:
-
   update:
-
-    name: Build and test FreeForYoung
-
     runs-on: ubuntu-latest
 
-    timeout-minutes: 15
-
     steps:
-
-      # -------------------------
-      # CHECKOUT
-      # -------------------------
-
       - name: Checkout
-        uses: actions/checkout@v6
-
-      # -------------------------
-      # PYTHON
-      # -------------------------
+        uses: actions/checkout@v4
 
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
-          python-version: "3.13"
-
-      # -------------------------
-      # SYSTEM TOOLS
-      # -------------------------
-
-      - name: Install tools
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y curl unzip ca-certificates
-
-      # -------------------------
-      # XRAY
-      # -------------------------
+          python-version: "3.12"
 
       - name: Install Xray
         shell: bash
         run: |
-
           set -e
 
+          XRAY_VERSION="1.8.24"
+          URL="https://github.com/XTLS/Xray-core/releases/download/v${XRAY_VERSION}/Xray-linux-64.zip"
+
+          curl -L --fail --retry 3 "$URL" -o /tmp/xray.zip
+
           mkdir -p "$HOME/xray"
+          unzip -o /tmp/xray.zip -d "$HOME/xray"
 
-          echo "Downloading Xray..."
-
-          curl -L \
-            --fail \
-            --retry 3 \
-            --connect-timeout 10 \
-            --max-time 120 \
-            -o "$HOME/xray/xray.zip" \
-            "https://github.com/XTLS/Xray-core/releases/latest/download/Xray-linux-64.zip"
-
-          unzip -o \
-            "$HOME/xray/xray.zip" \
-            -d "$HOME/xray"
-
-          chmod +x \
-            "$HOME/xray/xray"
-
-          echo "$HOME/xray" >> "$GITHUB_PATH"
+          chmod +x "$HOME/xray/xray"
 
           "$HOME/xray/xray" version
 
-      # -------------------------
-      # BUILD
-      # -------------------------
+          echo "XRAY_PATH=$HOME/xray/xray" >> "$GITHUB_ENV"
 
-      - name: Build subscription
-        env:
-          XRAY_BIN: xray
+      - name: Run FreeForYoung
         run: |
-
           python scripts/build_subscription.py
 
-      # -------------------------
-      # SHOW RESULTS
-      # -------------------------
-
-      - name: Show top servers
-        run: |
-
-          echo "===================================="
-          echo "FREEFORYOUNG TOP SERVERS"
-          echo "===================================="
-
-          if [ -f output/servers.txt ]; then
-            head -n 25 output/servers.txt
-          else
-            echo "servers.txt not found"
-          fi
-
-          echo
-          echo "===================================="
-          echo "STATS"
-          echo "===================================="
-
-          if [ -f output/stats.json ]; then
-            cat output/stats.json
-          fi
-
-      # -------------------------
-      # COMMIT
-      # -------------------------
-
-      - name: Commit generated files
+      - name: Commit generated subscription
         shell: bash
         run: |
-
           git config user.name "FreeForYoung Bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
           git add output/
 
           if git diff --cached --quiet; then
-            echo "No changes to commit."
+            echo "No changes."
             exit 0
           fi
 
-          git commit \
-            -m "Auto-update FreeForYoung servers"
-
+          git commit -m "Update FreeForYoung subscription"
           git push
