@@ -3,17 +3,16 @@
 import base64
 import json
 import os
+import random
 import re
 import socket
 import subprocess
 import tempfile
-import threading
 import time
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 from statistics import median
 from urllib.parse import parse_qs, unquote, urlsplit
-from urllib.request import Request, urlopen
 
 ROOT = Path(__file__).resolve().parents[1]
 SOURCES = ROOT / "sources.txt"
@@ -21,39 +20,63 @@ OUT = ROOT / "output"
 
 OUT.mkdir(exist_ok=True)
 
+XRAY = os.environ.get("XRAY_PATH", "xray")
+
+FETCH_TIMEOUT = 10
+TCP_TIMEOUT = 2.0
+
+TCP_WORKERS = 40
+REAL_WORKERS = 8
+
+TCP_ATTEMPTS = 2
+REAL_ATTEMPTS = 3
+
+MAX_TOTAL = 600
+MAX_REAL_TEST = 100
+MAX_PUBLISHED = 100
+
+SOCKS_BASE = 21000
+
+HISTORY_FILE = OUT / "history.json"
+MAX_HISTORY = 20
+
+TEST_URLS = [
+    "https://www.gstatic.com/generate_204",
+    "https://cp.cloudflare.com/generate_204",
+]
+
 SUPPORTED = (
     "vless://",
     "vmess://",
     "trojan://",
     "ss://",
-    "hy2://",
-    "hysteria2://",
 )
 
-FETCH_TIMEOUT = 8
 
-TCP_TIMEOUT = 2.5
-TCP_ATTEMPTS = 3
+# ============================================================
+# BASIC
+# ============================================================
 
-REAL_TEST_ATTEMPTS = 3
-REAL_TEST_TIMEOUT = 8
+def log(msg):
+    print(msg, flush=True)
 
-MAX_TOTAL_CHECK = 300
-MAX_REAL_TEST = 80
-MAX_PUBLISHED = 100
 
-WORKERS = 30
-REAL_WORKERS = 8
+def safe_b64decode(value):
+    value = value.strip()
 
-MAX_SAME_ENDPOINT = 2
-MAX_SAME_IDENTITY = 3
+    value += "=" * (-len(value) % 4)
 
-XRAY = os.environ.get("XRAY_BIN", "xray")
+    try:
+        return base64.urlsafe_b64decode(value)
+    except Exception:
+        try:
+            return base64.b64decode(value)
+        except Exception:
+            return None
 
-TEST_URL = "https://www.gstatic.com/generate_204"
 
-history_file = OUT / "history.json"
-MAX_HISTORY = 20
+def random_port():
+    return random.randint(SOCKS_BASE, SOCKS_BASE + 5000)
 
 
 # ============================================================
@@ -61,10 +84,12 @@ MAX_HISTORY = 20
 # ============================================================
 
 def fetch(url):
+    from urllib.request import Request, urlopen
+
     req = Request(
         url,
         headers={
-            "User-Agent": "FreeForYoung/4.0"
+            "User-Agent": "FreeForYoung/5.0",
         },
     )
 
@@ -79,12 +104,9 @@ def fetch(url):
         len(compact) > 40
         and re.fullmatch(r"[A-Za-z0-9+/=_-]+", compact)
     ):
-        try:
-            decoded = base64.b64decode(
-                compact + "=" * (-len(compact) % 4),
-                validate=False,
-            )
+        decoded = safe_b64decode(compact)
 
+        if decoded:
             decoded_text = decoded.decode(
                 "utf-8",
                 "ignore",
@@ -93,107 +115,70 @@ def fetch(url):
             if "://" in decoded_text:
                 text = decoded_text
 
-        except Exception:
-            pass
-
     return text
 
 
 def extract(text):
     pattern = re.compile(
-        r"(?:vless|vmess|trojan|ss|hy2|hysteria2)://[^\s<>\"']+",
+        r"(?:vless|vmess|trojan|ss)://[^\s<>\"]+",
         re.IGNORECASE,
     )
 
-    result = []
+    nodes = []
 
     for line in text.splitlines():
+
         line = line.strip().strip("`")
 
         if not line:
             continue
 
         for match in pattern.finditer(line):
-            uri = match.group(0).rstrip("),;")
+
+            uri = match.group(0).rstrip(
+                "),;\"'"
+            )
 
             if uri.lower().startswith(SUPPORTED):
-                result.append(uri)
+                nodes.append(uri)
 
-                if len(result) >= MAX_TOTAL_CHECK:
-                    return result
+                if len(nodes) >= MAX_TOTAL:
+                    return nodes
 
-    return result
+    return nodes
 
 
 # ============================================================
-# BASIC URI HELPERS
+# URI / ENDPOINT
 # ============================================================
 
 def endpoint(uri):
     try:
         p = urlsplit(uri)
 
-        if not p.hostname or not p.port:
+        host = p.hostname
+        port = p.port
+
+        if not host or not port:
             return None
 
-        return p.hostname, p.port
+        return host, port
 
     except Exception:
         return None
 
 
-def endpoint_key(uri):
+def host_key(uri):
     ep = endpoint(uri)
 
     if not ep:
         return uri
 
-    return f"{ep[0].lower()}:{ep[1]}"
-
-
-def identity_key(uri):
-    """
-    Groups copies of the same configuration which differ only
-    by IP/port where possible.
-    """
-
-    try:
-        p = urlsplit(uri)
-        q = parse_qs(p.query)
-
-        scheme = p.scheme.lower()
-
-        if scheme == "vless":
-            return (
-                "vless",
-                unquote(p.username or ""),
-                q.get("security", [""])[0],
-                q.get("sni", [""])[0],
-                q.get("pbk", [""])[0],
-                q.get("sid", [""])[0],
-            )
-
-        if scheme == "trojan":
-            return (
-                "trojan",
-                unquote(p.username or ""),
-                q.get("security", [""])[0],
-                q.get("sni", [""])[0],
-                q.get("path", [""])[0],
-            )
-
-        return (
-            scheme,
-            unquote(p.username or ""),
-            q.get("sni", [""])[0],
-        )
-
-    except Exception:
-        return uri
+    return f"{ep[0]}:{ep[1]}"
 
 
 # ============================================================
-# TCP TEST
+# TCP
 # ============================================================
 
 def tcp_ping(uri):
@@ -221,244 +206,464 @@ def tcp_ping(uri):
 
 
 def tcp_check(uri):
+
     values = []
 
     for _ in range(TCP_ATTEMPTS):
+
         value = tcp_ping(uri)
 
         if value is not None:
             values.append(value)
 
-    if not values:
-        return {
-            "uri": uri,
-            "tcp_success": 0,
-            "tcp_attempts": TCP_ATTEMPTS,
-            "tcp_rate": 0,
-            "tcp_median": None,
-            "tcp_worst": None,
-        }
-
     return {
         "uri": uri,
         "tcp_success": len(values),
         "tcp_attempts": TCP_ATTEMPTS,
-        "tcp_rate": len(values) / TCP_ATTEMPTS,
-        "tcp_median": round(median(values), 1),
-        "tcp_worst": round(max(values), 1),
+        "tcp_ping": (
+            round(median(values), 1)
+            if values
+            else None
+        ),
     }
 
 
 # ============================================================
-# XRAY CONFIG
+# VMESS
 # ============================================================
 
-def first(q, key, default=None):
-    values = q.get(key)
+def parse_vmess(uri):
 
-    if not values:
-        return default
+    raw = uri[len("vmess://"):]
 
-    return values[0]
+    decoded = safe_b64decode(raw)
 
+    if not decoded:
+        raise ValueError("invalid vmess base64")
 
-def make_xray_config(uri, socks_port):
-    p = urlsplit(uri)
-    scheme = p.scheme.lower()
-
-    q = parse_qs(
-        p.query,
-        keep_blank_values=True,
+    obj = json.loads(
+        decoded.decode(
+            "utf-8",
+            "ignore",
+        )
     )
 
-    host = p.hostname
-    port = p.port
+    address = obj.get("add") or obj.get("address")
+    port = int(obj.get("port", 443))
+    uuid = obj.get("id")
 
-    if not host or not port:
-        return None
+    if not address or not uuid:
+        raise ValueError("invalid vmess")
 
-    stream = {
-        "network": "tcp"
+    network = (
+        obj.get("net")
+        or obj.get("type")
+        or "tcp"
+    )
+
+    tls = str(
+        obj.get("tls", "")
+    ).lower()
+
+    return {
+        "address": address,
+        "port": port,
+        "uuid": uuid,
+        "network": network,
+        "tls": tls,
+        "host": obj.get("host", ""),
+        "path": obj.get("path", "/"),
+        "sni": obj.get("sni") or obj.get("host", ""),
+        "fp": obj.get("fp", ""),
     }
 
-    security = first(q, "security", "")
 
-    # ----------------------------
-    # VLESS
-    # ----------------------------
+# ============================================================
+# X-RAY OUTBOUND BUILDERS
+# ============================================================
 
-    if scheme == "vless":
+def query_dict(parsed):
+    result = {}
 
-        uuid = unquote(p.username or "")
+    for key, values in parse_qs(
+        parsed.query,
+        keep_blank_values=True,
+    ).items():
 
-        if not uuid:
-            return None
+        if values:
+            result[key.lower()] = values[-1]
 
-        outbound = {
-            "protocol": "vless",
-            "settings": {
-                "vnext": [
+    return result
+
+
+def tls_settings(q, sni=None):
+
+    result = {
+        "serverName": (
+            sni
+            or q.get("sni")
+            or q.get("host")
+            or ""
+        ),
+    }
+
+    fp = q.get("fp")
+
+    if fp:
+        result["fingerprint"] = fp
+
+    alpn = q.get("alpn")
+
+    if alpn:
+        result["alpn"] = [
+            x.strip()
+            for x in alpn.split(",")
+            if x.strip()
+        ]
+
+    insecure = q.get(
+        "allowinsecure",
+        q.get("insecure", "0"),
+    )
+
+    result["allowInsecure"] = (
+        str(insecure).lower()
+        in ("1", "true", "yes")
+    )
+
+    return result
+
+
+def ws_settings(q):
+
+    path = (
+        q.get("path")
+        or q.get("wspath")
+        or "/"
+    )
+
+    host = (
+        q.get("host")
+        or q.get("Host")
+    )
+
+    ws = {
+        "path": unquote(path),
+    }
+
+    if host:
+        ws["headers"] = {
+            "Host": host,
+        }
+
+    return ws
+
+
+def vless_outbound(uri):
+
+    p = urlsplit(uri)
+
+    q = query_dict(p)
+
+    if not p.hostname or not p.port:
+        raise ValueError("invalid VLESS endpoint")
+
+    uuid = unquote(
+        p.username or ""
+    )
+
+    if not uuid:
+        raise ValueError("missing VLESS UUID")
+
+    stream = {
+        "network": (
+            q.get("type")
+            or q.get("network")
+            or "tcp"
+        ),
+    }
+
+    security = q.get(
+        "security",
+        "",
+    ).lower()
+
+    if security == "reality":
+
+        reality = {
+            "show": False,
+            "fingerprint": q.get(
+                "fp",
+                "chrome",
+            ),
+            "serverName": q.get(
+                "sni",
+                "",
+            ),
+            "publicKey": q.get(
+                "pbk",
+                "",
+            ),
+        }
+
+        sid = q.get("sid")
+
+        if sid:
+            reality["shortId"] = sid
+
+        stream["security"] = "reality"
+
+        stream["realitySettings"] = reality
+
+    elif security == "tls":
+
+        stream["security"] = "tls"
+        stream["tlsSettings"] = tls_settings(
+            q,
+            q.get("sni"),
+        )
+
+    if stream["network"] == "ws":
+
+        stream["wsSettings"] = ws_settings(q)
+
+    elif stream["network"] == "grpc":
+
+        service = q.get(
+            "serviceName",
+            q.get("servicename", ""),
+        )
+
+        stream["grpcSettings"] = {
+            "serviceName": service,
+        }
+
+    elif stream["network"] == "http":
+
+        stream["httpSettings"] = {
+            "path": q.get(
+                "path",
+                "/",
+            ),
+        }
+
+    settings = {
+        "vnext": [
+            {
+                "address": p.hostname,
+                "port": p.port,
+                "users": [
                     {
-                        "address": host,
-                        "port": port,
-                        "users": [
-                            {
-                                "id": uuid,
-                                "encryption": "none",
-                            }
-                        ],
+                        "id": uuid,
+                        "encryption": "none",
                     }
-                ]
-            },
-            "streamSettings": stream,
+                ],
+            }
+        ]
+    }
+
+    flow = q.get("flow")
+
+    if flow:
+        settings["vnext"][0]["users"][0]["flow"] = flow
+
+    return {
+        "protocol": "vless",
+        "settings": settings,
+        "streamSettings": stream,
+    }
+
+
+def trojan_outbound(uri):
+
+    p = urlsplit(uri)
+
+    q = query_dict(p)
+
+    if not p.hostname or not p.port:
+        raise ValueError("invalid Trojan endpoint")
+
+    password = unquote(
+        p.username or ""
+    )
+
+    if not password:
+        raise ValueError("missing Trojan password")
+
+    stream = {
+        "network": (
+            q.get("type")
+            or q.get("network")
+            or "tcp"
+        ),
+    }
+
+    security = q.get(
+        "security",
+        "tls",
+    ).lower()
+
+    if security == "tls":
+
+        stream["security"] = "tls"
+
+        stream["tlsSettings"] = tls_settings(
+            q,
+            q.get("sni"),
+        )
+
+    if stream["network"] == "ws":
+
+        stream["wsSettings"] = ws_settings(q)
+
+    elif stream["network"] == "grpc":
+
+        stream["grpcSettings"] = {
+            "serviceName": q.get(
+                "servicename",
+                q.get("serviceName", ""),
+            ),
         }
 
-        flow = first(q, "flow")
-
-        if flow:
-            outbound["settings"]["vnext"][0]["users"][0]["flow"] = flow
-
-        network = first(q, "type", first(q, "network", "tcp"))
-
-        stream["network"] = network
-
-        if network == "ws":
-            stream["wsSettings"] = {
-                "path": unquote(first(q, "path", "/")),
-                "headers": {},
-            }
-
-            ws_host = first(q, "host")
-
-            if ws_host:
-                stream["wsSettings"]["headers"]["Host"] = ws_host
-
-        if security == "tls":
-            stream["security"] = "tls"
-
-            stream["tlsSettings"] = {
-                "serverName": first(q, "sni", host),
-                "allowInsecure": False,
-            }
-
-            fp = first(q, "fp")
-
-            if fp:
-                stream["tlsSettings"]["fingerprint"] = fp
-
-        elif security == "reality":
-            stream["security"] = "reality"
-
-            pbk = first(q, "pbk")
-
-            if not pbk:
-                return None
-
-            reality = {
-                "serverName": first(q, "sni", host),
-                "publicKey": pbk,
-                "shortId": first(q, "sid", ""),
-            }
-
-            fp = first(q, "fp")
-
-            if fp:
-                reality["fingerprint"] = fp
-
-            stream["realitySettings"] = reality
-
-        else:
-            stream.pop("security", None)
-
-        return {
-            "log": {
-                "loglevel": "error"
-            },
-            "inbounds": [
+    return {
+        "protocol": "trojan",
+        "settings": {
+            "servers": [
                 {
-                    "listen": "127.0.0.1",
-                    "port": socks_port,
-                    "protocol": "socks",
-                    "settings": {
-                        "udp": True
-                    },
+                    "address": p.hostname,
+                    "port": p.port,
+                    "password": password,
                 }
-            ],
-            "outbounds": [
-                outbound
             ]
+        },
+        "streamSettings": stream,
+    }
+
+
+def vmess_outbound(uri):
+
+    data = parse_vmess(uri)
+
+    stream = {
+        "network": data["network"],
+    }
+
+    if data["tls"] in (
+        "tls",
+        "1",
+    ):
+
+        stream["security"] = "tls"
+
+        stream["tlsSettings"] = {
+            "serverName": (
+                data["sni"]
+                or data["host"]
+            ),
         }
 
-    # ----------------------------
-    # TROJAN
-    # ----------------------------
+        if data["fp"]:
+            stream["tlsSettings"]["fingerprint"] = (
+                data["fp"]
+            )
 
-    if scheme == "trojan":
+    if data["network"] == "ws":
 
-        password = unquote(p.username or "")
-
-        if not password:
-            return None
-
-        outbound = {
-            "protocol": "trojan",
-            "settings": {
-                "servers": [
-                    {
-                        "address": host,
-                        "port": port,
-                        "password": password,
-                    }
-                ]
-            },
-            "streamSettings": stream,
+        stream["wsSettings"] = {
+            "path": data["path"],
         }
 
-        network = first(q, "type", first(q, "network", "tcp"))
-
-        stream["network"] = network
-
-        if network == "ws":
-            stream["wsSettings"] = {
-                "path": unquote(
-                    first(q, "path", "/")
-                ),
-                "headers": {},
+        if data["host"]:
+            stream["wsSettings"]["headers"] = {
+                "Host": data["host"],
             }
 
-            ws_host = first(q, "host")
-
-            if ws_host:
-                stream["wsSettings"]["headers"]["Host"] = ws_host
-
-        if security == "tls" or port == 443:
-            stream["security"] = "tls"
-
-            stream["tlsSettings"] = {
-                "serverName": first(q, "sni", host),
-                "allowInsecure": False,
-            }
-
-        return {
-            "log": {
-                "loglevel": "error"
-            },
-            "inbounds": [
+    return {
+        "protocol": "vmess",
+        "settings": {
+            "vnext": [
                 {
-                    "listen": "127.0.0.1",
-                    "port": socks_port,
-                    "protocol": "socks",
-                    "settings": {
-                        "udp": True
-                    },
+                    "address": data["address"],
+                    "port": data["port"],
+                    "users": [
+                        {
+                            "id": data["uuid"],
+                            "alterId": 0,
+                            "security": "auto",
+                        }
+                    ],
                 }
-            ],
-            "outbounds": [
-                outbound
             ]
-        }
+        },
+        "streamSettings": stream,
+    }
 
-    return None
+
+def ss_outbound(uri):
+
+    p = urlsplit(uri)
+
+    if not p.hostname or not p.port:
+        raise ValueError("invalid SS endpoint")
+
+    raw_user = (
+        p.netloc.split("@", 1)[0]
+        if "@" in p.netloc
+        else ""
+    )
+
+    decoded = safe_b64decode(
+        raw_user
+    )
+
+    if decoded:
+        user = decoded.decode(
+            "utf-8",
+            "ignore",
+        )
+    else:
+        user = unquote(raw_user)
+
+    if ":" not in user:
+        raise ValueError("invalid SS credentials")
+
+    method, password = user.split(
+        ":",
+        1,
+    )
+
+    return {
+        "protocol": "shadowsocks",
+        "settings": {
+            "servers": [
+                {
+                    "address": p.hostname,
+                    "port": p.port,
+                    "method": method,
+                    "password": password,
+                }
+            ]
+        },
+    }
+
+
+def make_outbound(uri):
+
+    low = uri.lower()
+
+    if low.startswith("vless://"):
+        return vless_outbound(uri)
+
+    if low.startswith("trojan://"):
+        return trojan_outbound(uri)
+
+    if low.startswith("vmess://"):
+        return vmess_outbound(uri)
+
+    if low.startswith("ss://"):
+        return ss_outbound(uri)
+
+    raise ValueError("unsupported protocol")
 
 
 # ============================================================
@@ -466,14 +671,16 @@ def make_xray_config(uri, socks_port):
 # ============================================================
 
 def wait_port(port, timeout=5):
+
     deadline = time.time() + timeout
 
     while time.time() < deadline:
 
         try:
+
             with socket.create_connection(
                 ("127.0.0.1", port),
-                timeout=0.25,
+                timeout=0.3,
             ):
                 return True
 
@@ -483,53 +690,135 @@ def wait_port(port, timeout=5):
     return False
 
 
-def real_test(uri, index):
-    """
-    Real HTTP test through Xray.
+def curl_through_socks(port, url):
 
-    Only VLESS and Trojan are tested here.
-    Unsupported protocols fall back to TCP result.
-    """
+    started = time.perf_counter()
 
-    scheme = uri.split("://", 1)[0].lower()
+    command = [
+        "curl",
+        "-sS",
+        "--max-time",
+        "8",
+        "--connect-timeout",
+        "5",
+        "--proxy",
+        f"socks5h://127.0.0.1:{port}",
+        "-o",
+        "/dev/null",
+        "-w",
+        "%{http_code}",
+        url,
+    ]
 
-    if scheme not in ("vless", "trojan"):
-        return {
-            "real_supported": False,
-            "real_success": 0,
-            "real_attempts": REAL_TEST_ATTEMPTS,
-            "real_rate": 0,
-            "real_median": None,
-            "real_worst": None,
-        }
+    try:
 
-    port = 20000 + (index % 2000)
-
-    config = make_xray_config(
-        uri,
-        port,
-    )
-
-    if not config:
-        return {
-            "real_supported": False,
-            "real_success": 0,
-            "real_attempts": REAL_TEST_ATTEMPTS,
-            "real_rate": 0,
-            "real_median": None,
-            "real_worst": None,
-        }
-
-    with tempfile.TemporaryDirectory() as tmp:
-
-        config_path = Path(tmp) / "config.json"
-
-        config_path.write_text(
-            json.dumps(config),
-            encoding="utf-8",
+        result = subprocess.run(
+            command,
+            capture_output=True,
+            text=True,
+            timeout=10,
         )
 
-        try:
+        if result.returncode != 0:
+            return None
+
+        code = result.stdout.strip()
+
+        if not code.isdigit():
+            return None
+
+        code = int(code)
+
+        elapsed = (
+            time.perf_counter()
+            - started
+        ) * 1000
+
+        # 2xx/3xx/204 = working proxy.
+        if (
+            200 <= code < 400
+            or code == 204
+        ):
+            return round(elapsed, 1)
+
+        return None
+
+    except Exception:
+        return None
+
+
+def real_xray_attempt(uri):
+
+    port = random_port()
+
+    try:
+
+        outbound = make_outbound(uri)
+
+        config = {
+            "log": {
+                "loglevel": "none",
+            },
+
+            "inbounds": [
+                {
+                    "listen": "127.0.0.1",
+                    "port": port,
+                    "protocol": "socks",
+                    "settings": {
+                        "auth": "noauth",
+                        "udp": False,
+                    },
+                }
+            ],
+
+            "outbounds": [
+                outbound,
+                {
+                    "protocol": "freedom",
+                    "tag": "direct",
+                },
+                {
+                    "protocol": "blackhole",
+                    "tag": "block",
+                },
+            ],
+
+            "routing": {
+                "domainStrategy": "AsIs",
+            },
+        }
+
+        with tempfile.TemporaryDirectory() as tmp:
+
+            config_path = (
+                Path(tmp)
+                / "config.json"
+            )
+
+            config_path.write_text(
+                json.dumps(
+                    config,
+                    ensure_ascii=False,
+                ),
+                encoding="utf-8",
+            )
+
+            test = subprocess.run(
+                [
+                    XRAY,
+                    "run",
+                    "-test",
+                    "-config",
+                    str(config_path),
+                ],
+                capture_output=True,
+                text=True,
+                timeout=8,
+            )
+
+            if test.returncode != 0:
+                return None
 
             process = subprocess.Popen(
                 [
@@ -542,113 +831,98 @@ def real_test(uri, index):
                 stderr=subprocess.DEVNULL,
             )
 
-        except Exception:
+            try:
 
-            return {
-                "real_supported": False,
-                "real_success": 0,
-                "real_attempts": REAL_TEST_ATTEMPTS,
-                "real_rate": 0,
-                "real_median": None,
-                "real_worst": None,
-            }
+                if not wait_port(
+                    port,
+                    5,
+                ):
+                    return None
 
-        try:
+                # Try multiple URLs because one endpoint
+                # can occasionally be unavailable.
+                for url in TEST_URLS:
 
-            if not wait_port(port, 5):
+                    latency = curl_through_socks(
+                        port,
+                        url,
+                    )
 
-                return {
-                    "real_supported": True,
-                    "real_success": 0,
-                    "real_attempts": REAL_TEST_ATTEMPTS,
-                    "real_rate": 0,
-                    "real_median": None,
-                    "real_worst": None,
-                }
+                    if latency is not None:
+                        return latency
 
-            values = []
+                return None
 
-            for _ in range(
-                REAL_TEST_ATTEMPTS
-            ):
+            finally:
 
-                started = time.perf_counter()
+                process.terminate()
 
                 try:
-
-                    proxy = (
-                        f"socks5h://127.0.0.1:{port}"
+                    process.wait(
+                        timeout=2
                     )
+                except subprocess.TimeoutExpired:
+                    process.kill()
 
-                    result = subprocess.run(
-                        [
-                            "curl",
-                            "-L",
-                            "--silent",
-                            "--show-error",
-                            "--max-time",
-                            str(REAL_TEST_TIMEOUT),
-                            "--proxy",
-                            proxy,
-                            "-o",
-                            "/dev/null",
-                            "-w",
-                            "%{http_code}",
-                            TEST_URL,
-                        ],
-                        capture_output=True,
-                        text=True,
-                        timeout=REAL_TEST_TIMEOUT + 2,
-                    )
+    except Exception:
+        return None
 
-                    elapsed = (
-                        time.perf_counter()
-                        - started
-                    ) * 1000
 
-                    code = result.stdout.strip()
+def real_check(uri):
 
-                    if (
-                        result.returncode == 0
-                        and code.isdigit()
-                        and 100 <= int(code) < 600
-                    ):
-                        values.append(
-                            round(elapsed, 1)
-                        )
+    values = []
 
-                except Exception:
-                    pass
+    for _ in range(
+        REAL_ATTEMPTS
+    ):
 
-            success = len(values)
+        latency = real_xray_attempt(
+            uri
+        )
 
-            return {
-                "real_supported": True,
-                "real_success": success,
-                "real_attempts": REAL_TEST_ATTEMPTS,
-                "real_rate": (
-                    success / REAL_TEST_ATTEMPTS
-                ),
-                "real_median": (
-                    round(median(values), 1)
-                    if values
-                    else None
-                ),
-                "real_worst": (
-                    round(max(values), 1)
-                    if values
-                    else None
-                ),
-            }
+        if latency is not None:
+            values.append(
+                latency
+            )
 
-        finally:
+    successful = len(values)
 
-            process.terminate()
+    if values:
 
-            try:
-                process.wait(timeout=2)
-            except Exception:
-                process.kill()
+        med = round(
+            median(values),
+            1,
+        )
+
+        avg = round(
+            sum(values)
+            / len(values),
+            1,
+        )
+
+        worst = round(
+            max(values),
+            1,
+        )
+
+    else:
+
+        med = None
+        avg = None
+        worst = None
+
+    return {
+        "uri": uri,
+        "real_successes": successful,
+        "real_attempts": REAL_ATTEMPTS,
+        "real_success_rate": (
+            successful
+            / REAL_ATTEMPTS
+        ),
+        "real_ping": med,
+        "real_avg": avg,
+        "real_worst": worst,
+    }
 
 
 # ============================================================
@@ -657,13 +931,14 @@ def real_test(uri, index):
 
 def load_history():
 
-    if not history_file.exists():
+    if not HISTORY_FILE.exists():
         return {}
 
     try:
+
         return json.loads(
-            history_file.read_text(
-                encoding="utf-8"
+            HISTORY_FILE.read_text(
+                encoding="utf-8",
             )
         )
 
@@ -673,7 +948,7 @@ def load_history():
 
 def save_history(history):
 
-    history_file.write_text(
+    HISTORY_FILE.write_text(
         json.dumps(
             history,
             indent=2,
@@ -683,7 +958,10 @@ def save_history(history):
     )
 
 
-def update_history(history, result):
+def update_history(
+    history,
+    result,
+):
 
     uri = result["uri"]
 
@@ -691,37 +969,90 @@ def update_history(history, result):
         uri,
         {
             "runs": 0,
-            "successes": 0,
-            "failures": 0,
+            "tcp_successes": 0,
+            "tcp_failures": 0,
             "real_successes": 0,
-            "real_attempts": 0,
+            "real_failures": 0,
             "last_ping": None,
         },
     )
 
+    # Compatibility with old history.json
+    old.setdefault(
+        "runs",
+        0,
+    )
+
+    old.setdefault(
+        "tcp_successes",
+        0,
+    )
+
+    old.setdefault(
+        "tcp_failures",
+        0,
+    )
+
+    old.setdefault(
+        "real_successes",
+        0,
+    )
+
+    old.setdefault(
+        "real_failures",
+        0,
+    )
+
+    old.setdefault(
+        "last_ping",
+        None,
+    )
+
     old["runs"] += 1
 
-    old["successes"] += result["tcp_success"]
-
-    old["failures"] += (
-        result["tcp_attempts"]
-        - result["tcp_success"]
+    old["tcp_successes"] += (
+        result.get(
+            "tcp_success",
+            0,
+        )
     )
 
-    old["real_successes"] += result.get(
-        "real_success",
-        0,
+    old["tcp_failures"] += (
+        result.get(
+            "tcp_attempts",
+            0,
+        )
+        - result.get(
+            "tcp_success",
+            0,
+        )
     )
 
-    old["real_attempts"] += result.get(
-        "real_attempts",
-        0,
+    old["real_successes"] += (
+        result.get(
+            "real_successes",
+            0,
+        )
     )
 
-    old["last_ping"] = (
-        result.get("real_median")
-        or result.get("tcp_median")
+    old["real_failures"] += (
+        result.get(
+            "real_attempts",
+            0,
+        )
+        - result.get(
+            "real_successes",
+            0,
+        )
     )
+
+    if result.get(
+        "real_ping"
+    ) is not None:
+
+        old["last_ping"] = result[
+            "real_ping"
+        ]
 
     history[uri] = old
 
@@ -732,142 +1063,140 @@ def update_history(history, result):
 # SCORE
 # ============================================================
 
-def protocol_score(uri):
+def protocol_bonus(uri):
 
-    lower = uri.lower()
+    low = uri.lower()
 
     if (
-        lower.startswith("vless://")
-        and "security=reality" in lower
-        and "type=tcp" in lower
+        low.startswith("vless://")
+        and "security=reality" in low
+        and "type=tcp" in low
     ):
+        return 50
+
+    if low.startswith("vless://"):
+        return 35
+
+    if low.startswith("trojan://"):
+        return 30
+
+    if low.startswith("vmess://"):
+        return 15
+
+    if low.startswith("ss://"):
         return 10
-
-    if lower.startswith("vless://"):
-        return 7
-
-    if lower.startswith("trojan://"):
-        return 6
-
-    if (
-        lower.startswith("hy2://")
-        or lower.startswith("hysteria2://")
-    ):
-        return 6
-
-    if lower.startswith("vmess://"):
-        return 4
-
-    if lower.startswith("ss://"):
-        return 3
 
     return 0
 
 
-def score(result, history):
+def calculate_score(
+    result,
+    history,
+):
 
-    tcp_rate = result["tcp_rate"]
+    success = result[
+        "real_success_rate"
+    ]
 
-    real_supported = result.get(
-        "real_supported",
-        False,
-    )
+    ping = result[
+        "real_ping"
+    ]
 
-    real_rate = result.get(
-        "real_rate",
-        0,
-    )
-
-    ping = (
-        result.get("real_median")
-        if real_supported
-        and result.get("real_median") is not None
-        else result.get("tcp_median")
-    )
-
-    if ping is None:
+    if (
+        success <= 0
+        or ping is None
+    ):
         return -999999
 
-    # REAL TEST HAS PRIORITY
-    if real_supported:
+    # REAL success is the most important thing.
+    stability = success * 1000
 
-        if real_rate <= 0:
-            return -999999
+    # Real proxy latency.
+    if ping <= 50:
+        latency = 250
 
-        stability = real_rate * 55
+    elif ping <= 100:
+        latency = 220
 
-        latency = max(
-            0,
-            30
-            - min(ping, 300) / 10,
-        )
+    elif ping <= 150:
+        latency = 180
 
-        worst = result.get(
-            "real_worst"
-        )
+    elif ping <= 250:
+        latency = 130
 
-        consistency = 10
+    elif ping <= 400:
+        latency = 80
 
-        if worst is not None:
-            spread = worst - ping
-
-            if spread > 1000:
-                consistency = 0
-            elif spread > 500:
-                consistency = 2
-            elif spread > 250:
-                consistency = 4
-            elif spread > 100:
-                consistency = 6
-            elif spread > 50:
-                consistency = 8
-
-        base = (
-            stability
-            + latency
-            + consistency
-            + protocol_score(result["uri"])
-        )
+    elif ping <= 700:
+        latency = 40
 
     else:
+        latency = 10
 
-        stability = tcp_rate * 45
+    # Consistency.
+    worst = result[
+        "real_worst"
+    ]
 
-        latency = max(
-            0,
-            35
-            - min(ping, 300) / 10,
-        )
+    consistency = 0
 
-        base = (
-            stability
-            + latency
-            + protocol_score(result["uri"])
-        )
+    if worst is not None:
+
+        spread = worst - ping
+
+        if spread <= 30:
+            consistency = 80
+
+        elif spread <= 70:
+            consistency = 55
+
+        elif spread <= 150:
+            consistency = 25
+
+        else:
+            consistency = 0
+
+    # Historical real stability.
+    historical = 0
 
     old = history.get(
         result["uri"]
     )
 
-    historical = 0
-
     if old:
 
         total = (
-            old["successes"]
-            + old["failures"]
+            old.get(
+                "real_successes",
+                0,
+            )
+            + old.get(
+                "real_failures",
+                0,
+            )
         )
 
         if total:
-            historical = (
-                old["successes"]
+
+            rate = (
+                old.get(
+                    "real_successes",
+                    0,
+                )
                 / total
-                * 10
             )
 
+            historical = rate * 120
+
     return round(
-        base + historical,
-        3,
+        stability
+        + latency
+        + consistency
+        + historical
+        + protocol_bonus(
+            result["uri"]
+        ),
+        2,
     )
 
 
@@ -879,7 +1208,22 @@ def main():
 
     started = time.time()
 
+    log("================================")
+    log("       FreeForYoung v5")
+    log(" REAL Xray stability checker")
+    log("================================")
+
+    if not Path(XRAY).exists():
+        log(
+            f"[FATAL] Xray not found: {XRAY}"
+        )
+        raise SystemExit(1)
+
     history = load_history()
+
+    # --------------------------------------------------------
+    # SOURCES
+    # --------------------------------------------------------
 
     source_urls = []
 
@@ -889,38 +1233,43 @@ def main():
 
         line = line.strip()
 
-        if line and not line.startswith("#"):
+        if (
+            line
+            and not line.startswith("#")
+        ):
             source_urls.append(line)
 
-    print(
-        f"FreeForYoung v4"
-    )
-
-    print(
+    log(
         f"Sources: {len(source_urls)}"
     )
-
-    # ----------------------------
-    # DOWNLOAD
-    # ----------------------------
 
     all_nodes = []
 
     with ThreadPoolExecutor(
         max_workers=min(
             10,
-            max(1, len(source_urls)),
+            max(
+                1,
+                len(source_urls),
+            ),
         )
     ) as executor:
 
         jobs = {
-            executor.submit(fetch, url): url
-            for url in source_urls
+            executor.submit(
+                fetch,
+                source,
+            ): source
+            for source in source_urls
         }
 
-        for future in as_completed(jobs):
+        for future in as_completed(
+            jobs
+        ):
 
-            source = jobs[future]
+            source = jobs[
+                future
+            ]
 
             try:
 
@@ -928,46 +1277,40 @@ def main():
                     future.result()
                 )
 
-                all_nodes.extend(nodes)
-
-                print(
-                    f"[OK] "
-                    f"{len(nodes)} nodes"
+                all_nodes.extend(
+                    nodes
                 )
 
-            except Exception as error:
+                log(
+                    f"[OK] {len(nodes)} nodes"
+                )
 
-                print(
+            except Exception as e:
+
+                log(
                     f"[ERROR] "
                     f"{source}: "
-                    f"{str(error)[:150]}"
+                    f"{e}"
                 )
 
     unique = list(
-        dict.fromkeys(all_nodes)
+        dict.fromkeys(
+            all_nodes
+        )
     )
 
-    candidates = unique[
-        :MAX_TOTAL_CHECK
-    ]
-
-    print(
+    log(
         f"Unique: {len(unique)}"
     )
 
-    print(
-        f"TCP candidates: "
-        f"{len(candidates)}"
-    )
+    # --------------------------------------------------------
+    # TCP PRECHECK
+    # --------------------------------------------------------
 
-    # ----------------------------
-    # TCP
-    # ----------------------------
-
-    tcp_results = []
+    tcp_candidates = []
 
     with ThreadPoolExecutor(
-        max_workers=WORKERS
+        max_workers=TCP_WORKERS
     ) as executor:
 
         jobs = {
@@ -975,68 +1318,63 @@ def main():
                 tcp_check,
                 uri,
             ): uri
-            for uri in candidates
+            for uri in unique[
+                :MAX_TOTAL
+            ]
         }
 
-        for future in as_completed(jobs):
+        for future in as_completed(
+            jobs
+        ):
 
             try:
 
                 result = future.result()
 
-                if result["tcp_success"] > 0:
-                    tcp_results.append(result)
+                if result[
+                    "tcp_success"
+                ] > 0:
+
+                    tcp_candidates.append(
+                        result
+                    )
 
             except Exception:
                 pass
 
-    tcp_results.sort(
+    tcp_candidates.sort(
         key=lambda x: (
-            x["tcp_rate"],
-            -(x["tcp_median"] or 999999),
+            x["tcp_success"],
+            -(
+                x["tcp_ping"]
+                or 999999
+            ),
         ),
         reverse=True,
     )
 
-    # ----------------------------
-    # REAL TEST CANDIDATES
-    # ----------------------------
-
-    real_candidates = []
-
-    identity_counts = {}
-
-    for item in tcp_results:
-
-        uri = item["uri"]
-
-        identity = identity_key(uri)
-
-        count = identity_counts.get(
-            identity,
-            0,
-        )
-
-        if count >= MAX_SAME_IDENTITY:
-            continue
-
-        identity_counts[identity] = count + 1
-
-        real_candidates.append(uri)
-
-        if len(real_candidates) >= MAX_REAL_TEST:
-            break
-
-    print(
-        f"Real Xray tests: "
-        f"{len(real_candidates)}"
+    log(
+        f"TCP candidates: "
+        f"{len(tcp_candidates)}"
     )
 
-    # ----------------------------
-    # REAL TEST
-    # ----------------------------
+    # --------------------------------------------------------
+    # REAL XRAY
+    # --------------------------------------------------------
 
-    results = []
+    real_targets = [
+        item["uri"]
+        for item in tcp_candidates[
+            :MAX_REAL_TEST
+        ]
+    ]
+
+    log(
+        f"Real Xray tests: "
+        f"{len(real_targets)}"
+    )
+
+    checked = []
 
     with ThreadPoolExecutor(
         max_workers=REAL_WORKERS
@@ -1044,147 +1382,149 @@ def main():
 
         jobs = {
             executor.submit(
-                real_test,
+                real_check,
                 uri,
-                i,
             ): uri
-            for i, uri in enumerate(
-                real_candidates
-            )
+            for uri in real_targets
         }
 
-        for future in as_completed(jobs):
+        for future in as_completed(
+            jobs
+        ):
 
-            uri = jobs[future]
+            uri = jobs[
+                future
+            ]
 
-            base = next(
+            try:
+
+                result = future.result()
+
+            except Exception:
+
+                result = {
+                    "uri": uri,
+                    "real_successes": 0,
+                    "real_attempts": REAL_ATTEMPTS,
+                    "real_success_rate": 0,
+                    "real_ping": None,
+                    "real_avg": None,
+                    "real_worst": None,
+                }
+
+            # Add TCP info.
+            tcp = next(
                 (
-                    x for x in tcp_results
+                    x
+                    for x in tcp_candidates
                     if x["uri"] == uri
                 ),
                 None,
             )
 
-            if not base:
-                continue
-
-            try:
-                real = future.result()
-            except Exception:
-                real = {
-                    "real_supported": False,
-                    "real_success": 0,
-                    "real_attempts": REAL_TEST_ATTEMPTS,
-                    "real_rate": 0,
-                    "real_median": None,
-                    "real_worst": None,
-                }
-
-            result = {
-                **base,
-                **real,
-            }
+            if tcp:
+                result.update(
+                    {
+                        "tcp_success": tcp[
+                            "tcp_success"
+                        ],
+                        "tcp_attempts": tcp[
+                            "tcp_attempts"
+                        ],
+                        "tcp_ping": tcp[
+                            "tcp_ping"
+                        ],
+                    }
+                )
 
             history = update_history(
                 history,
                 result,
             )
 
-            result["score"] = score(
-                result,
-                history,
-            )
+            # ONLY REAL SUCCESSFUL CONFIGS.
+            if (
+                result[
+                    "real_successes"
+                ] > 0
+            ):
 
-            if result["score"] > -999000:
-                results.append(result)
+                result["score"] = (
+                    calculate_score(
+                        result,
+                        history,
+                    )
+                )
 
-    # Add remaining TCP-only nodes.
-    already = {
-        x["uri"]
-        for x in results
-    }
+                checked.append(
+                    result
+                )
 
-    for item in tcp_results:
+    # --------------------------------------------------------
+    # RANK
+    # --------------------------------------------------------
 
-        if item["uri"] in already:
-            continue
-
-        item["real_supported"] = False
-        item["real_success"] = 0
-        item["real_attempts"] = 0
-        item["real_rate"] = 0
-        item["real_median"] = None
-        item["real_worst"] = None
-
-        history = update_history(
-            history,
-            item,
-        )
-
-        item["score"] = score(
-            item,
-            history,
-        )
-
-        if item["score"] > -999000:
-            results.append(item)
-
-    # ----------------------------
-    # SORT
-    # ----------------------------
-
-    results.sort(
+    ranked = sorted(
+        checked,
         key=lambda x: (
+            x["real_success_rate"],
             x["score"],
-            x.get("real_rate", 0),
-            x.get("tcp_rate", 0),
             -(
-                x.get("real_median")
-                or x.get("tcp_median")
+                x["real_ping"]
                 or 999999
             ),
         ),
         reverse=True,
     )
 
-    # ----------------------------
-    # DIVERSIFIED TOP
-    # ----------------------------
+    # --------------------------------------------------------
+    # DEDUPE / DIVERSIFY
+    # --------------------------------------------------------
 
     selected = []
 
-    endpoint_counts = {}
+    hosts = {}
 
-    for item in results:
+    MAX_SAME_ENDPOINT = 2
 
-        ep = endpoint_key(
+    for item in ranked:
+
+        key = host_key(
             item["uri"]
         )
 
-        count = endpoint_counts.get(
-            ep,
+        count = hosts.get(
+            key,
             0,
         )
 
         if count >= MAX_SAME_ENDPOINT:
             continue
 
-        endpoint_counts[ep] = count + 1
+        selected.append(
+            item
+        )
 
-        selected.append(item)
+        hosts[key] = count + 1
 
         if len(selected) >= MAX_PUBLISHED:
             break
 
-    # ----------------------------
-    # SAVE
-    # ----------------------------
+    # --------------------------------------------------------
+    # HISTORY
+    # --------------------------------------------------------
 
-    save_history(history)
+    save_history(
+        history
+    )
+
+    # --------------------------------------------------------
+    # SUBSCRIPTION
+    # --------------------------------------------------------
 
     lines = [
         "#profile-title: FreeForYoung",
-        "#announce: FreeForYoung - real tested public nodes",
+        "#announce: FreeForYoung - REAL Xray tested nodes",
         "#subscription-auto-update-enable: 1",
         "#subscription-auto-update-open-enable: 1",
         "#subscription-ping-onopen-enabled: 1",
@@ -1193,89 +1533,89 @@ def main():
     ]
 
     lines.extend(
-        x["uri"]
-        for x in selected
+        item["uri"]
+        for item in selected
     )
 
     (
         OUT / "subscription.txt"
     ).write_text(
-        "\n".join(lines) + "\n",
+        "\n".join(lines)
+        + "\n",
         encoding="utf-8",
     )
 
-    # ----------------------------
+    # --------------------------------------------------------
     # REPORT
-    # ----------------------------
+    # --------------------------------------------------------
 
     report = []
 
-    for i, item in enumerate(
+    for index, item in enumerate(
         selected,
         1,
     ):
 
+        uri = item[
+            "uri"
+        ]
+
         protocol = (
-            item["uri"]
-            .split("://", 1)[0]
+            uri.split(
+                "://",
+                1,
+            )[0]
             .upper()
         )
 
-        ping = (
-            item.get("real_median")
-            or item.get("tcp_median")
-        )
-
-        success = (
-            f"{item.get('real_success', 0)}/"
-            f"{item.get('real_attempts', 0)}"
-            if item.get("real_supported")
-            else
-            f"{item['tcp_success']}/"
-            f"{item['tcp_attempts']}"
-        )
-
-        test_type = (
-            "REAL"
-            if item.get("real_supported")
-            else "TCP"
-        )
-
         report.append(
-            f"{i}. "
-            f"score={item['score']} | "
-            f"ping={ping}ms | "
-            f"success={success} | "
-            f"test={test_type} | "
-            f"protocol={protocol} | "
-            f"uri={item['uri']}"
+            (
+                f"{index}. "
+                f"score={item['score']} | "
+                f"ping={item['real_ping']}ms | "
+                f"real="
+                f"{item['real_successes']}/"
+                f"{item['real_attempts']} | "
+                f"protocol={protocol} | "
+                f"uri={uri}"
+            )
         )
 
     (
         OUT / "servers.txt"
     ).write_text(
-        "\n".join(report) + (
-            "\n" if report else ""
+        "\n".join(report)
+        + (
+            "\n"
+            if report
+            else ""
         ),
         encoding="utf-8",
     )
 
+    # --------------------------------------------------------
+    # STATS
+    # --------------------------------------------------------
+
     stats = {
         "project": "FreeForYoung",
+        "version": 5,
         "sources": len(source_urls),
         "raw_nodes": len(all_nodes),
         "unique_nodes": len(unique),
-        "tcp_working": len(tcp_results),
-        "real_candidates": len(real_candidates),
-        "final_ranked": len(results),
+        "tcp_candidates": len(tcp_candidates),
+        "real_tested": len(real_targets),
+        "real_working": len(checked),
         "published": len(selected),
         "tcp_attempts": TCP_ATTEMPTS,
-        "real_attempts": REAL_TEST_ATTEMPTS,
+        "real_attempts": REAL_ATTEMPTS,
+        "tcp_workers": TCP_WORKERS,
+        "real_workers": REAL_WORKERS,
+        "generated_at": int(time.time()),
         "duration_seconds": round(
             time.time() - started,
             2,
         ),
-        "generated_at": int(time.time()),
     }
 
     (
@@ -1284,51 +1624,70 @@ def main():
         json.dumps(
             stats,
             indent=2,
-        ) + "\n",
+            ensure_ascii=False,
+        )
+        + "\n",
         encoding="utf-8",
     )
 
-    print()
-    print("=" * 50)
-    print("        FreeForYoung READY")
-    print("=" * 50)
+    # --------------------------------------------------------
+    # CONSOLE
+    # --------------------------------------------------------
 
-    print(
-        f"TCP working: {len(tcp_results)}"
+    log("")
+    log("================================")
+    log("          READY")
+    log("================================")
+
+    log(
+        f"Unique: {len(unique)}"
     )
 
-    print(
-        f"Real candidates: "
-        f"{len(real_candidates)}"
+    log(
+        f"TCP candidates: "
+        f"{len(tcp_candidates)}"
     )
 
-    print(
-        f"Published: {len(selected)}"
+    log(
+        f"REAL working: "
+        f"{len(checked)}"
     )
 
-    print(
+    log(
+        f"Published: "
+        f"{len(selected)}"
+    )
+
+    log(
         f"Duration: "
         f"{round(time.time() - started, 2)}s"
     )
 
-    print()
-    print("TOP SERVERS:")
+    log("")
+    log("TOP REAL SERVERS:")
 
-    for i, item in enumerate(
+    for index, item in enumerate(
         selected[:20],
         1,
     ):
 
-        ping = (
-            item.get("real_median")
-            or item.get("tcp_median")
+        protocol = (
+            item["uri"]
+            .split(
+                "://",
+                1,
+            )[0]
+            .upper()
         )
 
-        print(
-            f"{i}. "
+        log(
+            f"{index}. "
             f"score={item['score']} | "
-            f"{ping}ms | "
-            f"{item['uri'][:80]}"
+            f"ping={item['real_ping']}ms | "
+            f"real="
+            f"{item['real_successes']}/"
+            f"{item['real_attempts']} | "
+            f"{protocol}"
         )
 
 
