@@ -2,33 +2,143 @@ name: Update FreeForYoung
 
 on:
   workflow_dispatch:
+
   schedule:
     - cron: "17 */6 * * *"
+
+  push:
+    branches:
+      - main
 
 permissions:
   contents: write
 
 jobs:
+
   update:
+
+    name: Build and test FreeForYoung
+
     runs-on: ubuntu-latest
+
     timeout-minutes: 15
 
     steps:
+
+      # -------------------------
+      # CHECKOUT
+      # -------------------------
+
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
+
+      # -------------------------
+      # PYTHON
+      # -------------------------
 
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
-          python-version: "3.x"
+          python-version: "3.13"
 
-      - name: Build Happ subscription
-        run: python scripts/build_subscription.py
+      # -------------------------
+      # SYSTEM TOOLS
+      # -------------------------
+
+      - name: Install tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y curl unzip ca-certificates
+
+      # -------------------------
+      # XRAY
+      # -------------------------
+
+      - name: Install Xray
+        shell: bash
+        run: |
+
+          set -e
+
+          mkdir -p "$HOME/xray"
+
+          echo "Downloading Xray..."
+
+          curl -L \
+            --fail \
+            --retry 3 \
+            --connect-timeout 10 \
+            --max-time 120 \
+            -o "$HOME/xray/xray.zip" \
+            "https://github.com/XTLS/Xray-core/releases/latest/download/Xray-linux-64.zip"
+
+          unzip -o \
+            "$HOME/xray/xray.zip" \
+            -d "$HOME/xray"
+
+          chmod +x \
+            "$HOME/xray/xray"
+
+          echo "$HOME/xray" >> "$GITHUB_PATH"
+
+          "$HOME/xray/xray" version
+
+      # -------------------------
+      # BUILD
+      # -------------------------
+
+      - name: Build subscription
+        env:
+          XRAY_BIN: xray
+        run: |
+
+          python scripts/build_subscription.py
+
+      # -------------------------
+      # SHOW RESULTS
+      # -------------------------
+
+      - name: Show top servers
+        run: |
+
+          echo "===================================="
+          echo "FREEFORYOUNG TOP SERVERS"
+          echo "===================================="
+
+          if [ -f output/servers.txt ]; then
+            head -n 25 output/servers.txt
+          else
+            echo "servers.txt not found"
+          fi
+
+          echo
+          echo "===================================="
+          echo "STATS"
+          echo "===================================="
+
+          if [ -f output/stats.json ]; then
+            cat output/stats.json
+          fi
+
+      # -------------------------
+      # COMMIT
+      # -------------------------
 
       - name: Commit generated files
+        shell: bash
         run: |
+
           git config user.name "FreeForYoung Bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
           git add output/
-          git diff --cached --quiet || git commit -m "chore: update FreeForYoung servers"
+
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+            exit 0
+          fi
+
+          git commit \
+            -m "Auto-update FreeForYoung servers"
+
           git push
