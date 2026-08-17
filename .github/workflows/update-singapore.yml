@@ -1,0 +1,36 @@
+name: Update Singapore VPN
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "15 */3 * * *"
+
+permissions:
+  contents: write
+
+jobs:
+  sg:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Setup Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - name: Build Singapore list
+        run: python scripts/build_sg_subscription.py
+
+      - name: Commit
+        run: |
+          git config user.name "FreeForYoung Bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add output/singapore.txt output/singapore-base64.txt output/singapore-stats.json
+          if git diff --cached --quiet; then
+            echo "No changes"
+            exit 0
+          fi
+          git commit -m "Update Singapore VPN nodes"
+          git push
