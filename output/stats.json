@@ -3,11 +3,11 @@
   "version": 7,
   "sources": 5,
   "raw_nodes": 1318,
-  "valid_unique_nodes": 1035,
-  "tcp_candidates": 1016,
+  "valid_unique_nodes": 1004,
+  "tcp_candidates": 995,
   "real_tested": 120,
-  "real_working": 76,
-  "published": 60,
+  "real_working": 23,
+  "published": 23,
   "minimum_real_success": 2,
   "tcp_attempts": 2,
   "real_attempts": 3,
@@ -18,6 +18,6 @@
   "happ_ping_type": "proxy",
   "happ_proxy_ping_mode": "keepalive",
   "happ_check_url": "https://cp.cloudflare.com/generate_204",
-  "generated_at": 1787754572,
-  "duration_seconds": 107.61
+  "generated_at": 1787881317,
+  "duration_seconds": 241.32
 }
