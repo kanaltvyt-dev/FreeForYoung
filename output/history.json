@@ -1,4 +1,1207 @@
 {
+  "vless://d6c595c9-bff4-4510-893a-dfa3c87fa0cd@172.67.187.219:8880?security=&encryption=none&host=lucky-cell-d20c.78-107.workers.dev&type=ws#🔥Join+Telegram:@Farah_VPN🟣": {
+    "runs": 1,
+    "tcp_successes": 2,
+    "tcp_failures": 0,
+    "real_successes": 0,
+    "real_failures": 3,
+    "last_ping": null,
+    "best_ping": null,
+    "last_seen": 1790771091
+  },
+  "vless://b2593749-691c-428c-9481-14979cba3446@31.43.179.20:443?path=/proxyip=us.xiabibi.cf&security=tls&encryption=none&insecure=0&type=ws&allowInsecure=0&sni=xi.tbv.ccwu.cc#🔥Join+Telegram:@Farah_VPN🟣": {
+    "runs": 4,
+    "tcp_successes": 8,
+    "tcp_failures": 0,
+    "real_successes": 0,
+    "real_failures": 12,
+    "last_ping": null,
+    "best_ping": null,
+    "last_seen": 1790771089
+  },
+  "vless://e65a5cbc-5663-4f7d-ad7d-800e86ba487d@194.76.18.25:443?security=tls&sni=rAyAn-cOnFiG-fr-1.pArSa.dPdNs.oRg&allowInsecure=1&fp=chrome&type=ws&path=/ws&host=rAyAn-cOnFiG-fr-1.pArSa.dPdNs.oRg&encryption=none#@Rayan_Config%203.33": {
+    "runs": 38,
+    "tcp_successes": 76,
+    "tcp_failures": 0,
+    "real_successes": 0,
+    "real_failures": 114,
+    "last_ping": null,
+    "best_ping": null,
+    "last_seen": 1790771088
+  },
+  "vless://probabblynot-ch@194.76.18.126:2087?alpn=http/1.1&encryption=none&fp=chrome&host=probabblynot.fazelextremeisreal.com&path=/@probabblynot&security=tls&sni=probabblynot.fazelextremeisreal.com&type=ws#EPODONIOS": {
+    "runs": 37,
+    "tcp_successes": 74,
+    "tcp_failures": 0,
+    "real_successes": 0,
+    "real_failures": 111,
+    "last_ping": null,
+    "best_ping": null,
+    "last_seen": 1790771082
+  },
+  "trojan://humanity@45.130.125.126:443?security=tls&sni=www.multiplydose.com&fp=chrome&insecure=0&allowInsecure=0&type=ws&host=www.multiplydose.com&path=/assignment#EPODONIOS": {
+    "runs": 1,
+    "tcp_successes": 2,
+    "tcp_failures": 0,
+    "real_successes": 0,
+    "real_failures": 3,
+    "last_ping": null,
+    "best_ping": null,
+    "last_seen": 1790771079
+  },
+  "vless://17540a16-a0dd-5694-7e1e-14e281ccc032@185.18.250.252:443?path=/@JavidnamanIran/Javid-SHAH-KingRezaPahlavi/&security=tls&encryption=none&insecure=0&host=crm.lotussec.com&type=ws&allowInsecure=0&sni=crm.lotussec.com#TEL;Father_vpn": {
+    "runs": 32,
+    "tcp_successes": 64,
+    "tcp_failures": 0,
+    "real_successes": 1,
+    "real_failures": 95,
+    "last_ping": 93.0,
+    "best_ping": 93.0,
+    "last_seen": 1790771076
+  },
+  "vless://telegram-deli-servers@185.146.173.59:80?path=/tel+%3A+deli_servers+tel+%3A+deli_servers+tel+%3A+deli_servers+tel+%3A+deli_servers+tel+%3A+deli_servers+tel+%3A+deli_servers%3Fed%3D2048&security=none&encryption=none&host=kia%E6%9D%A5%E8%87%AA%E6%88%91%E4%BB%AC%E5%9B%A2%E9%98%9F%E7%9A%84%E7%88%B101%E6%88%91%E7%88%B1%E7%86%9F%E9%A3%9F%E5%BA%97lovedeli.speedtest.net.gOogle.com.Arvancloud.ir.realKiaa.ninjA.&type=ws#%F0%9F%87%B8%F0%9F%87%AA%20SE%20%7C%20VLESS%20%7C%20%40deli_servers%20%231%20%5Bfast%5D": {
+    "runs": 18,
+    "tcp_successes": 36,
+    "tcp_failures": 0,
+    "real_successes": 0,
+    "real_failures": 54,
+    "last_ping": null,
+    "best_ping": null,
+    "last_seen": 1790771076
+  },
+  "vless://6e59d5c5-7aa3-4c36-a4c4-e3b899525ed2@91.193.58.61:2096?security=tls&type=ws&path=%2Ffree-server.techsonic.dev&host=free-server.techsonic.dev&sni=free-server.techsonic.dev&fp=chrome#hamedp71%3A%3A%F0%9F%8F%B4%E2%80%8D%E2%98%A0%EF%B8%8F": {
+    "runs": 1,
+    "tcp_successes": 2,
+    "tcp_failures": 0,
+    "real_successes": 0,
+    "real_failures": 3,
+    "last_ping": null,
+    "best_ping": null,
+    "last_seen": 1790771076
+  },
+  "vless://b09dfed1-90fa-4353-8bdf-de1edb2e2d79@91.209.253.229:443?path=/proxyip=us.xiabibi.cf&security=tls&encryption=none&insecure=0&host=nb.lovecf.ggff.net&fp=chrome&type=ws&allowInsecure=0&sni=nb.lovecf.ggff.net#@Shh_Proxy-New²": {
+    "runs": 8,
+    "tcp_successes": 16,
+    "tcp_failures": 0,
+    "real_successes": 6,
+    "real_failures": 18,
+    "last_ping": 196.6,
+    "best_ping": 129.4,
+    "last_seen": 1790771075
+  },
+  "trojan://humanity@45.130.125.76:443?security=tls&sni=www.calmlunch.com&alpn=http/1.1&insecure=1&allowInsecure=1&type=ws&host=www.calmlunch.com&path=/assignment#🇸🇨SC-🚀@VPNine1": {
+    "runs": 1,
+    "tcp_successes": 2,
+    "tcp_failures": 0,
+    "real_successes": 3,
+    "real_failures": 0,
+    "last_ping": 1531.2,
+    "best_ping": 1531.2,
+    "last_seen": 1790771071
+  },
+  "vless://406d8436-0eb9-4eb2-84fb-960e076ffba6@45.130.125.160:443?mode=stream-one&path=/de&security=tls&alpn=h2%2Chttp/1.1&encryption=none&insecure=0&host=de.lezzatzone.ir&fp=chrome&type=xhttp&allowInsecure=0&sni=de.lezzatzone.ir#%F0%9F%87%B8%F0%9F%87%A8%20SC%20%7C%20VLESS%20%7C%20%40ai_duet%20%231%20%5Bfast%5D": {
+    "runs": 31,
+    "tcp_successes": 62,
+    "tcp_failures": 0,
+    "real_successes": 0,
+    "real_failures": 93,
+    "last_ping": null,
+    "best_ping": null,
+    "last_seen": 1790771069
+  },
+  "vless://fdc48be3-a615-41ac-8bd1-ed844c931048@162.159.198.1:443?host=edgetunnel-4uw.pages.dev&path=%2Ffp%3Dchrome&security=tls&sni=edgetunnel-4uw.pages.dev&type=ws#vless-1546513176": {
+    "runs": 1,
+    "tcp_successes": 2,
+    "tcp_failures": 0,
+    "real_successes": 3,
+    "real_failures": 0,
+    "last_ping": 87.2,
+    "best_ping": 87.2,
+    "last_seen": 1790771069
+  },
+  "vless://47fcef29-ab4e-4aa6-932b-d95a18f28a4e@104.18.39.218:2095?host=8nj2r.2k8t.f88.hh.vavava.kdns.fr&path=%2F%3Fed%3D2560security%3Dtls&security=none&type=ws#vless-931998990": {
+    "runs": 2,
+    "tcp_successes": 4,
+    "tcp_failures": 0,
+    "real_successes": 6,
+    "real_failures": 0,
+    "last_ping": 74.1,
+    "best_ping": 74.1,
+    "last_seen": 1790771068
+  },
+  "vless://47fcef29-ab4e-4aa6-932b-d95a18f28a4e@104.18.34.14:2086?host=8nj2r.2k8t.f88.hh.vavava.kdns.fr&path=%2F&security=none&type=ws#vless-1033577564": {
+    "runs": 1,
+    "tcp_successes": 2,
+    "tcp_failures": 0,
+    "real_successes": 3,
+    "real_failures": 0,
+    "last_ping": 74.0,
+    "best_ping": 74.0,
+    "last_seen": 1790771068
+  },
+  "trojan://humanity@45.130.125.126:443?security=tls&sni=www.multiplydose.com&fp=chrome&insecure=0&allowInsecure=0&type=ws&host=www.multiplydose.com&path=/assignment#🇸🇨184369": {
+    "runs": 1,
+    "tcp_successes": 2,
+    "tcp_failures": 0,
+    "real_successes": 0,
+    "real_failures": 3,
+    "last_ping": null,
+    "best_ping": null,
+    "last_seen": 1790771067
+  },
+  "vless://47fcef29-ab4e-4aa6-932b-d95a18f28a4e@104.18.34.14:8880?host=8nj2r.2k8t.f88.hh.vavava.kdns.fr&path=%2F&security=none&type=ws#vless-1033577598": {
+    "runs": 2,
+    "tcp_successes": 4,
+    "tcp_failures": 0,
+    "real_successes": 6,
+    "real_failures": 0,
+    "last_ping": 77.7,
+    "best_ping": 77.7,
+    "last_seen": 1790771066
+  },
+  "vless://eeb6823c-b926-4ea2-866a-5542edd26e59@104.17.122.18:443?path=/fp&security=tls&encryption=none&insecure=0&host=t1s1.rittbo.kdns.fr&fp=chrome&type=ws&allowInsecure=0&sni=t1s1.rittbo.kdns.fr#@V2rayng3": {
+    "runs": 4,
+    "tcp_successes": 8,
+    "tcp_failures": 0,
+    "real_successes": 0,
+    "real_failures": 12,
+    "last_ping": null,
+    "best_ping": null,
+    "last_seen": 1790771064
+  },
+  "vless://bdc5e450-3e2d-4001-928e-e3bc6cecb249@172.67.130.159:2096?path=/hux9duzm54&security=tls&encryption=none&insecure=0&host=cdn.skyvora.app&fp=chrome&type=ws&allowInsecure=0&sni=cdn.skyvora.app#@Tarkahodeh": {
+    "runs": 1,
+    "tcp_successes": 2,
+    "tcp_failures": 0,
+    "real_successes": 0,
+    "real_failures": 3,
+    "last_ping": null,
+    "best_ping": null,
+    "last_seen": 1790771055
+  },
+  "vless://14b59caf-a196-4ec2-8c70-c7b388062f5b@45.131.211.136:443?path=%2Frdfgtws&amp;security=tls&amp;encryption=none&amp;insecure=0&amp;host=vangoghhh.info&amp;type=ws&amp;allowInsecure=0&amp;sni=vangoghhh.info#🔥Join+Telegram:@Farah_VPN🟣": {
+    "runs": 28,
+    "tcp_successes": 56,
+    "tcp_failures": 0,
+    "real_successes": 0,
+    "real_failures": 84,
+    "last_ping": null,
+    "best_ping": null,
+    "last_seen": 1790771053
+  },
+  "vless://40af9131-d540-448a-bc56-5bba147a1dc3@27.50.49.154:2083?path=/?TELEGRAM--MARAMBASHI--MARAMBASHI?ed=512&security=tls&encryption=none&insecure=0&host=proxy-34l.pages.dev&type=ws&allowInsecure=0&sni=proxy-34l.pages.dev#EPODONIOS": {
+    "runs": 2,
+    "tcp_successes": 4,
+    "tcp_failures": 0,
+    "real_successes": 0,
+    "real_failures": 6,
+    "last_ping": null,
+    "best_ping": null,
+    "last_seen": 1790771052
+  },
+  "vless://6fc36cfc-561f-4544-9a0e-7c732c478500@172.64.153.105:443?security=tls&allowInsecure=0&encryption=none&type=ws&host=us.vipserver14.workers.dev&path=/?ed=2048&sni=us.vipserver14.workers.dev&fp=chrome#🔥Join+Telegram:@Farah_VPN🟣": {
+    "runs": 2,
+    "tcp_successes": 4,
+    "tcp_failures": 0,
+    "real_successes": 0,
+    "real_failures": 6,
+    "last_ping": null,
+    "best_ping": null,
+    "last_seen": 1790771052
+  },
+  "vless://DIGiV2RAY-@185.146.173.59:80?path=/Digiv2ray-&security=none&encryption=none&host=digi--v2raycncfs.RadioTeHran.oRG.&type=ws#🔥Join+Telegram:@Farah_VPN🟣": {
+    "runs": 9,
+    "tcp_successes": 18,
+    "tcp_failures": 0,
+    "real_successes": 0,
+    "real_failures": 27,
+    "last_ping": null,
+    "best_ping": null,
+    "last_seen": 1790771052
+  },
+  "vless://2b5f8588-87f6-40af-a785-322c8fa1df77@104.16.7.70:2095?path=/XnXnXnXnXnXnXnXnXnXnXnXnXnXnXnXnXnXnXnXnXnXnXnXnXnXnXnXn?ed=2560&security=&encryption=none&host=sni.111000.dynv6.azazilvpn.sbs&type=ws#🇨🇦139819": {
+    "runs": 2,
+    "tcp_successes": 4,
+    "tcp_failures": 0,
+    "real_successes": 0,
+    "real_failures": 6,
+    "last_ping": null,
+    "best_ping": null,
+    "last_seen": 1790771044
+  },
+  "vless://SVNTEAM@185.146.173.59:80?path=/SvnTeam-TeleGram-ChaNnel-VIP%3Fed%3D2048&security=none&encryption=none&host=SvnTeamV2rayGm7.7.7.7.ir.Com.Site.xn--fhq0laa256bac7403eea044azr5g.CoM.&type=ws#%F0%9F%87%B8%F0%9F%87%AA%20SE%20%7C%20VLESS%20%7C%20%40serverv2ray00%20%231%20%5Bfast%5D": {
+    "runs": 24,
+    "tcp_successes": 48,
+    "tcp_failures": 0,
+    "real_successes": 0,
+    "real_failures": 72,
+    "last_ping": null,
+    "best_ping": null,
+    "last_seen": 1790771044
+  },
+  "vless://14b59caf-a196-4ec2-8c70-c7b388062f5b@45.131.211.136:443?path=/rdfgtws&security=tls&encryption=none&insecure=0&host=vangoghhh.info&type=ws&allowInsecure=0&sni=vangoghhh.info#@V2rayng3": {
+    "runs": 40,
+    "tcp_successes": 80,
+    "tcp_failures": 0,
+    "real_successes": 0,
+    "real_failures": 120,
+    "last_ping": null,
+    "best_ping": null,
+    "last_seen": 1790771043
+  },
+  "vless://83afd88f-200f-4d89-bfc7-66eff160c1d8@172.66.44.97:443?path=/sg-melbi#TELEGRAM-leviconfigs_leviconfigs?ed=512&security=tls&encryption=none&insecure=0&host=josni.hoyes.cloudns.ch&ech=ip.gs+udp://8.8.8.8&type=ws&allowInsecure=0&sni=josni.hoyes.cloudns.ch#EPODONIOS": {
+    "runs": 20,
+    "tcp_successes": 40,
+    "tcp_failures": 0,
+    "real_successes": 0,
+    "real_failures": 60,
+    "last_ping": null,
+    "best_ping": null,
+    "last_seen": 1790771037
+  },
+  "vless://47fcef29-ab4e-4aa6-932b-d95a18f28a4e@172.64.42.85:2082?host=8nj2r.2k8t.f88.hh.vavava.kdns.fr&path=%2F%3Fed%3D2560security%3Dtls&security=none&sni=8nj2r.2k8t.f88.hh.vavava.kdns.fr&type=ws#vless-897229330": {
+    "runs": 2,
+    "tcp_successes": 4,
+    "tcp_failures": 0,
+    "real_successes": 6,
+    "real_failures": 0,
+    "last_ping": 77.5,
+    "best_ping": 77.5,
+    "last_seen": 1790771037
+  },
+  "vless://47fcef29-ab4e-4aa6-932b-d95a18f28a4e@162.159.48.32:2082?&type=ws&headerType=none&host=8nj2r.2k8t.f88.hh.vavava.kdns.fr&path=%2F%3Fed%3D2560security%3Dtls#CA": {
+    "runs": 3,
+    "tcp_successes": 6,
+    "tcp_failures": 0,
+    "real_successes": 9,
+    "real_failures": 0,
+    "last_ping": 80.0,
+    "best_ping": 80.0,
+    "last_seen": 1790771037
+  },
+  "vless://a3f9d9b6-3ae4-4c47-9dbf-33b0a5c7f1a5@195.85.59.95:2082?encryption=none&security=none&type=ws&host=0210.uous1wog.workers.dev&path=%2F#🔥Join+Telegram:@Farah_VPN🟣": {
+    "runs": 31,
+    "tcp_successes": 62,
+    "tcp_failures": 0,
+    "real_successes": 0,
+    "real_failures": 93,
+    "last_ping": null,
+    "best_ping": null,
+    "last_seen": 1790771035
+  },
+  "vless://818a98bf-e7d0-45d5-800b-24d4058234c6@104.16.40.145:80?encryption=none&security=none&type=ws&host=still-smoke-881e-ppal03.cabit21569.workers.dev&path=/?ed=2560#🤖Ch:": {
+    "runs": 22,
+    "tcp_successes": 44,
+    "tcp_failures": 0,
+    "real_successes": 0,
+    "real_failures": 66,
+    "last_ping": null,
+    "best_ping": null,
+    "last_seen": 1790771035
+  },
+  "vless://eeb6823c-b926-4ea2-866a-5542edd26e59@45.130.125.158:443?encryption=none&security=tls&sni=t1s1.rittbo.kdns.fr&fp=chrome&alpn=h3,h2,http/1.1&insecure=0&allowInsecure=0&type=ws&host=t1s1.rittbo.kdns.fr&path=/?TELEGRAM-MARAMBASHI_MARAMBASHI_MARAMBASHI_MARAMBASHI_MARAMBASHI?ed=512#🔥Join+Telegram:@Farah_VPN🟣": {
+    "runs": 1,
+    "tcp_successes": 2,
+    "tcp_failures": 0,
+    "real_successes": 0,
+    "real_failures": 3,
+    "last_ping": null,
+    "best_ping": null,
+    "last_seen": 1790771035
+  },
+  "vless://47fcef29-ab4e-4aa6-932b-d95a18f28a4e@162.159.24.131:8880?host=8nj2r.2k8t.f88.hh.vavava.kdns.fr&path=%2F%3Fed%3D2560security%3Dtls&security=none&type=ws#vless-931998986": {
+    "runs": 3,
+    "tcp_successes": 6,
+    "tcp_failures": 0,
+    "real_successes": 9,
+    "real_failures": 0,
+    "last_ping": 76.2,
+    "best_ping": 76.2,
+    "last_seen": 1790771033
+  },
+  "vless://429efff7-16bd-499e-85a5-a6f4b89c2773@172.67.139.85:80?security=none&encryption=none&type=ws&host=cxrolvpn.vipserver2.workers.dev&path=/AWGG17eLHc5QLzJr?ed=2560#EPODONIOS": {
+    "runs": 2,
+    "tcp_successes": 4,
+    "tcp_failures": 0,
+    "real_successes": 0,
+    "real_failures": 6,
+    "last_ping": null,
+    "best_ping": null,
+    "last_seen": 1790771031
+  },
+  "vless://b09dfed1-90fa-4353-8bdf-de1edb2e2d79@91.209.253.119:443?path=/proxyip=us.xiabibi.cf&security=tls&encryption=none&insecure=0&host=nb.lovecf.ggff.net&fp=chrome&type=ws&allowInsecure=0&sni=nb.lovecf.ggff.net#@Shh_Proxy-New⁶": {
+    "runs": 6,
+    "tcp_successes": 12,
+    "tcp_failures": 0,
+    "real_successes": 3,
+    "real_failures": 15,
+    "last_ping": 208.6,
+    "best_ping": 208.6,
+    "last_seen": 1790771031
+  },
+  "vless://7ab29f89-6eef-4171-b232-fc4f580ad31b@172.235.43.210:53957?flow=xtls-rprx-vision&fp=qq&pbk=XUHlbk5VH5z4E2wxZBhlpLZ33qevyQgqU7dheRDgoGQ&security=reality&sid=44e82fd7b97b14&sni=www.nvidia.com&type=tcp#vless-1014987717": {
+    "runs": 1,
+    "tcp_successes": 2,
+    "tcp_failures": 0,
+    "real_successes": 3,
+    "real_failures": 0,
+    "last_ping": 62.2,
+    "best_ping": 62.2,
+    "last_seen": 1790771031
+  },
+  "vless://47fcef29-ab4e-4aa6-932b-d95a18f28a4e@162.159.0.53:80?host=8nj2r.2k8t.f88.hh.vavava.kdns.fr&path=%2F%3Fed%3D2560security%3Dtls&security=none&sni=8nj2r.2k8t.f88.hh.vavava.kdns.fr&type=ws#vless-897227775": {
+    "runs": 1,
+    "tcp_successes": 2,
+    "tcp_failures": 0,
+    "real_successes": 3,
+    "real_failures": 0,
+    "last_ping": 73.2,
+    "best_ping": 73.2,
+    "last_seen": 1790771031
+  },
+  "vless://47fcef29-ab4e-4aa6-932b-d95a18f28a4e@172.64.158.146:2095?host=8nj2r.2k8t.f88.hh.vavava.kdns.fr&path=%2F%3Fed%3D2560security%3Dtls+&security=none&type=ws#vless-1102327181": {
+    "runs": 3,
+    "tcp_successes": 6,
+    "tcp_failures": 0,
+    "real_successes": 9,
+    "real_failures": 0,
+    "last_ping": 73.4,
+    "best_ping": 42.0,
+    "last_seen": 1790771030
+  },
+  "vless://47fcef29-ab4e-4aa6-932b-d95a18f28a4e@172.64.158.146:2082?fp=chrome&host=8nj2r.2k8t.f88.hh.vavava.kdns.fr&path=%2F%3Fed%3D2560security%3Dtls+&security=false&type=ws#vless-1063790009": {
+    "runs": 1,
+    "tcp_successes": 2,
+    "tcp_failures": 0,
+    "real_successes": 3,
+    "real_failures": 0,
+    "last_ping": 72.2,
+    "best_ping": 72.2,
+    "last_seen": 1790771030
+  },
+  "vless://47fcef29-ab4e-4aa6-932b-d95a18f28a4e@104.18.46.234:8080?host=8nj2r.2k8t.f88.hh.vavava.kdns.fr&path=%2F%3Fed%3D2560security%3Dtls&security=none&type=ws#vless-928812950": {
+    "runs": 1,
+    "tcp_successes": 2,
+    "tcp_failures": 0,
+    "real_successes": 3,
+    "real_failures": 0,
+    "last_ping": 76.4,
+    "best_ping": 76.4,
+    "last_seen": 1790771030
+  },
+  "vless://50414e45-4c5f-5a45-5553-48493148ec15@104.21.98.146:8443?encryption=none&fp=ios&host=cgzdynepurqs.mercury061.workers.dev&path=/stream/PANEL_ZEUS/48493148ec15&security=tls&sni=cgzdynepurqs.mercury061.workers.dev&type=ws#CA": {
+    "runs": 1,
+    "tcp_successes": 2,
+    "tcp_failures": 0,
+    "real_successes": 0,
+    "real_failures": 3,
+    "last_ping": null,
+    "best_ping": null,
+    "last_seen": 1790771030
+  },
+  "vless://47fcef29-ab4e-4aa6-932b-d95a18f28a4e@172.64.42.85:8080?fp=chrome&host=8nj2r.2k8t.f88.hh.vavava.kdns.fr&path=%2F%3Fed%3D2560security%3Dtls&security=false&type=ws#vless-957016109": {
+    "runs": 1,
+    "tcp_successes": 2,
+    "tcp_failures": 0,
+    "real_successes": 3,
+    "real_failures": 0,
+    "last_ping": 77.0,
+    "best_ping": 77.0,
+    "last_seen": 1790771029
+  },
+  "vless://83afd88f-200f-4d89-bfc7-66eff160c1d8@104.18.37.228:443?path=/?TELEGRAM-leviconfigs?ed=2560&security=tls&encryption=none&insecure=0&host=josni.hoyes.cloudns.ch&ech=ip.gs+udp://8.8.8.8&type=ws&allowInsecure=0&sni=josni.hoyes.cloudns.ch#🔥Join+Telegram:@Farah_VPN🟣": {
+    "runs": 1,
+    "tcp_successes": 2,
+    "tcp_failures": 0,
+    "real_successes": 0,
+    "real_failures": 3,
+    "last_ping": null,
+    "best_ping": null,
+    "last_seen": 1790771028
+  },
+  "vless://47fcef29-ab4e-4aa6-932b-d95a18f28a4e@172.64.229.170:2082?host=8nj2r.2k8t.f88.hh.vavava.kdns.fr&security=none&type=ws#vless-1015476557": {
+    "runs": 1,
+    "tcp_successes": 2,
+    "tcp_failures": 0,
+    "real_successes": 3,
+    "real_failures": 0,
+    "last_ping": 75.4,
+    "best_ping": 75.4,
+    "last_seen": 1790771027
+  },
+  "vless://47fcef29-ab4e-4aa6-932b-d95a18f28a4e@162.159.43.187:8880?fp=unsafe&host=8nj2r.2k8t.f88.hh.vavava.kdns.fr&path=%2F%3Fed%3D2560security%3Dtls&security=none&type=ws#vless-953057543": {
+    "runs": 1,
+    "tcp_successes": 2,
+    "tcp_failures": 0,
+    "real_successes": 3,
+    "real_failures": 0,
+    "last_ping": 72.3,
+    "best_ping": 72.3,
+    "last_seen": 1790771026
+  },
+  "trojan://f18d6149-e214-8554-e737-f7523c8b2eea@89.116.180.49:443?sni=0403.infinityconfig4.workers.dev&type=ws&path=%2Fsync&fp=chrome#UA": {
+    "runs": 6,
+    "tcp_successes": 12,
+    "tcp_failures": 0,
+    "real_successes": 0,
+    "real_failures": 18,
+    "last_ping": null,
+    "best_ping": null,
+    "last_seen": 1790771024
+  },
+  "vless://47fcef29-ab4e-4aa6-932b-d95a18f28a4e@172.64.42.85:2082?host=8nj2r.2k8t.f88.hh.vavava.kdns.fr&path=%2F%3Fed%3D2560security%3Dtls+&security=none&type=ws#vless-1096528459": {
+    "runs": 1,
+    "tcp_successes": 2,
+    "tcp_failures": 0,
+    "real_successes": 3,
+    "real_failures": 0,
+    "last_ping": 72.9,
+    "best_ping": 72.9,
+    "last_seen": 1790771024
+  },
+  "vless://47fcef29-ab4e-4aa6-932b-d95a18f28a4e@104.18.46.46:8880?host=8nj2r.2k8t.f88.hh.vavava.kdns.fr&path=%2F%3Fed%3D2560security%3Dtls&security=none&sni=8nj2r.2k8t.f88.hh.vavava.kdns.fr&type=ws#vless-897225003": {
+    "runs": 2,
+    "tcp_successes": 4,
+    "tcp_failures": 0,
+    "real_successes": 6,
+    "real_failures": 0,
+    "last_ping": 77.8,
+    "best_ping": 74.7,
+    "last_seen": 1790771023
+  },
+  "ss://YWVzLTEyOC1nY206NjJkZDc1YmE5NDQ5NDdkNGNhOTgzY2YxNjc5YjM3OTc@173.234.25.90:15240#shadowsocks-1577646737": {
+    "runs": 1,
+    "tcp_successes": 2,
+    "tcp_failures": 0,
+    "real_successes": 3,
+    "real_failures": 0,
+    "last_ping": 44.6,
+    "best_ping": 44.6,
+    "last_seen": 1790771020
+  },
+  "trojan://humanity@45.130.125.112:443?path=/assignment&security=tls&insecure=0&fp=chrome&type=ws&allowInsecure=0&sni=www.calmlunch.com#@V2rayng3": {
+    "runs": 28,
+    "tcp_successes": 56,
+    "tcp_failures": 0,
+    "real_successes": 0,
+    "real_failures": 84,
+    "last_ping": null,
+    "best_ping": null,
+    "last_seen": 1790771019
+  },
+  "vless://AlfredConfig@45.130.125.66:443?path=/?ed=2048&security=tls&alpn=http/1.1&encryption=none&insecure=0&host=alfi.yas-nowin.ir&fp=chrome&type=ws&allowInsecure=0&sni=alfi.yas-nowin.ir#🔥Join+Telegram:@Farah_VPN🟣": {
+    "runs": 33,
+    "tcp_successes": 66,
+    "tcp_failures": 0,
+    "real_successes": 0,
+    "real_failures": 99,
+    "last_ping": null,
+    "best_ping": null,
+    "last_seen": 1790771016
+  },
+  "vless://47fcef29-ab4e-4aa6-932b-d95a18f28a4e@162.159.24.131:2052?host=8nj2r.2k8t.f88.hh.vavava.kdns.fr&path=%2F%3Fed%3D2560security%3Dtls&security=none&type=ws#vless-923326708": {
+    "runs": 1,
+    "tcp_successes": 2,
+    "tcp_failures": 0,
+    "real_successes": 3,
+    "real_failures": 0,
+    "last_ping": 77.0,
+    "best_ping": 77.0,
+    "last_seen": 1790771015
+  },
+  "vless://50414e45-4c5f-5a45-5553-092a32c4d246@86.38.214.253:443?path=%2Fstream%2FPANEL_ZEUS%2F092a32c4d246%2Floc-0&security=tls&encryption=none&host=5gz01aehupas.6qzsufeduzts.workers.dev&type=ws&insecure=0&fp=unsafe&allowInsecure=0&sni=5gz01aehupas.6qzsufeduzts.workers.dev#🔥Join+Telegram:@Farah_VPN🟣": {
+    "runs": 1,
+    "tcp_successes": 2,
+    "tcp_failures": 0,
+    "real_successes": 0,
+    "real_failures": 3,
+    "last_ping": null,
+    "best_ping": null,
+    "last_seen": 1790771015
+  },
+  "vless://47fcef29-ab4e-4aa6-932b-d95a18f28a4e@104.18.47.113:8880?fp=unsafe&host=8nj2r.2k8t.f88.hh.vavava.kdns.fr&path=%2F%3Fed%3D2560security%3Dtls&security=none&type=ws#vless-953043715": {
+    "runs": 1,
+    "tcp_successes": 2,
+    "tcp_failures": 0,
+    "real_successes": 3,
+    "real_failures": 0,
+    "last_ping": 76.1,
+    "best_ping": 76.1,
+    "last_seen": 1790771013
+  },
+  "vless://e0454af2-6fe9-4983-a55d-05e1da202602@199.232.78.159:443?path=/&security=tls&encryption=none&insecure=0&host=towndtime.global.ssl.fastly.neT.&type=ws&allowInsecure=0&sni=ssl.fastly.com#EPODONIOS": {
+    "runs": 7,
+    "tcp_successes": 14,
+    "tcp_failures": 0,
+    "real_successes": 0,
+    "real_failures": 21,
+    "last_ping": null,
+    "best_ping": null,
+    "last_seen": 1790771012
+  },
+  "vless://7fea28c6-f9b0-45ce-b7c2-ed3a3991d1e8@104.16.52.89:80?encryption=none&security=none&type=ws&host=curly-waterfall-509e-ppal03.wimiba9167.workers.dev&path=/?ed=2560#😛Ch:": {
+    "runs": 27,
+    "tcp_successes": 54,
+    "tcp_failures": 0,
+    "real_successes": 0,
+    "real_failures": 81,
+    "last_ping": null,
+    "best_ping": null,
+    "last_seen": 1790771011
+  },
+  "vless://9e9fd625-e4d7-4944-ae7e-4145342fa5db@199.232.78.159:443?encryption=none&security=tls&sni=ssl.fastly.com&type=ws&host=pan2e.global.ssl.fastly.net&path=/#Telegram:": {
+    "runs": 1,
+    "tcp_successes": 2,
+    "tcp_failures": 0,
+    "real_successes": 0,
+    "real_failures": 3,
+    "last_ping": null,
+    "best_ping": null,
+    "last_seen": 1790771011
+  },
+  "vless://XpnTeam-28@199.232.78.160:443?path=/&security=tls&alpn=http/1.1&encryption=none&host=Appxdn.global.ssl.fastly.net&fp=chrome&type=ws&sni=ssl.fastly.com#🔥Join+Telegram:@Farah_VPN🟣": {
+    "runs": 1,
+    "tcp_successes": 2,
+    "tcp_failures": 0,
+    "real_successes": 0,
+    "real_failures": 3,
+    "last_ping": null,
+    "best_ping": null,
+    "last_seen": 1790771011
+  },
+  "vless://47fcef29-ab4e-4aa6-932b-d95a18f28a4e@162.159.24.131:2086?host=8nj2r.2k8t.f88.hh.vavava.kdns.fr&path=%2F%3Fed%3D2560security%3Dtls+&security=none&type=ws#vless-951696918": {
+    "runs": 1,
+    "tcp_successes": 2,
+    "tcp_failures": 0,
+    "real_successes": 3,
+    "real_failures": 0,
+    "last_ping": 79.9,
+    "best_ping": 79.9,
+    "last_seen": 1790771010
+  },
+  "vless://726c7800-a083-4b83-b9cf-9a9872ea1fcb@185.146.173.58:8080?type=ws&path=/telegram-%40Sobi_Vpn%2Ctelegram-%40Sobi_Vpn%2Ctelegram-%40Sobi_Vpn%2Ctelegram-%40Sobi_Vpn%2Ctelegram-%40Sobi_Vpn%2Ctelegram-%40Sobi_Vpn%2Ctelegram-%40Sobi_Vpn%2Ctelegram-%40Sobi_Vpn%2Ctelegram-%40Sobi_Vpn%2Ctelegram-%40Sobi_Vpn%2Ctelegram-%40Sobi_Vpn%2Ctelegram-%40Sobi_Vpn%2Ctelegram-%40Sobi_Vpn%2Ctelegram-%40Sobi_Vpn%2Ctelegram-%40Sobi_Vpn%2Ctelegram-%40Sobi_Vpn%2Ctelegram-%40Sobi_Vpn%2Ctelegram-%40Sobi_Vpn%3Fed%3D2048&host=Kanal-polproxy.Vipnufilter.Online.&security=none#%F0%9F%87%B8%F0%9F%87%AA%20SE%20%7C%20VLESS%20%7C%20%40free_vip3%20%236%20%5Bfast%5D": {
+    "runs": 19,
+    "tcp_successes": 38,
+    "tcp_failures": 0,
+    "real_successes": 0,
+    "real_failures": 57,
+    "last_ping": null,
+    "best_ping": null,
+    "last_seen": 1790771009
+  },
+  "ss://cmM0LW1kNToxNGZGUHJiZXpFM0hEWnpzTU9yNg@107.151.182.197:8080#shadowsocks-468218514": {
+    "runs": 9,
+    "successes": 3,
+    "failures": 0,
+    "real_successes": 0,
+    "real_attempts": 0,
+    "last_ping": 49.5,
+    "tcp_successes": 16,
+    "tcp_failures": 0,
+    "real_failures": 24,
+    "best_ping": null,
+    "last_seen": 1790771009
+  },
+  "vless://e2a4dbed-1353-44ac-b4ff-51dcfdc58dcf@199.232.78.159:443?security=tls&encryption=none&insecure=0&host=pannn1.global.ssl.fastly.net&type=ws&allowInsecure=0&sni=ssl.fastly.com#@meliproxyy": {
+    "runs": 1,
+    "tcp_successes": 2,
+    "tcp_failures": 0,
+    "real_successes": 0,
+    "real_failures": 3,
+    "last_ping": null,
+    "best_ping": null,
+    "last_seen": 1790771009
+  },
+  "vless://7ab29f89-6eef-4171-b232-fc4f580ad31b@172.235.43.210:53957?flow=xtls-rprx-vision&fp=firefox&pbk=XUHlbk5VH5z4E2wxZBhlpLZ33qevyQgqU7dheRDgoGQ&security=reality&sid=44e82fd7b97b14&sni=www.nvidia.com&type=tcp#vless-1009380181": {
+    "runs": 1,
+    "tcp_successes": 2,
+    "tcp_failures": 0,
+    "real_successes": 3,
+    "real_failures": 0,
+    "last_ping": 62.1,
+    "best_ping": 62.1,
+    "last_seen": 1790771009
+  },
+  "vless://XpnTeam-38@199.232.78.160:443?path=/&security=tls&alpn=http/1.1&encryption=none&insecure=0&host=Appxdn.global.ssl.fastly.net&fp=chrome&type=ws&allowInsecure=0&sni=ssl.fastly.com#@mehrosaboran": {
+    "runs": 2,
+    "tcp_successes": 4,
+    "tcp_failures": 0,
+    "real_successes": 0,
+    "real_failures": 6,
+    "last_ping": null,
+    "best_ping": null,
+    "last_seen": 1790771008
+  },
+  "vless://965fef48-24c7-4727-b51e-6d3b2b8873c8@45.130.125.158:443?mode=auto&path=/&security=tls&alpn=h3,h2,http/1.1&encryption=none&insecure=0&host=mahsa97.manhamunamkeyeruz.ir&fp=chrome&type=xhttp&allowInsecure=0&sni=mahsa97.manhamunamkeyeruz.ir#TEL;Father_vpn": {
+    "runs": 36,
+    "tcp_successes": 72,
+    "tcp_failures": 0,
+    "real_successes": 0,
+    "real_failures": 108,
+    "last_ping": null,
+    "best_ping": null,
+    "last_seen": 1790771008
+  },
+  "vless://telegram-id-ArV2ray@185.146.173.237:80?path=/telegram-ArV2ray,telegram-ArV2ray,telegram-ArV2ray,telegram-ArV2ray,telegram-ArV2ray,telegram-ArV2ray,telegram-ArV2ray,telegram-ArV2ray,telegram-ArV2ray,telegram-ArV2ray,telegram-ArV2ray,telegram-ArV2ray?ed=2048&security=none&encryption=none&host=3.V.v.V.v.V.v.V-_-_-V2ray-_-_-V.v.V.v.arV2ray.Host.&type=ws#🔥Join+Telegram:@Farah_VPN🟣": {
+    "runs": 2,
+    "tcp_successes": 4,
+    "tcp_failures": 0,
+    "real_successes": 0,
+    "real_failures": 6,
+    "last_ping": null,
+    "best_ping": null,
+    "last_seen": 1790771008
+  },
+  "vless://64c2bc5c-7534-4359-9b1e-e1dce5a380cd@151.101.56.6:443?path=/?TELEGRAM--MARAMBASHI--MARAMBASHI?ed=512&security=tls&alpn=h2&encryption=none&insecure=0&host=c12.com&fp=chrome&type=ws&allowInsecure=0&sni=ssl.fastly.com#@MARAMBASHI": {
+    "runs": 1,
+    "tcp_successes": 2,
+    "tcp_failures": 0,
+    "real_successes": 0,
+    "real_failures": 3,
+    "last_ping": null,
+    "best_ping": null,
+    "last_seen": 1790771008
+  },
+  "vless://4aadbce0-ce45-411a-a888-14cf02908168@199.232.78.159:443?path=/&security=tls&encryption=none&insecure=0&host=pokerrr.global.ssl.fastly.net&type=ws&allowInsecure=0&sni=ssl.fastly.com#EPODONIOS": {
+    "runs": 1,
+    "tcp_successes": 2,
+    "tcp_failures": 0,
+    "real_successes": 0,
+    "real_failures": 3,
+    "last_ping": null,
+    "best_ping": null,
+    "last_seen": 1790771008
+  },
+  "vless://817be056-2afc-4358-9b8d-5dbe836251f3@66.42.97.171:443?flow=xtls-rprx-vision&fp=chrome&pbk=hTweFDvbSucrGERtiiwDfoqD3vo_Z9cuaqboff3FTXQ&security=reality&sni=googleapis.com&type=tcp#vless-1588272367": {
+    "runs": 1,
+    "tcp_successes": 2,
+    "tcp_failures": 0,
+    "real_successes": 3,
+    "real_failures": 0,
+    "last_ping": 60.9,
+    "best_ping": 60.9,
+    "last_seen": 1790771008
+  },
+  "trojan://OnHLrkVqZVtZyulTwC4bHrIbW7GyUDttKVNGEYVR12Y%3D@192.236.151.43:443?allowInsecure=1&sni=192.236.151.43&type=tcp#trojan-1552294939": {
+    "runs": 1,
+    "tcp_successes": 2,
+    "tcp_failures": 0,
+    "real_successes": 3,
+    "real_failures": 0,
+    "last_ping": 66.1,
+    "best_ping": 66.1,
+    "last_seen": 1790771007
+  },
+  "ss://YWVzLTEyOC1nY206MTY4MzU1MWVhZTRlZWFiYTVkYjgwN2VhMjZlYjEyMDQ@103.214.108.219:17521#shadowsocks-1583447795": {
+    "runs": 1,
+    "tcp_successes": 2,
+    "tcp_failures": 0,
+    "real_successes": 3,
+    "real_failures": 0,
+    "last_ping": 46.0,
+    "best_ping": 46.0,
+    "last_seen": 1790771006
+  },
+  "vless://940fcf3f-50da-469f-b67a-72de953343e2@199.232.78.159:443?path=/&security=tls&encryption=none&insecure=0&host=ukvman.global.ssl.fastly.net&type=ws&allowInsecure=0&sni=ssl.fastly.com#@FarazV2ray": {
+    "runs": 1,
+    "tcp_successes": 2,
+    "tcp_failures": 0,
+    "real_successes": 0,
+    "real_failures": 3,
+    "last_ping": null,
+    "best_ping": null,
+    "last_seen": 1790771005
+  },
+  "trojan://mitivpn@167.82.76.7:443?path=/---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN/NLSs---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN&security=tls&alpn=http/1.1&insecure=0&host=mitivpn---us--s---mitivpn-11.global.ssl.fastly.net&fp=chrome&type=ws&allowInsecure=0&sni=ssl.fastly.com#hamedp71%3A%3A%F0%9F%87%AB%F0%9F%87%B7": {
+    "runs": 1,
+    "tcp_successes": 2,
+    "tcp_failures": 0,
+    "real_successes": 3,
+    "real_failures": 0,
+    "last_ping": 108.1,
+    "best_ping": 108.1,
+    "last_seen": 1790771004
+  },
+  "vless://9e9fd625-e4d7-4944-ae7e-4145342fa5db@199.232.78.159:443?path=/?&security=tls&encryption=none&insecure=0&host=pan2e.global.ssl.fastly.net&type=ws&allowInsecure=0&sni=ssl.fastly.com#🇮🇹⇝": {
+    "runs": 4,
+    "tcp_successes": 8,
+    "tcp_failures": 0,
+    "real_successes": 0,
+    "real_failures": 12,
+    "last_ping": null,
+    "best_ping": null,
+    "last_seen": 1790771003
+  },
+  "trojan://mitivpn@167.82.76.7:443?security=tls&alpn=http/1.1&insecure=0&host=mitivpn---ss--s---mitivpn-33e.global.ssl.fastly.net&fp=chrome&type=ws&allowInsecure=0&sni=ssl.fastly.com#EPODONIOS": {
+    "runs": 3,
+    "tcp_successes": 6,
+    "tcp_failures": 0,
+    "real_successes": 0,
+    "real_failures": 9,
+    "last_ping": null,
+    "best_ping": null,
+    "last_seen": 1790771003
+  },
+  "vless://a602c758-0ddf-4f8e-b58b-4997b691d952@167.82.76.31:443?mode=packet-up&path=/&security=tls&alpn=h2,http/1.1&encryption=none&insecure=0&host=chchibie98ik.global.ssl.fastly.net&fp=chrome&type=xhttp&allowInsecure=0&sni=global.fastly.com#🔥Join+Telegram:@Farah_VPN🟣": {
+    "runs": 1,
+    "tcp_successes": 2,
+    "tcp_failures": 0,
+    "real_successes": 0,
+    "real_failures": 3,
+    "last_ping": null,
+    "best_ping": null,
+    "last_seen": 1790771003
+  },
+  "trojan://MiTiVPN@151.101.56.255:443?security=tls&sni=ssl.fastly.com&fp=chrome&alpn=http/1.1&type=ws&host=mitivpn---nl--s---mitivpn-2.global.ssl.fastly.net&path=/#🔥Join+Telegram:@Farah_VPN🟣": {
+    "runs": 1,
+    "tcp_successes": 2,
+    "tcp_failures": 0,
+    "real_successes": 0,
+    "real_failures": 3,
+    "last_ping": null,
+    "best_ping": null,
+    "last_seen": 1790771001
+  },
+  "vless://turboo-server@199.232.237.79:443?pcs=cd6e838b9bfe31cab8b3d5c858b0d6223fe84ece236c1fdb281be93c302e1e6e&path=/&security=tls&alpn=h3,h2,http/1.1&encryption=none&insecure=0&host=turboo-server-telegram.com&fp=chrome&type=ws&allowInsecure=0&sni=turboo-server-telegram.com#EPODONIOS": {
+    "runs": 3,
+    "tcp_successes": 6,
+    "tcp_failures": 0,
+    "real_successes": 0,
+    "real_failures": 9,
+    "last_ping": null,
+    "best_ping": null,
+    "last_seen": 1790771000
+  },
+  "vless://e70e3d9e-89e1-4fc6-bd58-e562e038df11@199.232.78.160:443?mode=auto&path=/@UonVPN-/-/--@UonVPN---*-*----@UonVPN--*--*---*-@UonVPN-----------@UonVPN=+&security=tls&encryption=mlkem768x25519plus.native.0rtt.WijFgu6wZjd77pTGsqP67kJIPW1ZH5JYmJx9EI_nyRU&extra={": {
+    "runs": 1,
+    "tcp_successes": 2,
+    "tcp_failures": 0,
+    "real_successes": 0,
+    "real_failures": 3,
+    "last_ping": null,
+    "best_ping": null,
+    "last_seen": 1790771000
+  },
+  "vless://80a3739d-bb54-42ec-8a7e-158d3c64f880@199.232.79.166:443?mode=auto&path=/@UonVPN-/-@UonVPN-*-@UonVPN--*-@UonVPN--**-@UonVPN---@UonVPN---@UonVPN---@UonVPN---@UonVPN---@UonVPN---@UonVPN---@UonVPN---@UonVPN---@UonVPN---@UonVPN-*--@UonVPN&security=tls&encryption=mlkem768x25519plus.native.0rtt.EvqGmJhHfNsRhxENFhkBpY3TDQZfpIeaet93vsXSaUU&extra={": {
+    "runs": 1,
+    "tcp_successes": 2,
+    "tcp_failures": 0,
+    "real_successes": 0,
+    "real_failures": 3,
+    "last_ping": null,
+    "best_ping": null,
+    "last_seen": 1790770999
+  },
+  "trojan://MiTIVPN@151.101.56.7:443?path=/---@Tarkshodeh---@Tarkshodeh/---@Tarkshodeh---@Tarkshodeh/---@Tarkshodeh---@Tarkshodeh/D-e2@Tarkshodeh---@Tarkshodeh/---@Tarkshodeh---@Tarkshodeh/---@Tarkshodeh---@Tarkshodeh&security=tls&alpn=http/1.1&insecure=0&host=mitivpn---ss--s---mitivpn-22e.global.ssl.fastly.net&fp=chrome&type=ws&allowInsecure=0&sni=ssl.fastly.com#🔥Join+Telegram:@Farah_VPN🟣": {
+    "runs": 1,
+    "tcp_successes": 2,
+    "tcp_failures": 0,
+    "real_successes": 0,
+    "real_failures": 3,
+    "last_ping": null,
+    "best_ping": null,
+    "last_seen": 1790770998
+  },
+  "vless://e2a4dbed-1353-44ac-b4ff-51dcfdc58dcf@199.232.78.159:443?security=tls&encryption=none&insecure=0&host=pannn1.global.ssl.fastly.net&type=ws&allowInsecure=0&sni=ssl.fastly.com#✨": {
+    "runs": 1,
+    "tcp_successes": 2,
+    "tcp_failures": 0,
+    "real_successes": 0,
+    "real_failures": 3,
+    "last_ping": null,
+    "best_ping": null,
+    "last_seen": 1790770997
+  },
+  "trojan://mitivpn@199.232.78.160:443?path=/---@Tarkshodeh---@Tarkshodeh/---@Tarkshodeh---@Tarkshodeh/---@Tarkshodeh---@Tarkshodeh/D-e2@Tarkshodeh---@Tarkshodeh/---@Tarkshodeh---@Tarkshodeh/---@Tarkshodeh---@Tarkshodeh&security=tls&alpn=http/1.1&insecure=0&host=mitivpn---ss--s---mitivpn-55e.global.ssl.fastly.net&fp=chrome&type=ws&allowInsecure=0&sni=ssl.fastly.com#🔥Join+Telegram:@Farah_VPN🟣": {
+    "runs": 1,
+    "tcp_successes": 2,
+    "tcp_failures": 0,
+    "real_successes": 0,
+    "real_failures": 3,
+    "last_ping": null,
+    "best_ping": null,
+    "last_seen": 1790770997
+  },
+  "vless://e0454af2-6fe9-4983-a55d-05e1da202602@199.232.78.159:443?path=/?TELEGRAM-leviconfigs?ed=512&security=tls&encryption=none&insecure=0&host=lsjaoijji.global.ssl.fastly.neT.&fp=chrome&type=ws&allowInsecure=0&sni=ssl.fastly.com#EPODONIOS": {
+    "runs": 2,
+    "tcp_successes": 4,
+    "tcp_failures": 0,
+    "real_successes": 0,
+    "real_failures": 6,
+    "last_ping": null,
+    "best_ping": null,
+    "last_seen": 1790770994
+  },
+  "vless://4e91a32c-fc93-42af-ae39-fc28171f9e06@199.232.78.159:443?path=/&security=tls&encryption=none&insecure=0&host=pokerrr.global.ssl.fastly.net.&type=ws&allowInsecure=0&sni=ssl.fastly.com#@VEGAAS_VPN": {
+    "runs": 1,
+    "tcp_successes": 2,
+    "tcp_failures": 0,
+    "real_successes": 0,
+    "real_failures": 3,
+    "last_ping": null,
+    "best_ping": null,
+    "last_seen": 1790770994
+  },
+  "trojan://MITIVpN@199.232.78.160:443?path=/---@MetiVIP---@MetiVIP/---@MetiVIP---@MetiVIP/---@MetiVIP---@MetiVIP/des---@MetiVIP---@MetiVIP/---@MetiVIP---@MetiVIP/---@MetiVIP---@MetiVIP&security=tls&alpn=http/1.1&insecure=0&host=mitivpn---ss--s---mitivpn-55e.global.ssl.fastly.net&fp=chrome&type=ws&allowInsecure=0&sni=ssl.fastly.com#EPODONIOS": {
+    "runs": 1,
+    "tcp_successes": 2,
+    "tcp_failures": 0,
+    "real_successes": 0,
+    "real_failures": 3,
+    "last_ping": null,
+    "best_ping": null,
+    "last_seen": 1790770992
+  },
+  "trojan://mitivpn@151.101.56.7:443?path=@bored_vpn&security=tls&alpn=http/1.1&host=mitivpn---de--s---mitivpn-11.global.ssl.fastly.net&fp=chrome&type=ws&sni=ssl.fastly.com#EPODONIOS": {
+    "runs": 1,
+    "tcp_successes": 2,
+    "tcp_failures": 0,
+    "real_successes": 0,
+    "real_failures": 3,
+    "last_ping": null,
+    "best_ping": null,
+    "last_seen": 1790770989
+  },
+  "trojan://mitivpn@199.232.78.188:443?path=/?Telegram---PLANB_NET---PLANB_NET---PLANB_NET---PLANB_NET&security=tls&alpn=http/1.1&insecure=0&host=mitivpn---gb--s---mitivpn-1.global.ssl.fastly.net&fp=chrome&type=ws&allowInsecure=0&sni=ssl.fastly.com#🔥Join+Telegram:@Farah_VPN🟣": {
+    "runs": 1,
+    "tcp_successes": 2,
+    "tcp_failures": 0,
+    "real_successes": 3,
+    "real_failures": 0,
+    "last_ping": 98.3,
+    "best_ping": 98.3,
+    "last_seen": 1790770989
+  },
+  "vless://6def81ac-a46f-4490-a81a-eaaa6b257b1c@151.101.129.194:443?encryption=none&security=tls&sni=2divar-web-site.global.ssl.fastly.net&alpn=http/1.1&fp=chrome&type=xhttp&mode=auto&host=2divar-web-site.global.ssl.fastly.net&path=/#🔥Join+Telegram:@Farah_VPN🟣": {
+    "runs": 1,
+    "tcp_successes": 2,
+    "tcp_failures": 0,
+    "real_successes": 0,
+    "real_failures": 3,
+    "last_ping": null,
+    "best_ping": null,
+    "last_seen": 1790770989
+  },
+  "trojan://MiTiVPN@151.101.56.255:443?path=/?Telegram---PLANB_NET---PLANB_NET---PLANB_NET---PLANB_NET&security=tls&alpn=http/1.1&insecure=0&host=mitivpn---nl--s---mitivpn-2.global.ssl.fastly.net&fp=chrome&type=ws&allowInsecure=0&sni=ssl.fastly.com#🔥Join+Telegram:@Farah_VPN🟣": {
+    "runs": 1,
+    "tcp_successes": 2,
+    "tcp_failures": 0,
+    "real_successes": 0,
+    "real_failures": 3,
+    "last_ping": null,
+    "best_ping": null,
+    "last_seen": 1790770989
+  },
+  "vless://XpnTeam-19@199.232.78.170:443?path=/&security=tls&alpn=http/1.1&encryption=none&host=Appxdn.global.ssl.fastly.net&fp=chrome&type=ws&sni=ssl.fastly.com#🔥Join+Telegram:@Farah_VPN🟣": {
+    "runs": 1,
+    "tcp_successes": 2,
+    "tcp_failures": 0,
+    "real_successes": 0,
+    "real_failures": 3,
+    "last_ping": null,
+    "best_ping": null,
+    "last_seen": 1790770988
+  },
+  "vless://ac3ef9c7-5732-4726-e7c6-3c73703987c7@151.101.56.6:443?path=/?TELEGRAM--BYA--CHANEL---@JKVPN---@JKVPN---@JKVPN---@JKVPN---@JKVPN---@JKVPN---@JKVPN---@JKVPN---@JKVPN---@JKVPN---@JKVPN---@JKVPN---@JKVPN---@JKVPN---@JKVPN---@JKVPN---@JKVPN---@JKVPN---@JKVPN---@JKVPN---@JKVPN---@JKVPN---@JKVPN---@JKVPN---@JKVPN---@JKVPN---@JKVPN---@JKVPN---@JKVPN---@JKVPN---@JKVPN---@JKVPN---@JKVPN---@JKVPN---@JKVPN---@JKVPN---@JKVPN---@JKVPN---@JKVPN---@JKVPN---@JKVPN---@JKVPN---@JKVPN---@JKVPN---@JKVPN---@JKVPN---@JKVPN---@JKVPN---@JKVPN---@JKVPN---@JKVPN---@JKVPN---@JKVPN---@JKVPN---@JKVPN---@JKVPN---@JKVPN---@JKVPN---@JKVPN---@JKVPN---@JKVPN---@JKVPN---@JKVPN---@JKVPN---@JKVPN---@JKVPN--@JKVPN---@JKVPN---@JKVPN---@JKVPN&security=tls&alpn=h2&encryption=none&insecure=0&host=c12.com&fp=chrome&type=ws&allowInsecure=0&sni=ssl.fastly.com#🔥Join+Telegram:@Farah_VPN🟣": {
+    "runs": 1,
+    "tcp_successes": 2,
+    "tcp_failures": 0,
+    "real_successes": 0,
+    "real_failures": 3,
+    "last_ping": null,
+    "best_ping": null,
+    "last_seen": 1790770983
+  },
+  "vless://c333e2e7-9832-482d-bfc2-ec1f88ec3130@151.101.213.199:443?mode=auto&path=/?@MARAMBASHI_MARAMBASHI?ed=2048&security=tls&encryption=none&insecure=0&host=ovd9.global.ssl.fastly.net&type=xhttp&allowInsecure=0&sni=accounts.fastly.com#EPODONIOS": {
+    "runs": 1,
+    "tcp_successes": 2,
+    "tcp_failures": 0,
+    "real_successes": 0,
+    "real_failures": 3,
+    "last_ping": null,
+    "best_ping": null,
+    "last_seen": 1790770983
+  },
+  "vless://9e9fd625-e4d7-4944-ae7e-4145342fa5db@199.232.78.159:443?security=tls&encryption=none&insecure=0&host=pannn1.global.ssl.fastly.net&type=ws&allowInsecure=0&sni=ssl.fastly.com#@FarazV2ray": {
+    "runs": 1,
+    "tcp_successes": 2,
+    "tcp_failures": 0,
+    "real_successes": 0,
+    "real_failures": 3,
+    "last_ping": null,
+    "best_ping": null,
+    "last_seen": 1790770982
+  },
+  "trojan://MiTiVPN@167.82.76.7:443?security=tls&alpn=http/1.1&insecure=0&host=mitivpn---us--s---mitivpn-2.global.ssl.fastly.net&fp=chrome&type=ws&allowInsecure=0&sni=ssl.fastly.com#@mehrosaboran": {
+    "runs": 1,
+    "tcp_successes": 2,
+    "tcp_failures": 0,
+    "real_successes": 0,
+    "real_failures": 3,
+    "last_ping": null,
+    "best_ping": null,
+    "last_seen": 1790770982
+  },
+  "vless://8abb648a-b004-42a4-aa05-49cdc2f94d4e@140.248.189.57:80?path=/&security=none&encryption=none&host=Tazia.global.ssl.fastly.net&type=ws#🇮🇹⇝": {
+    "runs": 10,
+    "tcp_successes": 20,
+    "tcp_failures": 0,
+    "real_successes": 0,
+    "real_failures": 30,
+    "last_ping": null,
+    "best_ping": null,
+    "last_seen": 1790770981
+  },
+  "vless://XpnTeam-48@199.232.78.160:443?path=?ed#Telegram---PLANB_NET---PLANB_NET---PLANB_NET---PLANB_NET&security=tls&alpn=http/1.1&encryption=none&insecure=0&host=Appxdn.global.ssl.fastly.net&fp=chrome&type=ws&allowInsecure=0&sni=ssl.fastly.com#🇦🇹": {
+    "runs": 1,
+    "tcp_successes": 2,
+    "tcp_failures": 0,
+    "real_successes": 0,
+    "real_failures": 3,
+    "last_ping": null,
+    "best_ping": null,
+    "last_seen": 1790770981
+  },
+  "vless://XpnTeam-51@199.232.78.160:443?path=/&security=tls&alpn=http/1.1&encryption=none&insecure=0&host=Appxdn.global.ssl.fastly.net&fp=chrome&type=ws&allowInsecure=0&sni=ssl.fastly.com#@mehrosaboran": {
+    "runs": 1,
+    "tcp_successes": 2,
+    "tcp_failures": 0,
+    "real_successes": 0,
+    "real_failures": 3,
+    "last_ping": null,
+    "best_ping": null,
+    "last_seen": 1790770980
+  },
+  "trojan://mitivpn@199.232.78.170:443?path=@VPNine1&security=tls&alpn=http/1.1&insecure=0&host=mitivpn---de--s---mitivpn-11.global.ssl.fastly.net&fp=chrome&type=ws&allowInsecure=0&sni=ssl.fastly.com#hamedp71%3A%3A%F0%9F%87%AA%F0%9F%87%B8": {
+    "runs": 1,
+    "tcp_successes": 2,
+    "tcp_failures": 0,
+    "real_successes": 3,
+    "real_failures": 0,
+    "last_ping": 109.1,
+    "best_ping": 109.1,
+    "last_seen": 1790770979
+  },
+  "vless://0f6fdce3-c70b-4784-917f-f443f5f11574@199.232.78.159:443?path=/&security=tls&encryption=none&host=7wwwspeedtestnet.global.ssl.fastly.net&fp=chrome&type=ws&sni=ssl.fastly.com#✅": {
+    "runs": 2,
+    "tcp_successes": 4,
+    "tcp_failures": 0,
+    "real_successes": 0,
+    "real_failures": 6,
+    "last_ping": null,
+    "best_ping": null,
+    "last_seen": 1790770978
+  },
+  "vless://XpnTeam-38@199.232.78.160:443?path=/&security=tls&alpn=http/1.1&encryption=none&insecure=0&host=Appxdn.global.ssl.fastly.net&fp=chrome&type=ws&allowInsecure=0&sni=ssl.fastly.com#🔥Join+Telegram:@Farah_VPN🟣": {
+    "runs": 1,
+    "tcp_successes": 2,
+    "tcp_failures": 0,
+    "real_successes": 0,
+    "real_failures": 3,
+    "last_ping": null,
+    "best_ping": null,
+    "last_seen": 1790770976
+  },
+  "vless://XpnTeam-48@199.232.78.159:443?path=/&security=tls&alpn=http/1.1&encryption=none&insecure=0&host=Appxdn.global.ssl.fastly.net&fp=chrome&type=ws&allowInsecure=0&sni=ssl.fastly.com#@mehrosaboran": {
+    "runs": 1,
+    "tcp_successes": 2,
+    "tcp_failures": 0,
+    "real_successes": 0,
+    "real_failures": 3,
+    "last_ping": null,
+    "best_ping": null,
+    "last_seen": 1790770976
+  },
+  "vless://6261bc9c-128d-446a-9e16-7b340c7544e6@199.232.78.159:80?encryption=none&security=none&type=ws&host=yaSharClass.global.ssl.fastly.net&path=/#EPODONIOS": {
+    "runs": 3,
+    "tcp_successes": 6,
+    "tcp_failures": 0,
+    "real_successes": 0,
+    "real_failures": 9,
+    "last_ping": null,
+    "best_ping": null,
+    "last_seen": 1790770975
+  },
+  "vless://bdaf42dd-f75b-4594-d5f8-51c0feeb8406@151.101.56.6:443?path=/?TELEGRAM--KANAL--@mainv2ray--@mainv2ray--@mainv2ray--@mainv2ray--@mainv2ray--@mainv2ray--@mainv2ray--@mainv2ray--@mainv2ray--@mainv2ray--@mainv2ray--@mainv2ray&security=tls&alpn=h2&encryption=none&insecure=0&host=c12.com&fp=chrome&type=ws&allowInsecure=0&sni=ssl.fastly.com#🔥Join+Telegram:@Farah_VPN🟣": {
+    "runs": 1,
+    "tcp_successes": 2,
+    "tcp_failures": 0,
+    "real_successes": 0,
+    "real_failures": 3,
+    "last_ping": null,
+    "best_ping": null,
+    "last_seen": 1790770973
+  },
+  "trojan://MiTiVPN@199.232.78.160:443?path=/---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN/D-e1i@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN&security=tls&alpn=http/1.1&insecure=0&host=mitivpn---us--s---mitivpn-1.global.ssl.fastly.net&type=ws&allowInsecure=0&sni=ssl.fastly.com#EPODONIOS": {
+    "runs": 1,
+    "tcp_successes": 2,
+    "tcp_failures": 0,
+    "real_successes": 0,
+    "real_failures": 3,
+    "last_ping": null,
+    "best_ping": null,
+    "last_seen": 1790770973
+  },
+  "vless://d6962b1a-4701-4456-ba61-deb28c913a66@199.232.78.170:443?encryption=none&security=tls&sni=ssl.fastly.com&type=ws&host=pan2e.global.ssl.fastly.net&path=/#Channel": {
+    "runs": 1,
+    "tcp_successes": 2,
+    "tcp_failures": 0,
+    "real_successes": 0,
+    "real_failures": 3,
+    "last_ping": null,
+    "best_ping": null,
+    "last_seen": 1790770973
+  },
+  "vless://XpnTeam-32@199.232.78.170:443?path=/&security=tls&alpn=http/1.1&encryption=none&host=Appxdn.global.ssl.fastly.net&fp=chrome&type=ws&sni=ssl.fastly.com#@v2ray_phoenix": {
+    "runs": 1,
+    "tcp_successes": 2,
+    "tcp_failures": 0,
+    "real_successes": 0,
+    "real_failures": 3,
+    "last_ping": null,
+    "best_ping": null,
+    "last_seen": 1790770971
+  },
+  "vless://XlnTeam-36@199.232.78.160:443?encryption=none&security=tls&sni=ssl.fastly.com&fp=chrome&alpn=http/1.1&insecure=0&allowInsecure=0&type=ws&host=Appxdn.global.ssl.fastly.net&path=/#🔥Join+Telegram:@Farah_VPN🟣": {
+    "runs": 1,
+    "tcp_successes": 2,
+    "tcp_failures": 0,
+    "real_successes": 0,
+    "real_failures": 3,
+    "last_ping": null,
+    "best_ping": null,
+    "last_seen": 1790770967
+  },
+  "trojan://mitivpn@199.232.78.170:443?type=ws&host=mitivpn---de--s---mitivpn-11.global.ssl.fastly.net&path=%40mehrosabiran&security=tls&alpn=http%2F1.1&fp=chrome&sni=ssl.fastly.com#hamedp71%3A%3A%F0%9F%87%BA%F0%9F%87%B8": {
+    "runs": 1,
+    "tcp_successes": 2,
+    "tcp_failures": 0,
+    "real_successes": 3,
+    "real_failures": 0,
+    "last_ping": 110.1,
+    "best_ping": 110.1,
+    "last_seen": 1790770967
+  },
+  "trojan://mitivpn@167.82.76.7:443?sni=ssl.fastly.com&type=ws#trojan-1582089069": {
+    "runs": 1,
+    "tcp_successes": 2,
+    "tcp_failures": 0,
+    "real_successes": 0,
+    "real_failures": 3,
+    "last_ping": null,
+    "best_ping": null,
+    "last_seen": 1790770966
+  },
+  "vless://716f9533-a711-476e-92ce-bb5ffd2529ab@199.232.78.160:443?mode=auto&path=/@UonVPN-/-/--@UonVPN---*-*----@UonVPN--*--*---*-@UonVPN-----------@UonVPN=+&security=tls&encryption=mlkem768x25519plus.native.0rtt.WijFgu6wZjd77pTGsqP67kJIPW1ZH5JYmJx9EI_nyRU&extra={": {
+    "runs": 1,
+    "tcp_successes": 2,
+    "tcp_failures": 0,
+    "real_successes": 0,
+    "real_failures": 3,
+    "last_ping": null,
+    "best_ping": null,
+    "last_seen": 1790770965
+  },
+  "trojan://MiTIVPN@167.82.76.7:443?path=/---@Tarkshodeh---@Tarkshodeh/---@Tarkshodeh---@Tarkshodeh/---@Tarkshodeh---@Tarkshodeh/D-e2@Tarkshodeh---@Tarkshodeh/---@Tarkshodeh---@Tarkshodeh/---@Tarkshodeh---@Tarkshodeh&security=tls&alpn=http/1.1&insecure=0&host=mitivpn---ss--s---mitivpn-33e.global.ssl.fastly.net&fp=chrome&type=ws&allowInsecure=0&sni=ssl.fastly.com#@Tarkshodeh": {
+    "runs": 3,
+    "tcp_successes": 6,
+    "tcp_failures": 0,
+    "real_successes": 0,
+    "real_failures": 9,
+    "last_ping": null,
+    "best_ping": null,
+    "last_seen": 1790770964
+  },
+  "trojan://MITIVpN@151.101.56.7:443?security=tls&alpn=http/1.1&insecure=0&host=mitivpn---ss--s---mitivpn-22e.global.ssl.fastly.net&fp=chrome&type=ws&allowInsecure=0&sni=ssl.fastly.com#✨": {
+    "runs": 2,
+    "tcp_successes": 4,
+    "tcp_failures": 0,
+    "real_successes": 0,
+    "real_failures": 6,
+    "last_ping": null,
+    "best_ping": null,
+    "last_seen": 1790770964
+  },
+  "trojan://MiTIVPN@199.232.78.160:443?path=/---@Tarkshodeh---@Tarkshodeh/---@Tarkshodeh---@Tarkshodeh/---@Tarkshodeh---@Tarkshodeh/D-e2@Tarkshodeh---@Tarkshodeh/---@Tarkshodeh---@Tarkshodeh/---@Tarkshodeh---@Tarkshodeh&security=tls&alpn=http/1.1&insecure=0&host=mitivpn---ss--s---mitivpn-44e.global.ssl.fastly.net&fp=chrome&type=ws&allowInsecure=0&sni=ssl.fastly.com#EPODONIOS": {
+    "runs": 1,
+    "tcp_successes": 2,
+    "tcp_failures": 0,
+    "real_successes": 0,
+    "real_failures": 3,
+    "last_ping": null,
+    "best_ping": null,
+    "last_seen": 1790770964
+  },
+  "vless://a602c758-0ddf-4f8e-b58b-4997b691d952@167.82.76.31:443?mode=packet-up&path=/&security=tls&alpn=h2,http/1.1&encryption=none&insecure=0&host=chchibie98ik.global.ssl.fastly.net&fp=chrome&type=xhttp&allowInsecure=0&sni=global.fastly.com#EPODONIOS": {
+    "runs": 1,
+    "tcp_successes": 2,
+    "tcp_failures": 0,
+    "real_successes": 0,
+    "real_failures": 3,
+    "last_ping": null,
+    "best_ping": null,
+    "last_seen": 1790770964
+  },
+  "trojan://mitivpn@167.82.76.7:443?security=tls&alpn=http/1.1&insecure=0&host=mitivpn---us--s---mitivpn-11.global.ssl.fastly.net&fp=chrome&type=ws&allowInsecure=0&sni=ssl.fastly.com#@v2ray313": {
+    "runs": 1,
+    "tcp_successes": 2,
+    "tcp_failures": 0,
+    "real_successes": 3,
+    "real_failures": 0,
+    "last_ping": 121.9,
+    "best_ping": 121.9,
+    "last_seen": 1790770964
+  },
+  "vless://9e9fd625-e4d7-4944-ae7e-4145342fa5db@199.232.78.159:443?path=%2F&security=tls&encryption=none&insecure=0&host=pan2e.global.ssl.fastly.net&type=ws&allowInsecure=0&sni=ssl.fastly.com#⚡": {
+    "runs": 1,
+    "tcp_successes": 2,
+    "tcp_failures": 0,
+    "real_successes": 0,
+    "real_failures": 3,
+    "last_ping": null,
+    "best_ping": null,
+    "last_seen": 1790770961
+  },
+  "vless://4aadbce0-ce45-411a-a888-14cf02908168@199.232.78.159:443?path=/&security=tls&encryption=none&insecure=0&host=pokerrr.global.ssl.fastly.net&type=ws&allowInsecure=0&sni=ssl.fastly.com#@meliproxyy": {
+    "runs": 1,
+    "tcp_successes": 2,
+    "tcp_failures": 0,
+    "real_successes": 0,
+    "real_failures": 3,
+    "last_ping": null,
+    "best_ping": null,
+    "last_seen": 1790770959
+  },
+  "trojan://mitivpn@199.232.78.101:443?path=/---@GHOFLSHCAN---@GHOFLSHCAN/---@GHOFLSHCAN---@GHOFLSHCAN/---@GHOFLSHCAN---@GHOFLSHCAN/NLSus---@GHOFLSHCAN---@GHOFLSHCAN/---@GHOFLSHCAN---@GHOFLSHCAN/---@GHOFLSHCAN---@GHOFLSHCAN&security=tls&alpn=http/1.1&insecure=0&host=mitivpn---de--s---mitivpn-11.global.ssl.fastly.net&fp=chrome&type=ws&allowInsecure=0&sni=ssl.fastly.com#EPODONIOS": {
+    "runs": 1,
+    "tcp_successes": 2,
+    "tcp_failures": 0,
+    "real_successes": 3,
+    "real_failures": 0,
+    "last_ping": 144.3,
+    "best_ping": 144.3,
+    "last_seen": 1790770958
+  },
+  "trojan://mitivpn@199.232.78.160:443?path=@bored_vpn&security=tls&alpn=http/1.1&insecure=0&host=mitivpn---us--s---mitivpn-11.global.ssl.fastly.net&fp=chrome&type=ws&allowInsecure=0&sni=ssl.fastly.com#%E7%BE%8E%E5%9B%BD+V2CROSS.COM": {
+    "runs": 1,
+    "tcp_successes": 2,
+    "tcp_failures": 0,
+    "real_successes": 3,
+    "real_failures": 0,
+    "last_ping": 107.0,
+    "best_ping": 107.0,
+    "last_seen": 1790770956
+  },
+  "vless://9f714831-a392-429d-b09f-15f0e4653049@199.232.78.159:443?path=%2F&amp;security=tls&amp;encryption=none&amp;insecure=0&amp;host=lsjaoijji.global.ssl.fastly.neT&amp;type=ws&amp;allowInsecure=0&amp;sni=ssl.fastly.com#🔥Join+Telegram:@Farah_VPN🟣": {
+    "runs": 1,
+    "tcp_successes": 2,
+    "tcp_failures": 0,
+    "real_successes": 0,
+    "real_failures": 3,
+    "last_ping": null,
+    "best_ping": null,
+    "last_seen": 1790770954
+  },
   "vless://83afd88f-200f-4d89-bfc7-66eff160c1d8@104.16.117.43:443?path=/?TELEGRAM-TOOTFFARANGI?ed=512&security=tls&encryption=none&insecure=0&host=josni.hoyes.cloudns.ch&ech=ip.gs+udp://8.8.8.8&type=ws&allowInsecure=0&sni=josni.hoyes.cloudns.ch#🔥Join+Telegram:@Farah_VPN🟣": {
     "runs": 3,
     "tcp_successes": 6,
@@ -389,16 +1592,6 @@
     "best_ping": null,
     "last_seen": 1790745477
   },
-  "vless://406d8436-0eb9-4eb2-84fb-960e076ffba6@45.130.125.160:443?mode=stream-one&path=/de&security=tls&alpn=h2%2Chttp/1.1&encryption=none&insecure=0&host=de.lezzatzone.ir&fp=chrome&type=xhttp&allowInsecure=0&sni=de.lezzatzone.ir#%F0%9F%87%B8%F0%9F%87%A8%20SC%20%7C%20VLESS%20%7C%20%40ai_duet%20%231%20%5Bfast%5D": {
-    "runs": 30,
-    "tcp_successes": 60,
-    "tcp_failures": 0,
-    "real_successes": 0,
-    "real_failures": 90,
-    "last_ping": null,
-    "best_ping": null,
-    "last_seen": 1790745477
-  },
   "vless://94b0cde3-a305-4d89-a192-575339220c7f@104.16.233.169:80?encryption=none&security=none&type=ws&host=flat-rain-e26e-ppal03.cigoyob991.workers.dev&path=/?ed=2560#🔴⚪️🔵Ch:": {
     "runs": 26,
     "tcp_successes": 52,
@@ -529,16 +1722,6 @@
     "best_ping": 114.3,
     "last_seen": 1790745454
   },
-  "trojan://humanity@45.130.125.112:443?path=/assignment&security=tls&insecure=0&fp=chrome&type=ws&allowInsecure=0&sni=www.calmlunch.com#@V2rayng3": {
-    "runs": 27,
-    "tcp_successes": 54,
-    "tcp_failures": 0,
-    "real_successes": 0,
-    "real_failures": 81,
-    "last_ping": null,
-    "best_ping": null,
-    "last_seen": 1790745453
-  },
   "vless://22c15b3f-e205-48e2-9b30-1a2c3480e7b2@45.130.125.160:80?path=/&security=none&encryption=none&host=sRv79.hAMiIbaR.CoM&type=ws#EPODONIOS": {
     "runs": 37,
     "tcp_successes": 74,
@@ -659,16 +1842,6 @@
     "best_ping": null,
     "last_seen": 1790745443
   },
-  "vless://47fcef29-ab4e-4aa6-932b-d95a18f28a4e@162.159.24.131:8880?host=8nj2r.2k8t.f88.hh.vavava.kdns.fr&path=%2F%3Fed%3D2560security%3Dtls&security=none&type=ws#vless-931998986": {
-    "runs": 2,
-    "tcp_successes": 4,
-    "tcp_failures": 0,
-    "real_successes": 6,
-    "real_failures": 0,
-    "last_ping": 124.8,
-    "best_ping": 80.0,
-    "last_seen": 1790745442
-  },
   "vless://bb3f7d41-a044-4937-bf6f-4a3d1a70db06@104.19.64.105:8443?path=/RoBeRt&security=tls&alpn=h2,http/1.1&encryption=none&insecure=0&host=interim.adaspoloandco.com&fp=chrome&type=ws&allowInsecure=0&sni=interim.adaspoloandco.com#EPODONIOS": {
     "runs": 1,
     "tcp_successes": 2,
@@ -688,16 +1861,6 @@
     "last_ping": 115.1,
     "best_ping": 115.1,
     "last_seen": 1790745440
-  },
-  "vless://e65a5cbc-5663-4f7d-ad7d-800e86ba487d@194.76.18.25:443?security=tls&sni=rAyAn-cOnFiG-fr-1.pArSa.dPdNs.oRg&allowInsecure=1&fp=chrome&type=ws&path=/ws&host=rAyAn-cOnFiG-fr-1.pArSa.dPdNs.oRg&encryption=none#@Rayan_Config%203.33": {
-    "runs": 37,
-    "tcp_successes": 74,
-    "tcp_failures": 0,
-    "real_successes": 0,
-    "real_failures": 111,
-    "last_ping": null,
-    "best_ping": null,
-    "last_seen": 1790745439
   },
   "vless://XpnTeam-32@199.232.78.170:443?path=/&security=tls&alpn=http/1.1&encryption=none&host=Appxdn.global.ssl.fastly.net&fp=chrome&type=ws&sni=ssl.fastly.com#EPODONIOS": {
     "runs": 1,
@@ -798,16 +1961,6 @@
     "last_ping": 120.2,
     "best_ping": 120.2,
     "last_seen": 1790745422
-  },
-  "vless://83afd88f-200f-4d89-bfc7-66eff160c1d8@172.66.44.97:443?path=/sg-melbi#TELEGRAM-leviconfigs_leviconfigs?ed=512&security=tls&encryption=none&insecure=0&host=josni.hoyes.cloudns.ch&ech=ip.gs+udp://8.8.8.8&type=ws&allowInsecure=0&sni=josni.hoyes.cloudns.ch#EPODONIOS": {
-    "runs": 19,
-    "tcp_successes": 38,
-    "tcp_failures": 0,
-    "real_successes": 0,
-    "real_failures": 57,
-    "last_ping": null,
-    "best_ping": null,
-    "last_seen": 1790745421
   },
   "vless://4e4f1f70-5e56-4a76-bb9d-db087f4690c4@104.16.111.102:443?encryption=none&security=tls&sni=jp3.yohototo.top&fp=unsafe&cs=TLS_AES_256_GCM_SHA384%3ATLS_CHACHA20_POLY1305_SHA256%3ATLS_AES_128_GCM_SHA256%3ATLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384%3ATLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384%3ATLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256%3ATLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256%3ATLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256%3ATLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256%3ATLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA%3ATLS_ECDHE_RSA_WITH_AES_256_CBC_SHA%3ATLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256%3ATLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256&fm=%7B%22tcp%22%3A%5B%7B%22type%22%3A%22fragment%22%2C%22settings%22%3A%7B%22packets%22%3A%22tlshello%22%2C%22lengths%22%3A%5B%220%22%2C%22104%22%2C%221%22%5D%2C%22delays%22%3A%5B%220%22%5D%2C%22maxSplit%22%3A%220%22%7D%7D%2C%7B%22type%22%3A%22fragment%22%2C%22settings%22%3A%7B%22packets%22%3A%221-1%22%2C%22lengths%22%3A%5B%22114%22%2C%221%22%5D%2C%22delays%22%3A%5B%221%22%5D%2C%22maxSplit%22%3A%2211%22%7D%7D%5D%7D&type=ws&host=jp3.yohototo.top&path=%2Ftyxyws#CA": {
     "runs": 1,
@@ -959,16 +2112,6 @@
     "best_ping": null,
     "last_seen": 1790745402
   },
-  "vless://47fcef29-ab4e-4aa6-932b-d95a18f28a4e@104.18.39.218:2095?host=8nj2r.2k8t.f88.hh.vavava.kdns.fr&path=%2F%3Fed%3D2560security%3Dtls&security=none&type=ws#vless-931998990": {
-    "runs": 1,
-    "tcp_successes": 2,
-    "tcp_failures": 0,
-    "real_successes": 3,
-    "real_failures": 0,
-    "last_ping": 110.8,
-    "best_ping": 110.8,
-    "last_seen": 1790745402
-  },
   "vless://dd7a9688-5f80-4de3-9e58-7d584a2ec4e9@151.101.56.6:443?path=/?TELEGRAM--KANAL--@mainv2ray--@mainv2ray--@mainv2ray--@mainv2ray--@mainv2ray--@mainv2ray--@mainv2ray--@mainv2ray--@mainv2ray--@mainv2ray--@mainv2ray--@mainv2ray&security=tls&alpn=h2&encryption=none&insecure=0&host=c12.com&fp=chrome&type=ws&allowInsecure=0&sni=ssl.fastly.com#🔥Join+Telegram:@Farah_VPN🟣": {
     "runs": 1,
     "tcp_successes": 2,
@@ -987,16 +2130,6 @@
     "real_failures": 0,
     "last_ping": 130.7,
     "best_ping": 70.1,
-    "last_seen": 1790745401
-  },
-  "vless://429efff7-16bd-499e-85a5-a6f4b89c2773@172.67.139.85:80?security=none&encryption=none&type=ws&host=cxrolvpn.vipserver2.workers.dev&path=/AWGG17eLHc5QLzJr?ed=2560#EPODONIOS": {
-    "runs": 1,
-    "tcp_successes": 2,
-    "tcp_failures": 0,
-    "real_successes": 0,
-    "real_failures": 3,
-    "last_ping": null,
-    "best_ping": null,
     "last_seen": 1790745401
   },
   "vless://5d8eb33a-2166-4daf-88fe-4be5799c493b@141.101.120.73:443?encryption=none&fp=chrome&host=noisy-term-e657.airdrop2014aa5168.workers.dev&path=/&security=tls&sni=noisy-term-e657.airdrop2014aa5168.workers.dev&type=ws#🇵🇱183815": {
@@ -1058,16 +2191,6 @@
     "last_ping": null,
     "best_ping": null,
     "last_seen": 1790745393
-  },
-  "vless://9e9fd625-e4d7-4944-ae7e-4145342fa5db@199.232.78.159:443?path=/?&security=tls&encryption=none&insecure=0&host=pan2e.global.ssl.fastly.net&type=ws&allowInsecure=0&sni=ssl.fastly.com#🇮🇹⇝": {
-    "runs": 3,
-    "tcp_successes": 6,
-    "tcp_failures": 0,
-    "real_successes": 0,
-    "real_failures": 9,
-    "last_ping": null,
-    "best_ping": null,
-    "last_seen": 1790745392
   },
   "trojan://mitivpn@167.82.76.7:443?path=@mehrosaboran&security=tls&alpn=http/1.1&insecure=0&host=mitivpn---us--s---mitivpn-11.global.ssl.fastly.net&fp=chrome&type=ws&allowInsecure=0&sni=ssl.fastly.com#%F0%9F%87%BA%F0%9F%87%B8%20ShatakVPN%20991966": {
     "runs": 1,
@@ -1249,16 +2372,6 @@
     "best_ping": 304.9,
     "last_seen": 1790719873
   },
-  "vless://a3f9d9b6-3ae4-4c47-9dbf-33b0a5c7f1a5@195.85.59.95:2082?encryption=none&security=none&type=ws&host=0210.uous1wog.workers.dev&path=%2F#🔥Join+Telegram:@Farah_VPN🟣": {
-    "runs": 30,
-    "tcp_successes": 60,
-    "tcp_failures": 0,
-    "real_successes": 0,
-    "real_failures": 90,
-    "last_ping": null,
-    "best_ping": null,
-    "last_seen": 1790719868
-  },
   "vless://40af9131-d540-448a-bc56-5bba147a1dc3@27.50.49.154:2083?path=/?TELEGRAM--MARAMBASHI--MARAMBASHI?ed=512&security=tls&encryption=none&insecure=0&host=proxy-34l.pages.dev&type=ws&allowInsecure=0&sni=proxy-34l.pages.dev#@MARAMBASHI": {
     "runs": 2,
     "tcp_successes": 4,
@@ -1277,16 +2390,6 @@
     "real_failures": 18,
     "last_ping": null,
     "best_ping": null,
-    "last_seen": 1790719865
-  },
-  "vless://17540a16-a0dd-5694-7e1e-14e281ccc032@185.18.250.252:443?path=/@JavidnamanIran/Javid-SHAH-KingRezaPahlavi/&security=tls&encryption=none&insecure=0&host=crm.lotussec.com&type=ws&allowInsecure=0&sni=crm.lotussec.com#TEL;Father_vpn": {
-    "runs": 31,
-    "tcp_successes": 62,
-    "tcp_failures": 0,
-    "real_successes": 1,
-    "real_failures": 92,
-    "last_ping": 93.0,
-    "best_ping": 93.0,
     "last_seen": 1790719865
   },
   "vless://83afd88f-200f-4d89-bfc7-66eff160c1d8@104.18.37.228:443?path=musiclovers85?ed&security=tls&encryption=none&insecure=0&host=josni.hoyes.cloudns.ch&ech=ip.gs+udp://8.8.8.8&type=ws&allowInsecure=0&sni=josni.hoyes.cloudns.ch#EPODONIOS": {
@@ -1429,16 +2532,6 @@
     "best_ping": null,
     "last_seen": 1790719828
   },
-  "vless://47fcef29-ab4e-4aa6-932b-d95a18f28a4e@104.18.34.14:8880?host=8nj2r.2k8t.f88.hh.vavava.kdns.fr&path=%2F&security=none&type=ws#vless-1033577598": {
-    "runs": 1,
-    "tcp_successes": 2,
-    "tcp_failures": 0,
-    "real_successes": 3,
-    "real_failures": 0,
-    "last_ping": 91.3,
-    "best_ping": 91.3,
-    "last_seen": 1790719825
-  },
   "vless://eeb6823c-b926-4ea2-866a-5542edd26e59@172.64.145.2:443?path=%2F&amp;security=tls&amp;encryption=none&amp;insecure=0&amp;host=t1s1.rittbo.kdns.fr&amp;fp=chrome&amp;type=ws&amp;allowInsecure=0&amp;sni=t1s1.rittbo.kdns.fr#🔥Join+Telegram:@Farah_VPN🟣": {
     "runs": 1,
     "tcp_successes": 2,
@@ -1479,16 +2572,6 @@
     "best_ping": 85.7,
     "last_seen": 1790719824
   },
-  "vless://14b59caf-a196-4ec2-8c70-c7b388062f5b@45.131.211.136:443?path=/rdfgtws&security=tls&encryption=none&insecure=0&host=vangoghhh.info&type=ws&allowInsecure=0&sni=vangoghhh.info#@V2rayng3": {
-    "runs": 39,
-    "tcp_successes": 78,
-    "tcp_failures": 0,
-    "real_successes": 0,
-    "real_failures": 117,
-    "last_ping": null,
-    "best_ping": null,
-    "last_seen": 1790719823
-  },
   "ss://YWVzLTEyOC1nY206YjE1NjIzZDY1ZDhjMjA5NjUwYmY2ZDZkZTY1ODA2OTc@74.201.177.28:19959#shadowsocks-1577646726": {
     "runs": 1,
     "tcp_successes": 2,
@@ -1498,16 +2581,6 @@
     "last_ping": 52.0,
     "best_ping": 52.0,
     "last_seen": 1790719821
-  },
-  "vless://b2593749-691c-428c-9481-14979cba3446@31.43.179.20:443?path=/proxyip=us.xiabibi.cf&security=tls&encryption=none&insecure=0&type=ws&allowInsecure=0&sni=xi.tbv.ccwu.cc#🔥Join+Telegram:@Farah_VPN🟣": {
-    "runs": 3,
-    "tcp_successes": 6,
-    "tcp_failures": 0,
-    "real_successes": 0,
-    "real_failures": 9,
-    "last_ping": null,
-    "best_ping": null,
-    "last_seen": 1790719820
   },
   "vless://214bf4c5-045a-4ddb-944b-e2eef9b33338@104.21.8.201:2096?path=/9hf8a67dhf&security=tls&encryption=none&insecure=0&host=cdn-fr.skyvora.app&fp=chrome&type=ws&allowInsecure=0&sni=cdn-fr.skyvora.app#@v2ray313": {
     "runs": 1,
@@ -1679,16 +2752,6 @@
     "best_ping": null,
     "last_seen": 1790719784
   },
-  "vless://818a98bf-e7d0-45d5-800b-24d4058234c6@104.16.40.145:80?encryption=none&security=none&type=ws&host=still-smoke-881e-ppal03.cabit21569.workers.dev&path=/?ed=2560#🤖Ch:": {
-    "runs": 21,
-    "tcp_successes": 42,
-    "tcp_failures": 0,
-    "real_successes": 0,
-    "real_failures": 63,
-    "last_ping": null,
-    "best_ping": null,
-    "last_seen": 1790719782
-  },
   "vless://-DIGIV2RAY-@185.146.173.68:2095?type=ws&host=QUENTIN--_--DiG.radiotehran.org.&path=/DigiconnecT%3Fed%3D1024&security=none#%F0%9F%87%B8%F0%9F%87%AA%20SE%20%7C%20VLESS%20%7C%20%40kurd_v2ray%20%231%20%5Bfast%5D": {
     "runs": 23,
     "tcp_successes": 46,
@@ -1758,16 +2821,6 @@
     "last_ping": null,
     "best_ping": null,
     "last_seen": 1790719780
-  },
-  "vless://7fea28c6-f9b0-45ce-b7c2-ed3a3991d1e8@104.16.52.89:80?encryption=none&security=none&type=ws&host=curly-waterfall-509e-ppal03.wimiba9167.workers.dev&path=/?ed=2560#😛Ch:": {
-    "runs": 26,
-    "tcp_successes": 52,
-    "tcp_failures": 0,
-    "real_successes": 0,
-    "real_failures": 78,
-    "last_ping": null,
-    "best_ping": null,
-    "last_seen": 1790719779
   },
   "vless://XpnTeam-41@199.232.78.160:443?path=/&security=tls&alpn=http/1.1&encryption=none&insecure=0&host=Appxdn.global.ssl.fastly.net&fp=chrome&type=ws&allowInsecure=0&sni=ssl.fastly.com#@tootffarangi🍓-13": {
     "runs": 1,
@@ -2109,16 +3162,6 @@
     "best_ping": null,
     "last_seen": 1790719739
   },
-  "vless://8abb648a-b004-42a4-aa05-49cdc2f94d4e@140.248.189.57:80?path=/&security=none&encryption=none&host=Tazia.global.ssl.fastly.net&type=ws#🇮🇹⇝": {
-    "runs": 9,
-    "tcp_successes": 18,
-    "tcp_failures": 0,
-    "real_successes": 0,
-    "real_failures": 27,
-    "last_ping": null,
-    "best_ping": null,
-    "last_seen": 1790719736
-  },
   "vless://7f06406f-d284-4159-89a5-839ac88342c7@199.232.78.160:443?mode=auto&path=/@UonVPN-/-/--@UonVPN---*-*----@UonVPN--*--*---*-@UonVPN-----------@UonVPN=+&security=tls&encryption=mlkem768x25519plus.native.0rtt.WijFgu6wZjd77pTGsqP67kJIPW1ZH5JYmJx9EI_nyRU&extra={": {
     "runs": 4,
     "tcp_successes": 8,
@@ -2409,16 +3452,6 @@
     "best_ping": null,
     "last_seen": 1790685650
   },
-  "vless://47fcef29-ab4e-4aa6-932b-d95a18f28a4e@172.64.42.85:2082?host=8nj2r.2k8t.f88.hh.vavava.kdns.fr&path=%2F%3Fed%3D2560security%3Dtls&security=none&sni=8nj2r.2k8t.f88.hh.vavava.kdns.fr&type=ws#vless-897229330": {
-    "runs": 1,
-    "tcp_successes": 2,
-    "tcp_failures": 0,
-    "real_successes": 3,
-    "real_failures": 0,
-    "last_ping": 117.5,
-    "best_ping": 117.5,
-    "last_seen": 1790685649
-  },
   "vless://47fcef29-ab4e-4aa6-932b-d95a18f28a4e@108.162.198.178:2082?host=8nj2r.2k8t.f88.hh.vavava.kdns.fr&path=%2F%3Fed%3D2560security%3Dtls&security=none&type=ws#vless-897906540": {
     "runs": 3,
     "tcp_successes": 6,
@@ -2529,16 +3562,6 @@
     "best_ping": null,
     "last_seen": 1790685627
   },
-  "vless://AlfredConfig@45.130.125.66:443?path=/?ed=2048&security=tls&alpn=http/1.1&encryption=none&insecure=0&host=alfi.yas-nowin.ir&fp=chrome&type=ws&allowInsecure=0&sni=alfi.yas-nowin.ir#🔥Join+Telegram:@Farah_VPN🟣": {
-    "runs": 32,
-    "tcp_successes": 64,
-    "tcp_failures": 0,
-    "real_successes": 0,
-    "real_failures": 96,
-    "last_ping": null,
-    "best_ping": null,
-    "last_seen": 1790685627
-  },
   "vless://b09dfed1-90fa-4353-8bdf-de1edb2e2d79@91.209.253.243:443?path=%2F&amp;security=tls&amp;encryption=none&amp;insecure=0&amp;host=nb.lovecf.ggff.net&amp;type=ws&amp;allowInsecure=0&amp;sni=nb.lovecf.ggff.net#🔥Join+Telegram:@Farah_VPN🟣": {
     "runs": 6,
     "tcp_successes": 12,
@@ -2628,16 +3651,6 @@
     "last_ping": null,
     "best_ping": null,
     "last_seen": 1790685606
-  },
-  "vless://2b5f8588-87f6-40af-a785-322c8fa1df77@104.16.7.70:2095?path=/XnXnXnXnXnXnXnXnXnXnXnXnXnXnXnXnXnXnXnXnXnXnXnXnXnXnXnXn?ed=2560&security=&encryption=none&host=sni.111000.dynv6.azazilvpn.sbs&type=ws#🇨🇦139819": {
-    "runs": 1,
-    "tcp_successes": 2,
-    "tcp_failures": 0,
-    "real_successes": 0,
-    "real_failures": 3,
-    "last_ping": null,
-    "best_ping": null,
-    "last_seen": 1790685602
   },
   "vless://dc8a9493-c54a-459e-d060-81a700000001@45.130.125.201:80?encryption=none&host=nahan-core.netizo09.workers.dev&path=%2Fsync&security=none&type=ws#%F0%9F%8F%B3%EF%B8%8F%20ShatakVPN%20267210": {
     "runs": 1,
@@ -2929,16 +3942,6 @@
     "best_ping": 1614.8,
     "last_seen": 1790685540
   },
-  "vless://SVNTEAM@185.146.173.59:80?path=/SvnTeam-TeleGram-ChaNnel-VIP%3Fed%3D2048&security=none&encryption=none&host=SvnTeamV2rayGm7.7.7.7.ir.Com.Site.xn--fhq0laa256bac7403eea044azr5g.CoM.&type=ws#%F0%9F%87%B8%F0%9F%87%AA%20SE%20%7C%20VLESS%20%7C%20%40serverv2ray00%20%231%20%5Bfast%5D": {
-    "runs": 23,
-    "tcp_successes": 46,
-    "tcp_failures": 0,
-    "real_successes": 0,
-    "real_failures": 69,
-    "last_ping": null,
-    "best_ping": null,
-    "last_seen": 1790685536
-  },
   "vless://83afd88f-200f-4d89-bfc7-66eff160c1d8@104.16.117.43:443?path=/?TELEGRAM-TOOTFFARANGI?ed=512&security=tls&encryption=none&insecure=0&host=josni.hoyes.cloudns.ch&ech=ip.gs+udp://8.8.8.8&type=ws&allowInsecure=0&sni=josni.hoyes.cloudns.ch#EPODONIOS": {
     "runs": 2,
     "tcp_successes": 4,
@@ -2998,16 +4001,6 @@
     "last_ping": null,
     "best_ping": null,
     "last_seen": 1790685517
-  },
-  "vless://47fcef29-ab4e-4aa6-932b-d95a18f28a4e@172.64.158.146:2095?host=8nj2r.2k8t.f88.hh.vavava.kdns.fr&path=%2F%3Fed%3D2560security%3Dtls+&security=none&type=ws#vless-1102327181": {
-    "runs": 2,
-    "tcp_successes": 4,
-    "tcp_failures": 0,
-    "real_successes": 6,
-    "real_failures": 0,
-    "last_ping": 122.7,
-    "best_ping": 42.0,
-    "last_seen": 1790685514
   },
   "vless://47fcef29-ab4e-4aa6-932b-d95a18f28a4e@108.162.198.178:2095?host=8nj2r.2k8t.f88.hh.vavava.kdns.fr&path=%2F+&security=none&type=ws#vless-1568241989": {
     "runs": 1,
@@ -3199,16 +4192,6 @@
     "best_ping": null,
     "last_seen": 1790685478
   },
-  "vless://0f6fdce3-c70b-4784-917f-f443f5f11574@199.232.78.159:443?path=/&security=tls&encryption=none&host=7wwwspeedtestnet.global.ssl.fastly.net&fp=chrome&type=ws&sni=ssl.fastly.com#✅": {
-    "runs": 1,
-    "tcp_successes": 2,
-    "tcp_failures": 0,
-    "real_successes": 0,
-    "real_failures": 3,
-    "last_ping": null,
-    "best_ping": null,
-    "last_seen": 1790685477
-  },
   "vless://6c0c6fc2-1092-4b66-982b-320f49f95bc3@199.232.78.159:443?encryption=none&security=tls&sni=ssl.fastly.com&type=ws&host=looazjboijji.global.ssl.fastly.net.&path=/#EPODONIOS": {
     "runs": 1,
     "tcp_successes": 2,
@@ -3239,16 +4222,6 @@
     "best_ping": null,
     "last_seen": 1790685474
   },
-  "vless://turboo-server@199.232.237.79:443?pcs=cd6e838b9bfe31cab8b3d5c858b0d6223fe84ece236c1fdb281be93c302e1e6e&path=/&security=tls&alpn=h3,h2,http/1.1&encryption=none&insecure=0&host=turboo-server-telegram.com&fp=chrome&type=ws&allowInsecure=0&sni=turboo-server-telegram.com#EPODONIOS": {
-    "runs": 2,
-    "tcp_successes": 4,
-    "tcp_failures": 0,
-    "real_successes": 0,
-    "real_failures": 6,
-    "last_ping": null,
-    "best_ping": null,
-    "last_seen": 1790685473
-  },
   "trojan://mitivpn@199.232.78.101:443?sni=ssl.fastly.com&type=ws#trojan-1562129125": {
     "runs": 1,
     "tcp_successes": 2,
@@ -3265,16 +4238,6 @@
     "tcp_failures": 0,
     "real_successes": 0,
     "real_failures": 9,
-    "last_ping": null,
-    "best_ping": null,
-    "last_seen": 1790685471
-  },
-  "vless://XpnTeam-38@199.232.78.160:443?path=/&security=tls&alpn=http/1.1&encryption=none&insecure=0&host=Appxdn.global.ssl.fastly.net&fp=chrome&type=ws&allowInsecure=0&sni=ssl.fastly.com#@mehrosaboran": {
-    "runs": 1,
-    "tcp_successes": 2,
-    "tcp_failures": 0,
-    "real_successes": 0,
-    "real_failures": 3,
     "last_ping": null,
     "best_ping": null,
     "last_seen": 1790685471
@@ -3988,16 +4951,6 @@
     "last_ping": 43.4,
     "best_ping": 43.4,
     "last_seen": 1790659728
-  },
-  "vless://6261bc9c-128d-446a-9e16-7b340c7544e6@199.232.78.159:80?encryption=none&security=none&type=ws&host=yaSharClass.global.ssl.fastly.net&path=/#EPODONIOS": {
-    "runs": 2,
-    "tcp_successes": 4,
-    "tcp_failures": 0,
-    "real_successes": 0,
-    "real_failures": 6,
-    "last_ping": null,
-    "best_ping": null,
-    "last_seen": 1790659727
   },
   "vless://2b8738de-1af5-4267-b101-c05707769ed4@172.67.130.187:2083?encryption=none&amp;security=tls&amp;sni=fans.liverpool.qzz.io&amp;fp=chrome&amp;type=ws&amp;host=fans.liverpool.qzz.io&amp;path=/eyJqdW5rIjoiY0Y0cENQUmxsNyIsInByb3RvY29sIjoidmwiLCJtb2RlIjoicHJveHlpcCIsInBhbmVsSVBzIjpbXX0%3D&amp;packetEncoding=xudp#🔥Join+Telegram:@Farah_VPN🟣": {
     "runs": 3,
@@ -5119,16 +6072,6 @@
     "best_ping": 67.9,
     "last_seen": 1790637049
   },
-  "vless://965fef48-24c7-4727-b51e-6d3b2b8873c8@45.130.125.158:443?mode=auto&path=/&security=tls&alpn=h3,h2,http/1.1&encryption=none&insecure=0&host=mahsa97.manhamunamkeyeruz.ir&fp=chrome&type=xhttp&allowInsecure=0&sni=mahsa97.manhamunamkeyeruz.ir#TEL;Father_vpn": {
-    "runs": 35,
-    "tcp_successes": 70,
-    "tcp_failures": 0,
-    "real_successes": 0,
-    "real_failures": 105,
-    "last_ping": null,
-    "best_ping": null,
-    "last_seen": 1790637047
-  },
   "vless://-DIGIV2RAY-@185.146.173.68:2095?type=ws&host=QUENTIN--_--DiG.radiot%E2%80%A6%3C/div%3E#%F0%9F%87%B8%F0%9F%87%AA%20SE%20%7C%20VLESS%20%7C%20%40kurd_v2ray%20%232%20%5Bfast%5D": {
     "runs": 16,
     "tcp_successes": 32,
@@ -5178,16 +6121,6 @@
     "last_ping": 159.2,
     "best_ping": 159.2,
     "last_seen": 1790637034
-  },
-  "vless://b09dfed1-90fa-4353-8bdf-de1edb2e2d79@91.209.253.119:443?path=/proxyip=us.xiabibi.cf&security=tls&encryption=none&insecure=0&host=nb.lovecf.ggff.net&fp=chrome&type=ws&allowInsecure=0&sni=nb.lovecf.ggff.net#@Shh_Proxy-New⁶": {
-    "runs": 5,
-    "tcp_successes": 10,
-    "tcp_failures": 0,
-    "real_successes": 3,
-    "real_failures": 12,
-    "last_ping": 208.6,
-    "best_ping": 208.6,
-    "last_seen": 1790637032
   },
   "vless://Telegram-ipV2Ray@185.146.173.59:80?type=ws&path=/Telegram-ipV2Ray?ed=2048&host=1.ftp.debian.org.www.speedtest.net.免费上网69.Site.&security=none#WS1-Config": {
     "runs": 5,
@@ -5645,16 +6578,6 @@
     "tcp_failures": 0,
     "real_successes": 0,
     "real_failures": 24,
-    "last_ping": null,
-    "best_ping": null,
-    "last_seen": 1790602718
-  },
-  "vless://40af9131-d540-448a-bc56-5bba147a1dc3@27.50.49.154:2083?path=/?TELEGRAM--MARAMBASHI--MARAMBASHI?ed=512&security=tls&encryption=none&insecure=0&host=proxy-34l.pages.dev&type=ws&allowInsecure=0&sni=proxy-34l.pages.dev#EPODONIOS": {
-    "runs": 1,
-    "tcp_successes": 2,
-    "tcp_failures": 0,
-    "real_successes": 0,
-    "real_failures": 3,
     "last_ping": null,
     "best_ping": null,
     "last_seen": 1790602718
@@ -6258,16 +7181,6 @@
     "last_ping": null,
     "best_ping": null,
     "last_seen": 1790571987
-  },
-  "vless://726c7800-a083-4b83-b9cf-9a9872ea1fcb@185.146.173.58:8080?type=ws&path=/telegram-%40Sobi_Vpn%2Ctelegram-%40Sobi_Vpn%2Ctelegram-%40Sobi_Vpn%2Ctelegram-%40Sobi_Vpn%2Ctelegram-%40Sobi_Vpn%2Ctelegram-%40Sobi_Vpn%2Ctelegram-%40Sobi_Vpn%2Ctelegram-%40Sobi_Vpn%2Ctelegram-%40Sobi_Vpn%2Ctelegram-%40Sobi_Vpn%2Ctelegram-%40Sobi_Vpn%2Ctelegram-%40Sobi_Vpn%2Ctelegram-%40Sobi_Vpn%2Ctelegram-%40Sobi_Vpn%2Ctelegram-%40Sobi_Vpn%2Ctelegram-%40Sobi_Vpn%2Ctelegram-%40Sobi_Vpn%2Ctelegram-%40Sobi_Vpn%3Fed%3D2048&host=Kanal-polproxy.Vipnufilter.Online.&security=none#%F0%9F%87%B8%F0%9F%87%AA%20SE%20%7C%20VLESS%20%7C%20%40free_vip3%20%236%20%5Bfast%5D": {
-    "runs": 18,
-    "tcp_successes": 36,
-    "tcp_failures": 0,
-    "real_successes": 0,
-    "real_failures": 54,
-    "last_ping": null,
-    "best_ping": null,
-    "last_seen": 1790571986
   },
   "vless://5910d5d4-d670-4cf2-b875-72bfef693c56@104.17.108.1:443?encryption=none&type=xhttp&mode=packet-up&host=aa.farxmode.ir&path=/%3Fed%3D2048%3F%40Evay_vpn----%40Evay_vpn----%40Evay_vpn----%40Evay_vpn----%40Evay_vpn----%40Evay_vpn----%40Evay_vpn----%40Evay_vpn----%40Evay_vpn----%40Evay_vpn----%40Evay_vpn&security=tls&fp=random&sni=aa.farxmode.ir&alpn=h2%2Chttp/1.1#%F0%9F%87%BD%F0%9F%87%BD%20XX%20%7C%20VLESS%20%7C%20%40evay_vpn%20%232%20%5Bfast%5D": {
     "runs": 1,
@@ -8359,16 +9272,6 @@
     "best_ping": null,
     "last_seen": 1790527868
   },
-  "trojan://MiTIVPN@167.82.76.7:443?path=/---@Tarkshodeh---@Tarkshodeh/---@Tarkshodeh---@Tarkshodeh/---@Tarkshodeh---@Tarkshodeh/D-e2@Tarkshodeh---@Tarkshodeh/---@Tarkshodeh---@Tarkshodeh/---@Tarkshodeh---@Tarkshodeh&security=tls&alpn=http/1.1&insecure=0&host=mitivpn---ss--s---mitivpn-33e.global.ssl.fastly.net&fp=chrome&type=ws&allowInsecure=0&sni=ssl.fastly.com#@Tarkshodeh": {
-    "runs": 2,
-    "tcp_successes": 4,
-    "tcp_failures": 0,
-    "real_successes": 0,
-    "real_failures": 6,
-    "last_ping": null,
-    "best_ping": null,
-    "last_seen": 1790527866
-  },
   "vless://64c2bc5c-7534-4359-9b1e-e1dce5a380cd@151.101.56.6:443?path=/?TELEGRAM--BYA---@CoonfigCloud---@CoonfigCloud@CoonfigCloud---@CoonfigCloud@CoonfigCloud---@CoonfigCloud@CoonfigCloud---@CoonfigCloud@CoonfigCloud---@CoonfigCloud@CoonfigCloud---@CoonfigCloud@CoonfigCloud---@CoonfigCloud@CoonfigCloud---@CoonfigCloud&security=tls&alpn=h2&encryption=none&insecure=0&host=c12.com&fp=chrome&type=ws&allowInsecure=0&sni=ssl.fastly.com#𝗝𝗼𝗶𝗻": {
     "runs": 1,
     "tcp_successes": 2,
@@ -8629,16 +9532,6 @@
     "best_ping": null,
     "last_seen": 1790510045
   },
-  "vless://47fcef29-ab4e-4aa6-932b-d95a18f28a4e@104.18.46.46:8880?host=8nj2r.2k8t.f88.hh.vavava.kdns.fr&path=%2F%3Fed%3D2560security%3Dtls&security=none&sni=8nj2r.2k8t.f88.hh.vavava.kdns.fr&type=ws#vless-897225003": {
-    "runs": 1,
-    "tcp_successes": 2,
-    "tcp_failures": 0,
-    "real_successes": 3,
-    "real_failures": 0,
-    "last_ping": 74.7,
-    "best_ping": 74.7,
-    "last_seen": 1790510044
-  },
   "vless://47fcef29-ab4e-4aa6-932b-d95a18f28a4e@172.64.32.108:2082?host=8nj2r.2k8t.f88.hh.vavava.kdns.fr&path=%2F%3Fed%3D2560security%3Dtls&security=none&sni=8nj2r.2k8t.f88.hh.vavava.kdns.fr&type=ws#vless-897227667": {
     "runs": 1,
     "tcp_successes": 2,
@@ -8735,16 +9628,6 @@
     "tcp_failures": 0,
     "real_successes": 0,
     "real_failures": 12,
-    "last_ping": null,
-    "best_ping": null,
-    "last_seen": 1790510026
-  },
-  "trojan://f18d6149-e214-8554-e737-f7523c8b2eea@89.116.180.49:443?sni=0403.infinityconfig4.workers.dev&type=ws&path=%2Fsync&fp=chrome#UA": {
-    "runs": 5,
-    "tcp_successes": 10,
-    "tcp_failures": 0,
-    "real_successes": 0,
-    "real_failures": 15,
     "last_ping": null,
     "best_ping": null,
     "last_seen": 1790510026
@@ -9199,16 +10082,6 @@
     "best_ping": 125.9,
     "last_seen": 1790509942
   },
-  "trojan://mitivpn@167.82.76.7:443?security=tls&alpn=http/1.1&insecure=0&host=mitivpn---ss--s---mitivpn-33e.global.ssl.fastly.net&fp=chrome&type=ws&allowInsecure=0&sni=ssl.fastly.com#EPODONIOS": {
-    "runs": 2,
-    "tcp_successes": 4,
-    "tcp_failures": 0,
-    "real_successes": 0,
-    "real_failures": 6,
-    "last_ping": null,
-    "best_ping": null,
-    "last_seen": 1790509940
-  },
   "trojan://MITIVpN@151.101.56.7:443?path=/---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN/D-e2@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN&security=tls&alpn=http/1.1&insecure=0&host=mitivpn---ss--s---mitivpn-22e.global.ssl.fastly.net&fp=chrome&type=ws&allowInsecure=0&sni=ssl.fastly.com#🔥Join+Telegram:@Farah_VPN🟣": {
     "runs": 1,
     "tcp_successes": 2,
@@ -9418,16 +10291,6 @@
     "last_ping": null,
     "best_ping": null,
     "last_seen": 1790509920
-  },
-  "vless://eeb6823c-b926-4ea2-866a-5542edd26e59@104.17.122.18:443?path=/fp&security=tls&encryption=none&insecure=0&host=t1s1.rittbo.kdns.fr&fp=chrome&type=ws&allowInsecure=0&sni=t1s1.rittbo.kdns.fr#@V2rayng3": {
-    "runs": 3,
-    "tcp_successes": 6,
-    "tcp_failures": 0,
-    "real_successes": 0,
-    "real_failures": 9,
-    "last_ping": null,
-    "best_ping": null,
-    "last_seen": 1790485490
   },
   "vless://d6971cc4-a506-49f6-8ebb-f911317763d8@104.19.141.3:443?path=/36.95.152.58=12137&security=tls&encryption=none&insecure=1&host=afrcloud1.c01.kr&type=ws&allowInsecure=1&sni=afrcloud1.c01.kr#EPODONIOS": {
     "runs": 1,
@@ -10239,16 +11102,6 @@
     "best_ping": null,
     "last_seen": 1790456437
   },
-  "vless://probabblynot-ch@194.76.18.126:2087?alpn=http/1.1&encryption=none&fp=chrome&host=probabblynot.fazelextremeisreal.com&path=/@probabblynot&security=tls&sni=probabblynot.fazelextremeisreal.com&type=ws#EPODONIOS": {
-    "runs": 36,
-    "tcp_successes": 72,
-    "tcp_failures": 0,
-    "real_successes": 0,
-    "real_failures": 108,
-    "last_ping": null,
-    "best_ping": null,
-    "last_seen": 1790456436
-  },
   "vless://b7977b65-cfd8-4db9-a029-6ef014a4ae4a@217.163.76.118:2086?mode=packet-up&path=/&security=none&encryption=none&host=xvh.andishehparenting.com&type=xhttp#🔥Join+Telegram:@Farah_VPN🟣": {
     "runs": 5,
     "tcp_successes": 10,
@@ -10799,16 +11652,6 @@
     "best_ping": null,
     "last_seen": 1790439482
   },
-  "vless://14b59caf-a196-4ec2-8c70-c7b388062f5b@45.131.211.136:443?path=%2Frdfgtws&amp;security=tls&amp;encryption=none&amp;insecure=0&amp;host=vangoghhh.info&amp;type=ws&amp;allowInsecure=0&amp;sni=vangoghhh.info#🔥Join+Telegram:@Farah_VPN🟣": {
-    "runs": 27,
-    "tcp_successes": 54,
-    "tcp_failures": 0,
-    "real_successes": 0,
-    "real_failures": 81,
-    "last_ping": null,
-    "best_ping": null,
-    "last_seen": 1790439480
-  },
   "trojan://humanity@172.67.149.60:443?path=/assignment&security=tls&insecure=0&ech=ip.gs+udp://8.8.8.8&type=ws&allowInsecure=0&sni=www.ignitelimit.com#%E7%BE%8E%E5%9B%BD+CloudFlare%E8%8A%82%E7%82%B9": {
     "runs": 2,
     "tcp_successes": 4,
@@ -10898,16 +11741,6 @@
     "last_ping": 106.0,
     "best_ping": 45.4,
     "last_seen": 1790439460
-  },
-  "vless://b09dfed1-90fa-4353-8bdf-de1edb2e2d79@91.209.253.229:443?path=/proxyip=us.xiabibi.cf&security=tls&encryption=none&insecure=0&host=nb.lovecf.ggff.net&fp=chrome&type=ws&allowInsecure=0&sni=nb.lovecf.ggff.net#@Shh_Proxy-New²": {
-    "runs": 7,
-    "tcp_successes": 14,
-    "tcp_failures": 0,
-    "real_successes": 6,
-    "real_failures": 15,
-    "last_ping": 196.6,
-    "best_ping": 129.4,
-    "last_seen": 1790439458
   },
   "trojan://MITIVPN@199.232.78.160:443?path=mehrosaboram&security=tls&alpn=http/1.1&host=mitivpn---ss--s---mitivpn-44s.global.ssl.fastly.net&fp=chrome&type=ws&sni=ssl.fastly.com#🔥Join+Telegram:@Farah_VPN🟣": {
     "runs": 2,
@@ -12189,16 +13022,6 @@
     "best_ping": 70.7,
     "last_seen": 1790397849
   },
-  "vless://telegram-deli-servers@185.146.173.59:80?path=/tel+%3A+deli_servers+tel+%3A+deli_servers+tel+%3A+deli_servers+tel+%3A+deli_servers+tel+%3A+deli_servers+tel+%3A+deli_servers%3Fed%3D2048&security=none&encryption=none&host=kia%E6%9D%A5%E8%87%AA%E6%88%91%E4%BB%AC%E5%9B%A2%E9%98%9F%E7%9A%84%E7%88%B101%E6%88%91%E7%88%B1%E7%86%9F%E9%A3%9F%E5%BA%97lovedeli.speedtest.net.gOogle.com.Arvancloud.ir.realKiaa.ninjA.&type=ws#%F0%9F%87%B8%F0%9F%87%AA%20SE%20%7C%20VLESS%20%7C%20%40deli_servers%20%231%20%5Bfast%5D": {
-    "runs": 17,
-    "tcp_successes": 34,
-    "tcp_failures": 0,
-    "real_successes": 0,
-    "real_failures": 51,
-    "last_ping": null,
-    "best_ping": null,
-    "last_seen": 1790397848
-  },
   "vless://866b08ab-1786-4769-b364-d76b22daa7e2@104.18.4.130:80?path=/CooonfigCooonfigCooonfigCooonfigCooonfig&security=none&encryption=none&host=msjsi.azazilvpn.sbs.&type=ws#@filembad": {
     "runs": 1,
     "tcp_successes": 2,
@@ -12519,19 +13342,6 @@
     "best_ping": null,
     "last_seen": 1790397747
   },
-  "ss://cmM0LW1kNToxNGZGUHJiZXpFM0hEWnpzTU9yNg@107.151.182.197:8080#shadowsocks-468218514": {
-    "runs": 8,
-    "successes": 3,
-    "failures": 0,
-    "real_successes": 0,
-    "real_attempts": 0,
-    "last_ping": 49.5,
-    "tcp_successes": 14,
-    "tcp_failures": 0,
-    "real_failures": 21,
-    "best_ping": null,
-    "last_seen": 1790397747
-  },
   "trojan://MiTiVPN@199.232.78.101:443?security=tls&alpn=http/1.1&insecure=0&host=mitivpn---ss--s---mitivpn-11.global.ssl.fastly.net&fp=chrome&type=ws&allowInsecure=0&sni=ssl.fastly.com#🔥Join+Telegram:@Farah_VPN🟣": {
     "runs": 2,
     "tcp_successes": 4,
@@ -12552,16 +13362,6 @@
     "best_ping": null,
     "last_seen": 1790397745
   },
-  "vless://e0454af2-6fe9-4983-a55d-05e1da202602@199.232.78.159:443?path=/&security=tls&encryption=none&insecure=0&host=towndtime.global.ssl.fastly.neT.&type=ws&allowInsecure=0&sni=ssl.fastly.com#EPODONIOS": {
-    "runs": 6,
-    "tcp_successes": 12,
-    "tcp_failures": 0,
-    "real_successes": 0,
-    "real_failures": 18,
-    "last_ping": null,
-    "best_ping": null,
-    "last_seen": 1790397740
-  },
   "vless://XpnTeam-7@199.232.78.160:443?path=/&security=tls&alpn=http/1.1&encryption=none&insecure=0&host=Appxdn.global.ssl.fastly.net&fp=chrome&type=ws&allowInsecure=0&sni=ssl.fastly.com#%F0%9F%87%BA%F0%9F%87%B8%20US%20%7C%20VLESS%20%7C%20%40bored_vpn%20%233%20%5Bfast%5D": {
     "runs": 1,
     "tcp_successes": 2,
@@ -12571,16 +13371,6 @@
     "last_ping": null,
     "best_ping": null,
     "last_seen": 1790397740
-  },
-  "trojan://MITIVpN@151.101.56.7:443?security=tls&alpn=http/1.1&insecure=0&host=mitivpn---ss--s---mitivpn-22e.global.ssl.fastly.net&fp=chrome&type=ws&allowInsecure=0&sni=ssl.fastly.com#✨": {
-    "runs": 1,
-    "tcp_successes": 2,
-    "tcp_failures": 0,
-    "real_successes": 0,
-    "real_failures": 3,
-    "last_ping": null,
-    "best_ping": null,
-    "last_seen": 1790397739
   },
   "trojan://mitivpn@151.101.56.7:443?security=tls&alpn=http/1.1&insecure=0&host=mitivpn---ss--s---mitivpn-22e.global.ssl.fastly.net&fp=chrome&type=ws&allowInsecure=0&sni=ssl.fastly.com#@prrofile_purple": {
     "runs": 3,
@@ -14222,16 +15012,6 @@
     "best_ping": 75.1,
     "last_seen": 1790336447
   },
-  "vless://6fc36cfc-561f-4544-9a0e-7c732c478500@172.64.153.105:443?security=tls&allowInsecure=0&encryption=none&type=ws&host=us.vipserver14.workers.dev&path=/?ed=2048&sni=us.vipserver14.workers.dev&fp=chrome#🔥Join+Telegram:@Farah_VPN🟣": {
-    "runs": 1,
-    "tcp_successes": 2,
-    "tcp_failures": 0,
-    "real_successes": 0,
-    "real_failures": 3,
-    "last_ping": null,
-    "best_ping": null,
-    "last_seen": 1790336442
-  },
   "vless://24c2a873-4584-4c53-8679-61029682d0bb@104.16.107.139:8880?encryption=none&security=none&type=ws&host=soft-thunder-bc22.111-f59.workers.dev&path=%2Fpyip#%F0%9F%8F%B3%EF%B8%8F%20ShatakVPN%20685973": {
     "runs": 1,
     "tcp_successes": 2,
@@ -15661,16 +16441,6 @@
     "last_ping": null,
     "best_ping": null,
     "last_seen": 1790269390
-  },
-  "vless://DIGiV2RAY-@185.146.173.59:80?path=/Digiv2ray-&security=none&encryption=none&host=digi--v2raycncfs.RadioTeHran.oRG.&type=ws#🔥Join+Telegram:@Farah_VPN🟣": {
-    "runs": 8,
-    "tcp_successes": 16,
-    "tcp_failures": 0,
-    "real_successes": 0,
-    "real_failures": 24,
-    "last_ping": null,
-    "best_ping": null,
-    "last_seen": 1790269382
   },
   "vless://4e4f1f70-5e56-4a76-bb9d-db087f4690c4@162.159.254.3:443?encryption=none&security=tls&sni=jp3.yohototo.top&fp=chrome&insecure=0&allowInsecure=0&type=ws&host=jp3.yohototo.top&path=%2Ftyxyws#hamedp71%3A%3A%F0%9F%87%AF%F0%9F%87%B5": {
     "runs": 2,
@@ -19271,16 +20041,6 @@
     "last_ping": 1483.9,
     "best_ping": 1483.9,
     "last_seen": 1790137902
-  },
-  "vless://47fcef29-ab4e-4aa6-932b-d95a18f28a4e@162.159.48.32:2082?&type=ws&headerType=none&host=8nj2r.2k8t.f88.hh.vavava.kdns.fr&path=%2F%3Fed%3D2560security%3Dtls#CA": {
-    "runs": 2,
-    "tcp_successes": 4,
-    "tcp_failures": 0,
-    "real_successes": 6,
-    "real_failures": 0,
-    "last_ping": 134.0,
-    "best_ping": 88.9,
-    "last_seen": 1790137900
   },
   "vless://cc752a3e-1537-4e86-bb50-1b897bf7b33c@104.19.229.21:443?path=/sg-melbi&security=tls&encryption=none&insecure=0&host=cyylr.eu.cc&type=ws&allowInsecure=0&sni=cyylr.eu.cc#TEL:Father_vpn": {
     "runs": 1,
@@ -27052,16 +27812,6 @@
     "best_ping": null,
     "last_seen": 1789849760
   },
-  "vless://telegram-id-ArV2ray@185.146.173.237:80?path=/telegram-ArV2ray,telegram-ArV2ray,telegram-ArV2ray,telegram-ArV2ray,telegram-ArV2ray,telegram-ArV2ray,telegram-ArV2ray,telegram-ArV2ray,telegram-ArV2ray,telegram-ArV2ray,telegram-ArV2ray,telegram-ArV2ray?ed=2048&security=none&encryption=none&host=3.V.v.V.v.V.v.V-_-_-V2ray-_-_-V.v.V.v.arV2ray.Host.&type=ws#🔥Join+Telegram:@Farah_VPN🟣": {
-    "runs": 1,
-    "tcp_successes": 2,
-    "tcp_failures": 0,
-    "real_successes": 0,
-    "real_failures": 3,
-    "last_ping": null,
-    "best_ping": null,
-    "last_seen": 1789849760
-  },
   "vless://d342d11e-d424-4583-b36e-524ab1f0afa4@172.64.229.58:443?host=cdn8848.776676.xyz&path=%2F&security=tls&sni=cdn8848.776676.xyz&type=ws#vless-1386182010": {
     "runs": 2,
     "tcp_successes": 4,
@@ -34774,16 +35524,6 @@
     "last_ping": 2709.5,
     "best_ping": 2709.5,
     "last_seen": 1789593136
-  },
-  "vless://e0454af2-6fe9-4983-a55d-05e1da202602@199.232.78.159:443?path=/?TELEGRAM-leviconfigs?ed=512&security=tls&encryption=none&insecure=0&host=lsjaoijji.global.ssl.fastly.neT.&fp=chrome&type=ws&allowInsecure=0&sni=ssl.fastly.com#EPODONIOS": {
-    "runs": 1,
-    "tcp_successes": 2,
-    "tcp_failures": 0,
-    "real_successes": 0,
-    "real_failures": 3,
-    "last_ping": null,
-    "best_ping": null,
-    "last_seen": 1789593134
   },
   "vless://e0454af2-6fe9-4983-a55d-05e1da202602@151.101.56.7:443?path=/&security=tls&encryption=none&insecure=0&host=italyan.global.ssl.fastly.net.&type=ws&allowInsecure=0&sni=ssl.fastly.com#EPODONIOS": {
     "runs": 5,
@@ -49270,745 +50010,5 @@
     "last_ping": 209.6,
     "best_ping": 209.6,
     "last_seen": 1789021521
-  },
-  "vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@15.204.97.195:23576?flow=xtls-rprx-vision&fp=random&pbk=1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s&security=reality&sni=fuck.rkn&type=tcp#vless-700289117": {
-    "runs": 1,
-    "tcp_successes": 2,
-    "tcp_failures": 0,
-    "real_successes": 3,
-    "real_failures": 0,
-    "last_ping": 166.4,
-    "best_ping": 166.4,
-    "last_seen": 1789021521
-  },
-  "vless://cb2dbb6a-a1ea-4023-9ace-6466cee57241@51.81.203.63:443?flow=xtls-rprx-vision&fp=chrome&pbk=nqwCf6oW49tEtmQ0EzxigZ0uu1pg0E30CS54G40Iti0&security=reality&sid=4477382ff6d3d41c&sni=www.icloud.com&type=raw#vless-945745881": {
-    "runs": 1,
-    "tcp_successes": 2,
-    "tcp_failures": 0,
-    "real_successes": 0,
-    "real_failures": 3,
-    "last_ping": null,
-    "best_ping": null,
-    "last_seen": 1789021521
-  },
-  "vless://cb2dbb6a-a1ea-4023-9ace-6466cee57241@51.81.203.63:443?flow=xtls-rprx-vision&fp=chrome&pbk=nqwCf6oW49tEtmQ0EzxigZ0uu1pg0E30CS54G40Iti0&security=reality&sid=4477382ff6d3d41c&sni=www.icloud.com&spx=%2F&type=raw#vless-940261363": {
-    "runs": 1,
-    "tcp_successes": 2,
-    "tcp_failures": 0,
-    "real_successes": 0,
-    "real_failures": 3,
-    "last_ping": null,
-    "best_ping": null,
-    "last_seen": 1789021519
-  },
-  "vless://792ef1fd-84e4-4056-b1cf-492293aace2e@172.66.45.7:443?security=tls&sni=aryoovpn-5fr.pages.dev&type=ws&host=aryoovpn-5fr.pages.dev&fp=chrome#EPODONIOS": {
-    "runs": 1,
-    "tcp_successes": 2,
-    "tcp_failures": 0,
-    "real_successes": 0,
-    "real_failures": 3,
-    "last_ping": null,
-    "best_ping": null,
-    "last_seen": 1789021515
-  },
-  "vless://24c2a873-4584-4c53-8679-61029682d0bb@104.16.107.139:8880?encryption=none&security=none&type=ws&host=soft-thunder-bc22.111-f59.workers.dev&path=%2Fpyip#%F0%9F%8F%B3%EF%B8%8F%20ShatakVPN%20553721": {
-    "runs": 1,
-    "tcp_successes": 2,
-    "tcp_failures": 0,
-    "real_successes": 3,
-    "real_failures": 0,
-    "last_ping": 127.7,
-    "best_ping": 127.7,
-    "last_seen": 1789021503
-  },
-  "vless://4e4f1f70-5e56-4a76-bb9d-db087f4690c4@104.21.70.21:443?fp=firefox&host=jp3.yohototo.top&path=%2Ftyxyws&security=tls&sni=jp3.yohototo.top&type=ws#vless-1176039553": {
-    "runs": 1,
-    "tcp_successes": 2,
-    "tcp_failures": 0,
-    "real_successes": 3,
-    "real_failures": 0,
-    "last_ping": 1499.1,
-    "best_ping": 1499.1,
-    "last_seen": 1789021475
-  },
-  "vless://2169fc1b-1e61-4d44-e42e-34230695d5d5@104.18.12.126:2053?mode=gun&security=tls&encryption=none&type=grpc&serviceName=%40foxnim&sni=dd.foxnim.info#%F0%9F%87%BD%F0%9F%87%BD%20XX%20%7C%20VLESS%20%7C%20%40pro_chaneel%20%231%20%5Bfast%5D": {
-    "runs": 1,
-    "tcp_successes": 2,
-    "tcp_failures": 0,
-    "real_successes": 0,
-    "real_failures": 3,
-    "last_ping": null,
-    "best_ping": null,
-    "last_seen": 1789021475
-  },
-  "vless://469bc714-57c1-4091-8913-ff804b38bd3a@104.21.74.214:8443?encryption=none&security=tls&sni=maike-tison.briqivo.ir&insecure=0&allowInsecure=0&type=ws&path=/#🔥Join+Telegram:@Farah_VPN🟣": {
-    "runs": 2,
-    "tcp_successes": 4,
-    "tcp_failures": 0,
-    "real_successes": 0,
-    "real_failures": 6,
-    "last_ping": null,
-    "best_ping": null,
-    "last_seen": 1789021458
-  },
-  "vless://1f9d104e-ca0e-4202-ba4b-a0afb969c747@45.130.125.76:443?encryption=none&type=xhttp&security=tls&path=/assignment&host=www.multiplydose.cc.cd&mode=stream-one&sni=www.multiplydose.cc.cd&alpn=h2,http/1.1&fp=chrome&allowInsecure=0#canfingV2rayNG-77": {
-    "runs": 1,
-    "tcp_successes": 2,
-    "tcp_failures": 0,
-    "real_successes": 0,
-    "real_failures": 3,
-    "last_ping": null,
-    "best_ping": null,
-    "last_seen": 1789021457
-  },
-  "trojan://humanity@212.183.88.136:443?path=/assignment&security=tls&insecure=0&host=www.calmlunch.com&type=ws&allowInsecure=0&sni=www.calmlunch.com#🇦🇹AT-🚀@VPNine1": {
-    "runs": 1,
-    "tcp_successes": 2,
-    "tcp_failures": 0,
-    "real_successes": 3,
-    "real_failures": 0,
-    "last_ping": 626.4,
-    "best_ping": 626.4,
-    "last_seen": 1789021456
-  },
-  "vless://6202b230-417c-4d8e-b624-0f71afa9c75d@45.40.151.30:8880?type=ws&host=vms.lifetime42.workers.dev&path=/#🔥Join+Telegram:@Farah_VPN🟣": {
-    "runs": 1,
-    "tcp_successes": 2,
-    "tcp_failures": 0,
-    "real_successes": 0,
-    "real_failures": 3,
-    "last_ping": null,
-    "best_ping": null,
-    "last_seen": 1789021448
-  },
-  "vless://08125d23-5500-41ae-97ef-8398eaf70562@104.21.5.128:2052?path=/@BlueKnight_net--@BlueKnight_net&security=none&encryption=none&host=uwu.blueknightnet.qzz.io&type=ws#🔥Join+Telegram:@Farah_VPN🟣": {
-    "runs": 1,
-    "tcp_successes": 2,
-    "tcp_failures": 0,
-    "real_successes": 0,
-    "real_failures": 3,
-    "last_ping": null,
-    "best_ping": null,
-    "last_seen": 1789021432
-  },
-  "vless://435bda4c-fe5e-42c9-a3ad-15334943b38a@172.67.75.244:80?security=none&type=ws&host=us1.rtacg.com&path=/#کانال": {
-    "runs": 1,
-    "tcp_successes": 2,
-    "tcp_failures": 0,
-    "real_successes": 0,
-    "real_failures": 3,
-    "last_ping": null,
-    "best_ping": null,
-    "last_seen": 1789021428
-  },
-  "vless://928e6cce-8ced-4243-9a48-a6642edd09b0@38.180.242.205:13779?flow=xtls-rprx-vision&pbk=llTyp52oRXnJmQ3I9UUrmlwbMA79B-wLCRHCu-8dLGg&security=reality&sid=af1bdd293097b664&sni=tesla.com&type=tcp#vless-1200745442": {
-    "runs": 1,
-    "tcp_successes": 2,
-    "tcp_failures": 0,
-    "real_successes": 3,
-    "real_failures": 0,
-    "last_ping": 332.2,
-    "best_ping": 332.2,
-    "last_seen": 1789021416
-  },
-  "trojan://humanity@104.18.32.47:443?path=/assignment&security=tls&fm={": {
-    "runs": 1,
-    "tcp_successes": 2,
-    "tcp_failures": 0,
-    "real_successes": 0,
-    "real_failures": 3,
-    "last_ping": null,
-    "best_ping": null,
-    "last_seen": 1789021416
-  },
-  "trojan://humanity@212.183.88.136:443?path=/assignment&security=tls&insecure=0&host=www.calmlunch.com&type=ws&allowInsecure=0&sni=www.calmlunch.com#[41870]": {
-    "runs": 1,
-    "tcp_successes": 2,
-    "tcp_failures": 0,
-    "real_successes": 3,
-    "real_failures": 0,
-    "last_ping": 655.0,
-    "best_ping": 655.0,
-    "last_seen": 1789021413
-  },
-  "ss://48bd4d22-e42f-4749-af6a-85ecf716c823@172.67.73.163:80?path=/?ed=2048&security=none&encryption=none&host=fkhamnei.kosnanatfilterchi.eu.org&type=ws#🔥Join+Telegram:@Farah_VPN🟣": {
-    "runs": 1,
-    "tcp_successes": 2,
-    "tcp_failures": 0,
-    "real_successes": 0,
-    "real_failures": 3,
-    "last_ping": null,
-    "best_ping": null,
-    "last_seen": 1789021407
-  },
-  "vless://47fcef29-ab4e-4aa6-932b-d95a18f28a4e@108.162.198.178:8880?eh=Sec-WebSocket-Protocol&encryption=none&host=8nj2r.2k8t.f88.hh.vavava.kdns.fr&path=%2F&security=none&type=ws#%F0%9F%8F%B3%EF%B8%8F%20ShatakVPN%20491859": {
-    "runs": 1,
-    "tcp_successes": 2,
-    "tcp_failures": 0,
-    "real_successes": 0,
-    "real_failures": 3,
-    "last_ping": null,
-    "best_ping": null,
-    "last_seen": 1789021405
-  },
-  "trojan://humanity@185.18.250.252:443?path=/assignment&security=tls&insecure=0&host=www.calmlunch.com&type=ws&allowInsecure=0&sni=www.calmlunch.com#🇪🇸": {
-    "runs": 1,
-    "tcp_successes": 2,
-    "tcp_failures": 0,
-    "real_successes": 3,
-    "real_failures": 0,
-    "last_ping": 644.3,
-    "best_ping": 644.3,
-    "last_seen": 1789021397
-  },
-  "vless://85c4c0ce-08ef-493d-96f3-a711a70ec995@104.21.38.220:80?security=none&encryption=none&type=ws&host=cxrolvpn.vipserver2.workers.dev&path=/Mlx6nGDhEkXEcBi5?ed=2560#EPODONIOS": {
-    "runs": 5,
-    "tcp_successes": 10,
-    "tcp_failures": 0,
-    "real_successes": 0,
-    "real_failures": 15,
-    "last_ping": null,
-    "best_ping": null,
-    "last_seen": 1789021387
-  },
-  "vless://928e6cce-8ced-4243-9a48-a6642edd09b0@38.180.242.205:13779?flow=xtls-rprx-vision&fp=chrome&pbk=llTyp52oRXnJmQ3I9UUrmlwbMA79B-wLCRHCu-8dLGg&security=reality&sid=af1bdd293097b664&sni=tesla.com&type=tcp#vless-715092075": {
-    "runs": 1,
-    "tcp_successes": 2,
-    "tcp_failures": 0,
-    "real_successes": 3,
-    "real_failures": 0,
-    "last_ping": 134.9,
-    "best_ping": 134.9,
-    "last_seen": 1789021387
-  },
-  "ss://YWVzLTEyOC1nY206c2hhZG93c29ja3M@156.146.38.170:443#shadowsocks-159": {
-    "runs": 5,
-    "tcp_successes": 10,
-    "tcp_failures": 0,
-    "real_successes": 15,
-    "real_failures": 0,
-    "last_ping": 72.8,
-    "best_ping": 53.2,
-    "last_seen": 1789021386
-  },
-  "vless://928e6cce-8ced-4243-9a48-a6642edd09b0@38.180.242.205:13779?flow=xtls-rprx-vision&pbk=llTyp52oRXnJmQ3I9UUrmlwbMA79B-wLCRHCu-8dLGg&security=reality&sid=af1bdd293097b664&sni=tesla.com&type=tcp%23%F0%9F%93%8090%40oneclickvpnkeys#vless-1203055882": {
-    "runs": 1,
-    "tcp_successes": 2,
-    "tcp_failures": 0,
-    "real_successes": 0,
-    "real_failures": 3,
-    "last_ping": null,
-    "best_ping": null,
-    "last_seen": 1789021385
-  },
-  "vless://b2f6aa3a-2550-4a1c-b2c0-1c94b1207217@173.245.58.75:443?path=/hdgrbws&security=tls&encryption=none&insecure=0&host=terazhediii.info&fp=chrome&type=ws&allowInsecure=0&sni=terazhediii.info#@hopev2ray❤️": {
-    "runs": 1,
-    "tcp_successes": 2,
-    "tcp_failures": 0,
-    "real_successes": 0,
-    "real_failures": 3,
-    "last_ping": null,
-    "best_ping": null,
-    "last_seen": 1788999959
-  },
-  "vless://542fd687-5160-4f80-9223-56678567dd29@104.17.74.206:8443?type=ws&security=tls&fp=firefox&sni=8.sahanwickramasinghe.me#CA": {
-    "runs": 1,
-    "tcp_successes": 2,
-    "tcp_failures": 0,
-    "real_successes": 0,
-    "real_failures": 3,
-    "last_ping": null,
-    "best_ping": null,
-    "last_seen": 1788999959
-  },
-  "trojan://humanity@45.130.125.18:443?sni=www.calmlunch.com&type=ws&path=/assignment&fp=chrome#SC": {
-    "runs": 6,
-    "tcp_successes": 12,
-    "tcp_failures": 0,
-    "real_successes": 0,
-    "real_failures": 18,
-    "last_ping": null,
-    "best_ping": null,
-    "last_seen": 1788999956
-  },
-  "vless://b69b43d1-091d-4d7c-90b2-7a8bbad9d6a9@45.130.125.126:443?alpn=http%2F1.1&encryption=none&host=BItter-CreDIT-61b8.b76EbA0aBb.wORkerS.dEv&path=%2FeyJqdW5rIjoiY0U2T212Y21yeEhUZHRKYSIsInByb3RvY29sIjoidmwiLCJtb2RlIjoicHJveHlpcCIsInBhbmVsSVBzIjpbXX0&security=tls&sni=BItter-CreDIT-61b8.b76EbA0aBb.wORkerS.dEv&type=ws#%F0%9F%8F%B3%EF%B8%8F%20ShatakVPN%20344385": {
-    "runs": 1,
-    "tcp_successes": 2,
-    "tcp_failures": 0,
-    "real_successes": 3,
-    "real_failures": 0,
-    "last_ping": 151.3,
-    "best_ping": 151.3,
-    "last_seen": 1788999941
-  },
-  "vless://469bc714-57c1-4091-8913-ff804b38bd3a@104.21.74.214:8443?path=/?TELEGRAM--MARAMBASHI--MARAMBASHI?ed=512&security=tls&encryption=none&insecure=0&type=ws&allowInsecure=0&sni=maike-tison.briqivo.ir#@V2rayng_Fast": {
-    "runs": 3,
-    "tcp_successes": 6,
-    "tcp_failures": 0,
-    "real_successes": 0,
-    "real_failures": 9,
-    "last_ping": null,
-    "best_ping": null,
-    "last_seen": 1788999939
-  },
-  "vless://6202b230-417c-4d8e-b624-0f71afa9c75d@190.93.244.138:2096?encryption=none&security=tls&sni=sni.111000.indevs.in&insecure=0&allowInsecure=0&type=ws&host=sni.111000.indevs.in&path=/#EPODONIOS": {
-    "runs": 12,
-    "tcp_successes": 24,
-    "tcp_failures": 0,
-    "real_successes": 0,
-    "real_failures": 36,
-    "last_ping": null,
-    "best_ping": null,
-    "last_seen": 1788999938
-  },
-  "vless://telegram-id-ArV2ray@185.146.173.237:80?Telegram=@V2RayTz,@V2RayTz&path=/telegram-ArV2ray,telegram-ArV2ray,telegram-ArV2ray,telegram-ArV2ray,telegram-ArV2ray,telegram-ArV2ray,telegram-ArV2ray,telegram-ArV2ray,telegram-ArV2ray,telegram-ArV2ray,telegram-ArV2ray,telegram-ArV2ray?ed=2048&security=none&encryption=none&host=3.V.v.V.v.V.v.V-_-_-V2ray-_-_-V.v.V.zula.ir.arV2ray.Host.&type=ws#🔥Join+Telegram:@Farah_VPN🟣": {
-    "runs": 1,
-    "tcp_successes": 2,
-    "tcp_failures": 0,
-    "real_successes": 0,
-    "real_failures": 3,
-    "last_ping": null,
-    "best_ping": null,
-    "last_seen": 1788999938
-  },
-  "vless://83afd88f-200f-4d89-bfc7-66eff160c1d8@172.66.44.97:443?path=?ed=2048&security=tls&encryption=none&host=josni.hoyes.cloudns.ch&type=ws&sni=josni.hoyes.cloudns.ch#EPODONIOS": {
-    "runs": 1,
-    "tcp_successes": 2,
-    "tcp_failures": 0,
-    "real_successes": 0,
-    "real_failures": 3,
-    "last_ping": null,
-    "best_ping": null,
-    "last_seen": 1788999937
-  },
-  "vless://07ce9daf-8a17-404e-bd7a-07753ae29237@104.17.214.146:2095?path=/JVSZzd53GDDsUAKJ&security=&encryption=none&host=worker3.farapav827.workers.dev&type=ws&sni=worker3.farapav827.workers.dev#🔥Join+Telegram:@Azarbayjab1🟣": {
-    "runs": 1,
-    "tcp_successes": 2,
-    "tcp_failures": 0,
-    "real_successes": 0,
-    "real_failures": 3,
-    "last_ping": null,
-    "best_ping": null,
-    "last_seen": 1788999927
-  },
-  "vless://9b18ccef-b9e0-41d1-8990-9d970569e142@172.67.217.240:443?path=/&security=tls&encryption=none&fm={": {
-    "runs": 1,
-    "tcp_successes": 2,
-    "tcp_failures": 0,
-    "real_successes": 0,
-    "real_failures": 3,
-    "last_ping": null,
-    "best_ping": null,
-    "last_seen": 1788999927
-  },
-  "vless://dc8a9493-c54a-459e-d060-81a700000001@45.130.125.201:80?encryption=none&host=nahan-core.netizo09.workers.dev&path=%2Fsync&security=none&type=ws#%F0%9F%8F%B3%EF%B8%8F%20ShatakVPN%20130776": {
-    "runs": 1,
-    "tcp_successes": 2,
-    "tcp_failures": 0,
-    "real_successes": 3,
-    "real_failures": 0,
-    "last_ping": 404.7,
-    "best_ping": 404.7,
-    "last_seen": 1788999926
-  },
-  "vless://aaaaaabb-4ddd-4eee-9fff-ffffffffffff@104.16.2.90:443?encryption=none&security=tls&sni=ProxyVPN11.afrcloud22.mmv.kr&insecure=1&allowInsecure=1&type=ws&host=afrcloud22.mmv.kr&path=/#کانال": {
-    "runs": 11,
-    "tcp_successes": 22,
-    "tcp_failures": 0,
-    "real_successes": 0,
-    "real_failures": 33,
-    "last_ping": null,
-    "best_ping": null,
-    "last_seen": 1788999920
-  },
-  "ss://f081b5e2-f3a0-4ef5-833b-1ea59e0797b6@104.21.33.59:443?path=%2F6d2fed050b30&amp;security=tls&amp;encryption=none&amp;fm=%7B%22tcp%22%3A%20%5B%7B%22type%22%3A%20%22fragment%22%2C%20%22settings%22%3A%20%7B%22packets%22%3A%20%22tlshello%22%2C%20%22lengths%22%3A%20%5B%225%22%2C%20%2294%22%2C%20%221%22%5D%2C%20%22delays%22%3A%20%5B%220%22%5D%2C%20%22maxSplit%22%3A%20%220%22%7D%7D%2C%7B%22type%22%3A%20%22fragment%22%2C%20%22settings%22%3A%20%7B%22packets%22%3A%20%221-1%22%2C%20%22lengths%22%3A%20%5B%22109%22%2C%20%221%22%5D%2C%20%22delays%22%3A%20%5B%221%22%5D%2C%20%22maxSplit%22%3A%20%22355%22%7D%7D%5D%7D&amp;insecure=0&amp;host=fcs013.getdcz.me&amp;type=ws&amp;allowInsecure=0&amp;sni=fcs013.getdcz.me#🔥Join+Telegram:@Farah_VPN🟣": {
-    "runs": 1,
-    "tcp_successes": 2,
-    "tcp_failures": 0,
-    "real_successes": 0,
-    "real_failures": 3,
-    "last_ping": null,
-    "best_ping": null,
-    "last_seen": 1788999920
-  },
-  "vless://923e051a-f598-4ea5-9c6c-f7e37c438a60@104.21.96.56:80?type=ws&host=vkvd8bpskvxgjwdvcidxgoccr.javanbaghe.workers.dev&path=/vl/D2pryqVs9LAgCYdTK76lsafWY?ed=2560#🇸🇬": {
-    "runs": 2,
-    "tcp_successes": 4,
-    "tcp_failures": 0,
-    "real_successes": 3,
-    "real_failures": 3,
-    "last_ping": 207.6,
-    "best_ping": 207.6,
-    "last_seen": 1788999919
-  },
-  "trojan://humanity@45.130.125.126:443?sni=www.calmlunch.com&type=ws&path=/assignment&fp=chrome#SC": {
-    "runs": 7,
-    "tcp_successes": 14,
-    "tcp_failures": 0,
-    "real_successes": 0,
-    "real_failures": 21,
-    "last_ping": null,
-    "best_ping": null,
-    "last_seen": 1788999916
-  },
-  "trojan://humanity@172.67.149.60:443?security=tls#%F0%9F%8F%81RELAY-172.67.149.60-2347": {
-    "runs": 1,
-    "tcp_successes": 2,
-    "tcp_failures": 0,
-    "real_successes": 0,
-    "real_failures": 3,
-    "last_ping": null,
-    "best_ping": null,
-    "last_seen": 1788999910
-  },
-  "vless://2a269c03-fd20-46e2-8464-60b10a244801@104.20.2.1:80?path=%2Fdl%2Findex.php&amp;security=none&amp;encryption=none&amp;host=RFDJCK.%D8%B3%DB%8C%D8%B3%DB%8C.wOrLd&amp;type=ws#🔥Join+Telegram:@Farah_VPN🟣": {
-    "runs": 1,
-    "tcp_successes": 2,
-    "tcp_failures": 0,
-    "real_successes": 0,
-    "real_failures": 3,
-    "last_ping": null,
-    "best_ping": null,
-    "last_seen": 1788999908
-  },
-  "vless://838f5273-5d2d-4630-a0f5-9cc8e4aef4d6@104.17.147.22:8443?encryption=none&security=tls&sni=MdLoXlYg.rIcKtMoUsE.InFo&fp=chrome&type=ws&host=MdLoXlYg.rIcKtMoUsE.InFo&path=%2F#🔥Join+Telegram:@Farah_VPN🟣": {
-    "runs": 1,
-    "tcp_successes": 2,
-    "tcp_failures": 0,
-    "real_successes": 0,
-    "real_failures": 3,
-    "last_ping": null,
-    "best_ping": null,
-    "last_seen": 1788999906
-  },
-  "trojan://humanity@104.18.152.208:443?allowInsecure=1&sni=www.ignitelimit.com&ws=1&wspath=%2Fassignment#%F0%9F%87%AB%F0%9F%87%B7%20%E6%B3%95%E5%9B%BD%20%7C%20FRA": {
-    "runs": 1,
-    "tcp_successes": 2,
-    "tcp_failures": 0,
-    "real_successes": 0,
-    "real_failures": 3,
-    "last_ping": null,
-    "best_ping": null,
-    "last_seen": 1788999905
-  },
-  "trojan://humanity@104.18.152.210:443?security=tls&sni=www.ignitelimit.com#%F0%9F%8F%81RELAY-104.18.152.210-1296": {
-    "runs": 1,
-    "tcp_successes": 2,
-    "tcp_failures": 0,
-    "real_successes": 0,
-    "real_failures": 3,
-    "last_ping": null,
-    "best_ping": null,
-    "last_seen": 1788999905
-  },
-  "trojan://5e5340e6-433d-b5f7-0062-d793046eb281@94.140.0.100:8443?type=ws&host=blue-queen-d517.aaj1388324.workers.dev&path=/eyJqdW5rIjoiMWphS1ZyYzRTbGsiLCJwcm90b2NvbCI6InRyIiwibW9kZSI6InByb3h5aXAiLCJwYW5lbElQcyI6W10sInJlbGF5SWR4IjoyM30=&security=tls&fp=chrome&sni=blue-queen-d517.aaj1388324.workers.dev#EPODONIOS": {
-    "runs": 7,
-    "tcp_successes": 14,
-    "tcp_failures": 0,
-    "real_successes": 15,
-    "real_failures": 6,
-    "last_ping": 327.2,
-    "best_ping": 157.9,
-    "last_seen": 1788999904
-  },
-  "vless://de6fe7e1-0afb-4841-a82a-6b8156367a30@185.146.173.185:80?security=none&type=ws&host=4.V.v.V.v.V.v.v.V.v-_-_-v2ray-_-_-v.v.v.v.它傳奇之伺服器所以也你是.Vipnufilter.Online.&path=/telegram-NUFiLTER,telegram-NUFiLTER,telegram-NUFiLTER,telegram-NUFiLTER,telegram-NUFiLTER,telegram-NUFiLTER,telegram-NUFiLTER,telegram-NUFiLTER,telegram-NUFiLTER,telegram-NUFiLTER,telegram-NUFiLTER,telegram-NUFiLTER?ed=2048#EPODONIOS": {
-    "runs": 1,
-    "tcp_successes": 2,
-    "tcp_failures": 0,
-    "real_successes": 0,
-    "real_failures": 3,
-    "last_ping": null,
-    "best_ping": null,
-    "last_seen": 1788999887
-  },
-  "trojan://MiTiVPN@151.101.56.7:443?path=/--&security=tls&alpn=http/1.1&insecure=0&host=mitivpn-mitivpn-mitivpn---mitivpn--mitivpn.global.ssl.fastly.net&fp=chrome&type=ws&allowInsecure=0&sni=ssl.fastly.com#🔥Join+Telegram:@Farah_VPN🟣": {
-    "runs": 1,
-    "tcp_successes": 2,
-    "tcp_failures": 0,
-    "real_successes": 0,
-    "real_failures": 3,
-    "last_ping": null,
-    "best_ping": null,
-    "last_seen": 1788999886
-  },
-  "vless://a13df940-020c-465f-bc89-ee5279b5cd6a@217.163.76.5:443?security=tls&sni=jpd.ylks01.eu.org&type=ws&path=/blue#🇬🇧GB-🚀@VPNine1": {
-    "runs": 1,
-    "tcp_successes": 2,
-    "tcp_failures": 0,
-    "real_successes": 0,
-    "real_failures": 3,
-    "last_ping": null,
-    "best_ping": null,
-    "last_seen": 1788999886
-  },
-  "vless://1d9479b6-5ef8-484b-9e81-c83a4dcc7264@162.159.129.233:80?security=none&type=ws&host=%E5%B0%BC%E4%BA%9E%E5%9C%98%E5%93%A13%E5%B0%BC%E4%BA%9E%E5%9C%98%E5%93%A11%E5%B0%BC%E4%BA%9E%E5%9C%98%E5%93%A16%E5%B0%BC%E4%BA%9E%E5%9C%98%E4%BA%9E%E5%9C%98%E5%93%A1%E5%B0%BC%E4%BA%9E%E5%9C%98%E5%B0%BC%E4%BA%9E%E5%9C%98%E4%BA%9E%E5%9C%98%E5%93%A1%E4%BA%9E%E5%9C%98%E5%93%A1%E5%93%A1%E4%BA%9E%E5%9C%98%E4%BA%9E%E5%9C%98%E5%93%A1%E4%BA%9E%E5%9C%98%E5%93%A1.%E5%B0%BC%E4%BA%9E%E5%9C%98%E5%93%A14%E5%B0%BC%E4%BA%9E%E5%9C%98%E5%93%A10%E5%B0%BC%E4%BA%9E%E5%9C%98%E5%93%A17%E5%B0%BC%E4%BA%9E%E5%9C%98%E4%BA%9E%E5%9C%98%E5%93%A1%E5%B0%BC%E4%BA%9E%E5%9C%98%E5%B0%BC%E4%BA%9E%E5%9C%98%E4%BA%9E%E5%9C%98%E5%93%A1%E4%BA%9E%E5%9C%98%E5%93%A1%E5%93%A1%E4%BA%9E%E5%9C%98%E4%BA%9E%E5%9C%98%E5%93%A1%E4%BA%9E%E5%9C%98%E5%93%A1.store.&path=%2F#⚡": {
-    "runs": 1,
-    "tcp_successes": 2,
-    "tcp_failures": 0,
-    "real_successes": 0,
-    "real_failures": 3,
-    "last_ping": null,
-    "best_ping": null,
-    "last_seen": 1788999884
-  },
-  "vless://99bd9072-226f-48f8-8ee1-7fc01542c903@104.21.28.188:8080?security=none&type=ws&host=dac9f71a1490f05a.sh.ger.bandinng.ir&path=/#EPODONIOS": {
-    "runs": 1,
-    "tcp_successes": 2,
-    "tcp_failures": 0,
-    "real_successes": 0,
-    "real_failures": 3,
-    "last_ping": null,
-    "best_ping": null,
-    "last_seen": 1788999880
-  },
-  "vless://47fcef29-ab4e-4aa6-932b-d95a18f28a4e@104.18.34.14:2052?security=none&type=ws&path=/?ed=2560security=tls&host=8nj2r.2k8t.f88.hh.vavava.kdns.fr&packetEncoding=xudp#%E7%BE%8E%E5%9B%BD+CloudFlare%E8%8A%82%E7%82%B9": {
-    "runs": 1,
-    "tcp_successes": 2,
-    "tcp_failures": 0,
-    "real_successes": 0,
-    "real_failures": 3,
-    "last_ping": null,
-    "best_ping": null,
-    "last_seen": 1788999874
-  },
-  "vless://542fd687-5160-4f80-9223-56678567dd29@104.17.71.206:8443?security=tls&type=ws&path=%2F&host=8.sahanwickramasinghe.me&sni=8.sahanwickramasinghe.me&fp=firefox#hamedp71%3A%3A%F0%9F%8F%B4%E2%80%8D%E2%98%A0%EF%B8%8F": {
-    "runs": 1,
-    "tcp_successes": 2,
-    "tcp_failures": 0,
-    "real_successes": 3,
-    "real_failures": 0,
-    "last_ping": 1443.7,
-    "best_ping": 1443.7,
-    "last_seen": 1788999872
-  },
-  "trojan://humanity@104.16.72.251:443?sni=www.calmlunch.com&type=ws#trojan-1215612925": {
-    "runs": 1,
-    "tcp_successes": 2,
-    "tcp_failures": 0,
-    "real_successes": 0,
-    "real_failures": 3,
-    "last_ping": null,
-    "best_ping": null,
-    "last_seen": 1788999868
-  },
-  "vless://5a9bfe8c-b399-4a9e-9613-b7821cb4a899@104.16.22.21:2053?path=/?TELEGRAM--MARAMBASHI--MARAMBASHI?ed=512&security=tls&encryption=none&insecure=0&host=ca.roomode.ir&fp=chrome&type=ws&allowInsecure=0&sni=ca.roomode.ir#🔥Join+Telegram:@Farah_VPN🟣": {
-    "runs": 1,
-    "tcp_successes": 2,
-    "tcp_failures": 0,
-    "real_successes": 0,
-    "real_failures": 3,
-    "last_ping": null,
-    "best_ping": null,
-    "last_seen": 1788999865
-  },
-  "vless://9f387ad9-043b-40b2-97c5-265d30cbfbf1@172.66.44.156:443?encryption=none&security=tls&sni=besTiIvPn-6t8.PAGes.DEV&alpn=h2%2Chttp%2F1.1&fp=randomized&type=ws&host=bestiivpn-6t8.pages.dev&path=%2FTelegram%40mtmvpn---mtmvpn---mtmvpn%3Fed%3D2560#🔥Join+Telegram:@Farah_VPN🟣": {
-    "runs": 1,
-    "tcp_successes": 2,
-    "tcp_failures": 0,
-    "real_successes": 0,
-    "real_failures": 3,
-    "last_ping": null,
-    "best_ping": null,
-    "last_seen": 1788999862
-  },
-  "vless://eae02a50-e329-4647-926e-8439e685f317@86.38.214.86:443?security=tls&sni=first.pinocchio1.ir.&type=grpc&fp=chrome&alpn=http/1.1#🔥Join+Telegram:@Farah_VPN🟣": {
-    "runs": 1,
-    "tcp_successes": 2,
-    "tcp_failures": 0,
-    "real_successes": 0,
-    "real_failures": 3,
-    "last_ping": null,
-    "best_ping": null,
-    "last_seen": 1788999859
-  },
-  "vless://83afd88f-200f-4d89-bfc7-66eff160c1d8@172.66.44.97:443?path=/sg-melbi&security=tls&encryption=none&insecure=0&host=josni.hoyes.cloudns.ch&ech=ip.gs+udp://8.8.8.8&type=ws&allowInsecure=0&sni=josni.hoyes.cloudns.ch#@EXPRESSVPN_420": {
-    "runs": 1,
-    "tcp_successes": 2,
-    "tcp_failures": 0,
-    "real_successes": 0,
-    "real_failures": 3,
-    "last_ping": null,
-    "best_ping": null,
-    "last_seen": 1788999858
-  },
-  "vless://Telegram:@Free_VPN_CH@5.10.215.8:2096?encryption=none&security=tls&sni=tn1rr.qzz.io&fp=chrome&alpn=h2,http/1.1&insecure=1&allowInsecure=1&type=ws&host=tn1rr.qzz.io&path=/sg-lnd#EPODONIOS": {
-    "runs": 2,
-    "tcp_successes": 4,
-    "tcp_failures": 0,
-    "real_successes": 0,
-    "real_failures": 6,
-    "last_ping": null,
-    "best_ping": null,
-    "last_seen": 1788999846
-  },
-  "vless://00baa831-7e66-4a9a-a622-86c25e0285e2@185.146.173.95:80?security=none&type=ws&host=1.V2rayV2ray-_-_-V2ray.Zemestanil.Ir&path=/@Proxy_MTM-@Proxy_MTM-@Proxy_MTM-Proxy_@MTM?ed=2056#🔥Join+Telegram:@Farah_VPN🟣": {
-    "runs": 1,
-    "tcp_successes": 2,
-    "tcp_failures": 0,
-    "real_successes": 0,
-    "real_failures": 3,
-    "last_ping": null,
-    "best_ping": null,
-    "last_seen": 1788999846
-  },
-  "trojan://humanity@162.159.253.41:443?path=/assignment&security=tls&insecure=0&host=www.calmlunch.com&type=ws&allowInsecure=0&sni=www.calmlunch.com#US": {
-    "runs": 1,
-    "tcp_successes": 2,
-    "tcp_failures": 0,
-    "real_successes": 3,
-    "real_failures": 0,
-    "last_ping": 447.0,
-    "best_ping": 447.0,
-    "last_seen": 1788999827
-  },
-  "vless://b6f4cdf1-e223-4c79-a0d5-c18a184947f1@199.232.78.159:443?path=/&security=tls&encryption=none&insecure=0&host=lsjaoijji.global.ssl.fastly.neT&type=ws&allowInsecure=0&sni=ssl.fastly.com#EPODONIOS": {
-    "runs": 1,
-    "tcp_successes": 2,
-    "tcp_failures": 0,
-    "real_successes": 0,
-    "real_failures": 3,
-    "last_ping": null,
-    "best_ping": null,
-    "last_seen": 1788999824
-  },
-  "trojan://humanity@45.130.125.160:443?host=www.calmlunch.com&path=/assignment&sni=www.calmlunch.com&type=ws#SC": {
-    "runs": 5,
-    "tcp_successes": 10,
-    "tcp_failures": 0,
-    "real_successes": 12,
-    "real_failures": 3,
-    "last_ping": 466.2,
-    "best_ping": 380.6,
-    "last_seen": 1788999822
-  },
-  "trojan://MiTiVPN@199.232.78.160:443?path=/&security=tls&alpn=http/1.1&insecure=0&host=mitivpn-ss-mitivpn-----mitivpn.global.ssl.fastly.net&fp=chrome&type=ws&allowInsecure=0&sni=ssl.fastly.com#@B2Hub": {
-    "runs": 2,
-    "tcp_successes": 4,
-    "tcp_failures": 0,
-    "real_successes": 0,
-    "real_failures": 6,
-    "last_ping": null,
-    "best_ping": null,
-    "last_seen": 1788999818
-  },
-  "trojan://MiTiVPN@151.101.56.7:443?path=/---TOOTFFARANGI---TOOTFFARANGI---TOOTFFARANGI---TOOTFFARANGI---TOOTFFARANGI---TOOTFFARANGI---TOOTFFARANGI&security=tls&alpn=http/1.1&insecure=0&host=mitivpn-mitivpn-mitivpn-bb-mitivpn-mitivpn--mitivpn.global.ssl.fastly.net&fp=chrome&type=ws&allowInsecure=0&sni=ssl.fastly.com#EPODONIOS": {
-    "runs": 1,
-    "tcp_successes": 2,
-    "tcp_failures": 0,
-    "real_successes": 0,
-    "real_failures": 3,
-    "last_ping": null,
-    "best_ping": null,
-    "last_seen": 1788999816
-  },
-  "trojan://humanity@188.114.97.7:443?path=/assignment&security=tls&insecure=0&ech=ip.gs+udp://8.8.8.8&type=ws&allowInsecure=0&sni=www.ignitelimit.com#🇨🇦@FreakConfig": {
-    "runs": 1,
-    "tcp_successes": 2,
-    "tcp_failures": 0,
-    "real_successes": 0,
-    "real_failures": 3,
-    "last_ping": null,
-    "best_ping": null,
-    "last_seen": 1788999813
-  },
-  "vless://1d38d2b2-342f-4a01-93df-f24fb0277c70@193.239.179.15:443?security=reality&encryption=none&pbk=6dc3iKXilOQpA_JFrKlk5-CsFjSmOm_5p0kSQcO9qi4&headerType=none&fp=chrome&type=tcp&flow=xtls-rprx-vision&sni=worldoftanks.asia#🔥Join+Telegram:@Farah_VPN🟣": {
-    "runs": 3,
-    "tcp_successes": 6,
-    "tcp_failures": 0,
-    "real_successes": 0,
-    "real_failures": 9,
-    "last_ping": null,
-    "best_ping": null,
-    "last_seen": 1788999808
-  },
-  "ss://7e544a9d-7667-413b-bbb0-b3bb1aac6d77@104.16.72.101:443?path=%2Frsedgws&amp;security=tls&amp;encryption=none&amp;insecure=0&amp;host=shegeftihaaa.net&amp;fp=chrome&amp;type=ws&amp;allowInsecure=0&amp;sni=shegeftihaaa.net#🔥Join+Telegram:@Farah_VPN🟣": {
-    "runs": 3,
-    "tcp_successes": 6,
-    "tcp_failures": 0,
-    "real_successes": 0,
-    "real_failures": 9,
-    "last_ping": null,
-    "best_ping": null,
-    "last_seen": 1788999807
-  },
-  "trojan://MiTiVPN@151.101.56.7:443?sni=ssl.fastly.com&type=ws#trojan-1220299215": {
-    "runs": 1,
-    "tcp_successes": 2,
-    "tcp_failures": 0,
-    "real_successes": 0,
-    "real_failures": 3,
-    "last_ping": null,
-    "best_ping": null,
-    "last_seen": 1788999807
-  },
-  "vless://d9eda159-18d6-4457-8983-55523a21658c@151.101.56.6:443?Telegram=Cfox_Server---Cfox_Server---Cfox_Server---Cfox_Server---Cfox_Server---Cfox_Server---Cfox_Server---Cfox_Server---Cfox_Server---Cfox_Server---Cfox_Server---Cfox_Server---Cfox_Server---Cfox_Server---Cfox_Server---Cfox_Server&path=/?TELEGRAM---TOOTFFARANGI---TOOTFFARANGI---TOOTFFARANGI---TOOTFFARANGI---TOOTFFARANGI---TOOTFFARANGI---TOOTFFARANGI&security=tls&alpn=h2&encryption=none&insecure=0&host=c12.com&fp=chrome&type=ws&allowInsecure=0&sni=ssl.fastly.com#🔥Join+Telegram:@Farah_VPN🟣": {
-    "runs": 1,
-    "tcp_successes": 2,
-    "tcp_failures": 0,
-    "real_successes": 3,
-    "real_failures": 0,
-    "last_ping": 630.9,
-    "best_ping": 630.9,
-    "last_seen": 1788999803
-  },
-  "vless://XpnTeam-64@199.232.78.160:443?path=/&security=tls&alpn=http/1.1&encryption=none&host=Appxdn.global.ssl.fastly.net&fp=chrome&type=ws&sni=ssl.fastly.com#@v2ray_phoenix": {
-    "runs": 1,
-    "tcp_successes": 2,
-    "tcp_failures": 0,
-    "real_successes": 0,
-    "real_failures": 3,
-    "last_ping": null,
-    "best_ping": null,
-    "last_seen": 1788999801
-  },
-  "vless://2331c20f-b871-4776-b37b-a2b88f9d3fc2@185.146.173.28:80?security=none&type=ws&host=TehranBook.G2.Shop.Site.Co.xn--fhq0la447aac5504dea701aea9245d.CoM.#🔥Join+Telegram:@Farah_VPN🟣": {
-    "runs": 2,
-    "tcp_successes": 4,
-    "tcp_failures": 0,
-    "real_successes": 0,
-    "real_failures": 6,
-    "last_ping": null,
-    "best_ping": null,
-    "last_seen": 1788978248
-  },
-  "vless://05214830-5d65-4ee1-a3d4-68f36cbea637@23.227.39.123:443?encryption=none&type=ws&host=api5.htve.ir&path=/?TELEGRAM-MARAMBASHI_MARAMBASHI?ed=512&security=tls&fp=chrome&sni=api5.htve.ir&alpn=h2,http/1.1#@V2RAYNG_IP": {
-    "runs": 3,
-    "tcp_successes": 6,
-    "tcp_failures": 0,
-    "real_successes": 0,
-    "real_failures": 9,
-    "last_ping": null,
-    "best_ping": null,
-    "last_seen": 1788978245
-  },
-  "vless://7d96f544-c496-41cf-dd61-337f0aff062a@104.17.151.85:80?type=ws&host=kr1.175852.xyz&path=/abcde#🔥Join+Telegram:@Farah_VPN🟣": {
-    "runs": 1,
-    "tcp_successes": 2,
-    "tcp_failures": 0,
-    "real_successes": 0,
-    "real_failures": 3,
-    "last_ping": null,
-    "best_ping": null,
-    "last_seen": 1788978238
-  },
-  "vless://469bc714-57c1-4091-8913-ff804b38bd3a@104.21.74.214:8443?path=/&security=tls&encryption=none&insecure=0&type=ws&allowInsecure=0&sni=maike-tison.briqivo.ir#@VConfing": {
-    "runs": 1,
-    "tcp_successes": 2,
-    "tcp_failures": 0,
-    "real_successes": 0,
-    "real_failures": 3,
-    "last_ping": null,
-    "best_ping": null,
-    "last_seen": 1788978238
-  },
-  "vless://b58503a8-a91b-493b-ad38-377628fc7c8e@185.146.173.95:2095?path=/&security=none&encryption=none&host=V2ray-_-_-_-_-_-ShhProxy.TelegramChannelJoinBede.com.&type=ws#🔥Join+Telegram:@Farah_VPN🟣": {
-    "runs": 1,
-    "tcp_successes": 2,
-    "tcp_failures": 0,
-    "real_successes": 0,
-    "real_failures": 3,
-    "last_ping": null,
-    "best_ping": null,
-    "last_seen": 1788978230
   }
 }
