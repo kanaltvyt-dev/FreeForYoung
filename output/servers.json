@@ -1,50 +1,98 @@
 [
   {
     "rank": 1,
-    "protocol": "VLESS",
-    "uri": "vless://e5cc16a6-ea42-46b2-82ae-ad2157e1641b@172.64.150.28:2082?security=none&encryption=none&host=hhlfy.twiladaphne.ndjp.net&type=ws#🔥Join+Telegram:@Farah_VPN🟣",
-    "ping": 43.3,
+    "protocol": "SS",
+    "uri": "ss://YWVzLTEyOC1nY206c2hhZG93c29ja3M@156.146.38.167:443#shadowsocks-158",
+    "ping": 69.6,
     "real_successes": 3,
     "real_attempts": 3,
     "real_success_rate": 1.0,
-    "score": 1760.0,
-    "endpoint": "172.64.150.28:2082",
-    "ip": "172.64.150.28"
+    "score": 1705.0,
+    "endpoint": "156.146.38.167:443",
+    "ip": "156.146.38.167"
   },
   {
     "rank": 2,
-    "protocol": "VLESS-TLS",
-    "uri": "vless://2b181a3a-c001-4145-845a-5d43a43837d5@104.19.50.28:443?security=tls&type=ws&path=/&host=vpn-1fj.pages.dev&packetEncoding=xudp&sni=vpn-1fj.pages.dev&fp=chrome#%E7%BE%8E%E5%9B%BD+CloudFlare%E8%8A%82%E7%82%B9",
-    "ping": 79.9,
+    "protocol": "SS",
+    "uri": "ss://YWVzLTEyOC1nY206c2hhZG93c29ja3M@156.146.38.170:443#shadowsocks-159",
+    "ping": 70.3,
     "real_successes": 3,
     "real_attempts": 3,
     "real_success_rate": 1.0,
-    "score": 1760.0,
-    "endpoint": "104.19.50.28:443",
-    "ip": "104.19.50.28"
+    "score": 1705.0,
+    "endpoint": "156.146.38.170:443",
+    "ip": "156.146.38.170"
   },
   {
     "rank": 3,
-    "protocol": "VLESS",
-    "uri": "vless://e5cc16a6-ea42-46b2-82ae-ad2157e1641b@172.64.150.28:2082?security=none&encryption=none&host=hhlfy.twiladaphne.ndjp.net&type=ws&sni=hhlfy.twiladaphne.ndjp.net#🔥Join+Telegram:@Farah_VPN🟣",
-    "ping": 65.0,
+    "protocol": "SS",
+    "uri": "ss://YWVzLTEyOC1nY206c2hhZG93c29ja3M@156.146.38.169:443#shadowsocks-194",
+    "ping": 70.7,
     "real_successes": 3,
     "real_attempts": 3,
     "real_success_rate": 1.0,
-    "score": 1740.0,
-    "endpoint": "172.64.150.28:2082",
-    "ip": "172.64.150.28"
+    "score": 1705.0,
+    "endpoint": "156.146.38.169:443",
+    "ip": "156.146.38.169"
   },
   {
     "rank": 4,
-    "protocol": "VLESS-TLS",
-    "uri": "vless://f49d04d6-aaa7-4013-b323-bc35b78230db@188.114.96.3:443?security=tls&type=ws&path=%2Fwsrb7k2m&host=s4ws.ragingbull.de5.net&sni=s4ws.ragingbull.de5.net&fp=chrome#hamedp71%3A%3A%F0%9F%8F%B4%E2%80%8D%E2%98%A0%EF%B8%8F",
-    "ping": 689.6,
+    "protocol": "SS",
+    "uri": "ss://YWVzLTEyOC1nY206c2hhZG93c29ja3M=@156.146.38.170:443#US",
+    "ping": 70.9,
     "real_successes": 3,
     "real_attempts": 3,
     "real_success_rate": 1.0,
-    "score": 1550.0,
-    "endpoint": "188.114.96.3:443",
-    "ip": "188.114.96.3"
+    "score": 1705.0,
+    "endpoint": "156.146.38.170:443",
+    "ip": "156.146.38.170"
+  },
+  {
+    "rank": 5,
+    "protocol": "SS",
+    "uri": "ss://YWVzLTEyOC1nY206c2hhZG93c29ja3M=@156.146.38.169:443#@Tarkshodeh",
+    "ping": 71.5,
+    "real_successes": 3,
+    "real_attempts": 3,
+    "real_success_rate": 1.0,
+    "score": 1705.0,
+    "endpoint": "156.146.38.169:443",
+    "ip": "156.146.38.169"
+  },
+  {
+    "rank": 6,
+    "protocol": "TROJAN",
+    "uri": "trojan://humanity@8.47.69.0:443?path=%2Fassignment&security=tls&alpn=http%2F1.1&insecure=0&host=www.pleadcourt.org&type=ws&allowInsecure=0&sni=www.pleadcourt.org&fp=safari#hamedp71%3A%3A%F0%9F%87%B3%F0%9F%87%B1",
+    "ping": 663.3,
+    "real_successes": 3,
+    "real_attempts": 3,
+    "real_success_rate": 1.0,
+    "score": 1420.0,
+    "endpoint": "8.47.69.0:443",
+    "ip": "8.47.69.0"
+  },
+  {
+    "rank": 7,
+    "protocol": "TROJAN",
+    "uri": "trojan://humanity@45.130.125.160:443?security=tls&sni=www.calmlunch.com&type=ws&path=/assignment&Host=www.calmlunch.com#🔥Join+Telegram:@Farah_VPN🟣",
+    "ping": 981.1,
+    "real_successes": 3,
+    "real_attempts": 3,
+    "real_success_rate": 1.0,
+    "score": 1415.0,
+    "endpoint": "45.130.125.160:443",
+    "ip": "45.130.125.160"
+  },
+  {
+    "rank": 8,
+    "protocol": "TROJAN",
+    "uri": "trojan://humanity@212.183.88.136:443?security=tls&sni=www.calmlunch.com&type=ws&path=/assignment&Host=www.calmlunch.com#🇦🇹189071",
+    "ping": 994.2,
+    "real_successes": 3,
+    "real_attempts": 3,
+    "real_success_rate": 1.0,
+    "score": 1415.0,
+    "endpoint": "212.183.88.136:443",
+    "ip": "212.183.88.136"
   }
 ]
