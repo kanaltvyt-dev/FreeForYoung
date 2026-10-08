@@ -2,12 +2,12 @@
   "project": "FreeForYoung",
   "version": 7,
   "sources": 5,
-  "raw_nodes": 1318,
-  "valid_unique_nodes": 882,
-  "tcp_candidates": 880,
+  "raw_nodes": 1309,
+  "valid_unique_nodes": 938,
+  "tcp_candidates": 937,
   "real_tested": 120,
-  "real_working": 11,
-  "published": 10,
+  "real_working": 3,
+  "published": 3,
   "minimum_real_success": 2,
   "tcp_attempts": 2,
   "real_attempts": 3,
@@ -18,6 +18,6 @@
   "happ_ping_type": "proxy",
   "happ_proxy_ping_mode": "keepalive",
   "happ_check_url": "https://cp.cloudflare.com/generate_204",
-  "generated_at": 1791438558,
-  "duration_seconds": 185.7
+  "generated_at": 1791465535,
+  "duration_seconds": 230.52
 }
