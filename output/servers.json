@@ -1,62 +1,98 @@
 [
   {
     "rank": 1,
+    "protocol": "VLESS-TLS",
+    "uri": "vless://d342d11e-d224-4463-b982-532309285094@172.64.152.241:443?path=/fp=chrome&security=tls&encryption=none&host=ccc.010304.xyz&fp=chrome&type=ws&sni=ccc.010304.xyz#@v2ray_phoenix",
+    "ping": 77.7,
+    "real_successes": 3,
+    "real_attempts": 3,
+    "real_success_rate": 1.0,
+    "score": 1760.0,
+    "endpoint": "172.64.152.241:443",
+    "ip": "172.64.152.241"
+  },
+  {
+    "rank": 2,
     "protocol": "VLESS",
-    "uri": "vless://e5cc16a6-ea42-46b2-82ae-ad2157e1641b@172.64.150.28:2082?path=/fp&security=&encryption=none&host=hhlfy.twiladaphne.ndjp.net&type=ws#EPODONIOS",
-    "ping": 77.0,
+    "uri": "vless://e5cc16a6-ea42-46b2-82ae-ad2157e1641b@104.18.0.181:2082?path=/fp&security=none&encryption=none&host=hhlfy.twiladaphne.ndjp.net&type=ws&sni=hhlfy.twiladaphne.ndjp.net#🔥Join+Telegram:@Farah_VPN🟣",
+    "ping": 58.4,
     "real_successes": 3,
     "real_attempts": 3,
     "real_success_rate": 1.0,
     "score": 1740.0,
-    "endpoint": "172.64.150.28:2082",
-    "ip": "172.64.150.28"
-  },
-  {
-    "rank": 2,
-    "protocol": "TROJAN",
-    "uri": "trojan://humanity@212.183.88.136:443?path=//assignment&security=tls&insecure=0&host=www.calmlunch.com&type=ws&allowInsecure=0&sni=www.calmlunch.com#برای",
-    "ping": 530.0,
-    "real_successes": 3,
-    "real_attempts": 3,
-    "real_success_rate": 1.0,
-    "score": 1500.0,
-    "endpoint": "212.183.88.136:443",
-    "ip": "212.183.88.136"
+    "endpoint": "104.18.0.181:2082",
+    "ip": "104.18.0.181"
   },
   {
     "rank": 3,
-    "protocol": "TROJAN",
-    "uri": "trojan://humanity@212.183.88.136:443?path=//assignment&security=tls&insecure=0&host=www.calmlunch.com&type=ws&allowInsecure=0&sni=www.calmlunch.com#@V2ray_Alpha🧆",
-    "ping": 693.9,
+    "protocol": "VLESS",
+    "uri": "vless://e5cc16a6-ea42-46b2-82ae-ad2157e1641b@104.18.0.181:2082?path=/fp&security=none&encryption=none&host=hhlfy.twiladaphne.ndjp.net&type=ws&sni=hhlfy.twiladaphne.ndjp.net#@tootffarangi🍓",
+    "ping": 79.2,
     "real_successes": 3,
     "real_attempts": 3,
     "real_success_rate": 1.0,
-    "score": 1475.0,
-    "endpoint": "212.183.88.136:443",
-    "ip": "212.183.88.136"
+    "score": 1740.0,
+    "endpoint": "104.18.0.181:2082",
+    "ip": "104.18.0.181"
   },
   {
     "rank": 4,
     "protocol": "TROJAN",
-    "uri": "trojan://humanity@104.21.33.59:443?allowInsecure=1&fm=%7B%22tcp%22%3A%20%5B%7B%22type%22%3A%20%22fragment%22%2C%20%22settings%22%3A%20%7B%22packets%22%3A%20%22tlshello%22%2C%20%22lengths%22%3A%20%5B%225%22%2C%20%2294%22%2C%20%221%22%5D%2C%20%22delays%22%3A%20%5B%220%22%5D%2C%20%22maxSplit%22%3A%20%220%22%7D%7D%2C%7B%22type%22%3A%20%22fragment%22%2C%20%22settings%22%3A%20%7B%22packets%22%3A%20%221-1%22%2C%20%22lengths%22%3A%20%5B%22109%22%2C%20%221%22%5D%2C%20%22delays%22%3A%20%5B%221%22%5D%2C%20%22maxSplit%22%3A%20%22355%22%7D%7D%5D%7D&insecure=1&type=ws&security=tls&path=%2Fassignment&host=www.pleadcourt.org&sni=www.pleadcourt.org&fp=chrome&alpn=http/1.1#hamedp71%3A%3A%F0%9F%87%B3%F0%9F%87%B1",
-    "ping": 470.0,
+    "uri": "trojan://humanity@45.130.125.75:443?security=tls&type=ws&sni=www.calmlunch.com&path=/assignment&host=www.calmlunch.com#SC",
+    "ping": 389.7,
     "real_successes": 3,
     "real_attempts": 3,
     "real_success_rate": 1.0,
-    "score": 1460.0,
-    "endpoint": "104.21.33.59:443",
-    "ip": "104.21.33.59"
+    "score": 1560.0,
+    "endpoint": "45.130.125.75:443",
+    "ip": "45.130.125.75"
   },
   {
     "rank": 5,
     "protocol": "TROJAN",
-    "uri": "trojan://humanity@104.16.72.41:443?path=/assignment&security=tls&insecure=0&host=www.calmlunch.com&type=ws&allowInsecure=0&sni=www.calmlunch.com#🇫🇷",
-    "ping": 663.6,
+    "uri": "trojan://humanity@212.183.88.136:443?path=//assignment&security=tls&insecure=0&host=www.calmlunch.com&type=ws&allowInsecure=0&sni=www.calmlunch.com#EPODONIOS",
+    "ping": 389.9,
+    "real_successes": 3,
+    "real_attempts": 3,
+    "real_success_rate": 1.0,
+    "score": 1560.0,
+    "endpoint": "212.183.88.136:443",
+    "ip": "212.183.88.136"
+  },
+  {
+    "rank": 6,
+    "protocol": "TROJAN",
+    "uri": "trojan://humanity@212.183.88.136:443?host=www.calmlunch.com&path=//assignment&sni=www.calmlunch.com&type=ws#🔥Join+Telegram:@Farah_VPN🟣",
+    "ping": 392.2,
+    "real_successes": 3,
+    "real_attempts": 3,
+    "real_success_rate": 1.0,
+    "score": 1560.0,
+    "endpoint": "212.183.88.136:443",
+    "ip": "212.183.88.136"
+  },
+  {
+    "rank": 7,
+    "protocol": "TROJAN",
+    "uri": "trojan://humanity@104.17.121.71:443?path=/assignment&security=tls&insecure=0&host=www.calmlunch.com&type=ws&allowInsecure=0&sni=www.calmlunch.com#hamedp71%3A%3A%F0%9F%87%AB%F0%9F%87%B7",
+    "ping": 410.0,
+    "real_successes": 3,
+    "real_attempts": 3,
+    "real_success_rate": 1.0,
+    "score": 1560.0,
+    "endpoint": "104.17.121.71:443",
+    "ip": "104.17.121.71"
+  },
+  {
+    "rank": 8,
+    "protocol": "VLESS-TLS",
+    "uri": "vless://c136a12c-4260-48a7-a1e6-fbda83a11045@104.17.74.206:8443?security=tls&sni=free.sahanwickramasinghe.me&type=ws&host=free.sahanwickramasinghe.me&path=%2F&allowInsecure=0#CA",
+    "ping": 1166.9,
     "real_successes": 3,
     "real_attempts": 3,
     "real_success_rate": 1.0,
     "score": 1420.0,
-    "endpoint": "104.16.72.41:443",
-    "ip": "104.16.72.41"
+    "endpoint": "104.17.74.206:8443",
+    "ip": "104.17.74.206"
   }
 ]
