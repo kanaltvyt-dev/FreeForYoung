@@ -8,11 +8,15 @@
 #check-url-via-proxy: https://cp.cloudflare.com/generate_204
 #proxy-ping-mode: keepalive
 #ping-result: time
-ss://YWVzLTI1Ni1nY206WlJwZ2FCZUd4dEVOSVhndmhwa1pCS3o5R25XUlMyZFljeDlPK2EyaXdOND0@185.230.230.18:19999#shadowsocks-1875023016?serverDescription=RnJlZUZvcllvdW5nIFNTIDAxIMK3IDY1bXM=
-vless://c136a12c-4260-48a7-a1e6-fbda83a11045@104.17.74.206:8443?security=tls&type=ws&path=%2F&host=free.sahanwickramasinghe.me&packetEncoding=xudp&sni=free.sahanwickramasinghe.me&fp=chrome#CA?serverDescription=RnJlZUZvcllvdW5nIFRMUyAwMiDCtyA2NjRtcw==
-trojan://humanity@212.183.88.136:443?path=//assignment&security=tls&insecure=0&host=www.calmlunch.com&type=ws&allowInsecure=0&sni=www.calmlunch.com#EPODONIOS?serverDescription=RnJlZUZvcllvdW5nIFRST0pBTiAwMyDCtyA0Mzltcw==
-trojan://humanity@104.19.229.21:443?security=tls&sni=www.calmlunch.com&type=ws&path=%2Fassignment&Host=www.calmlunch.com#⚡?serverDescription=RnJlZUZvcllvdW5nIFRST0pBTiAwNCDCtyA1MTltcw==
-trojan://humanity@45.130.125.160:443?path=/assignment&security=tls&insecure=0&host=www.calmlunch.com&type=ws&allowInsecure=0&sni=www.calmlunch.com#🇫🇷?serverDescription=RnJlZUZvcllvdW5nIFRST0pBTiAwNSDCtyA1NTNtcw==
-trojan://humanity@185.18.250.245:443?type=ws&security=tls&sni=www.calmlunch.com&fp=chrome&host=www.calmlunch.com&path=%2Fassignment#ES?serverDescription=RnJlZUZvcllvdW5nIFRST0pBTiAwNiDCtyA2Mjltcw==
-vless://c4edb87e-8544-4fa4-bd1c-b0cda9a34b46@188.114.97.6:443?path=%2Fws&security=tls&encryption=none&insecure=0&host=a.cwvps.eu.org&ech=ip.gs%2Budp%3A%2F%2F8.8.8.8&type=ws&allowInsecure=0&sni=a.cwvps.eu.org#EPODONIOS?serverDescription=RnJlZUZvcllvdW5nIFRMUyAwNyDCtyAxMjQ3bXM=
-trojan://humanity@88.216.69.253:443?allowInsecure=1&insecure=1&type=ws&security=tls&path=%2Fassignment&host=www.pleadcourt.org&sni=www.pleadcourt.org&fp=chrome&alpn=http/1.1#LT?serverDescription=RnJlZUZvcllvdW5nIFRST0pBTiAwOCDCtyAxMDI4bXM=
+vless://d342d11e-d224-4463-b982-532309285094@172.64.153.153:443?security=tls&type=ws&path=%2F&host=ccc.010304.xyz&packetEncoding=xudp&sni=ccc.010304.xyz&fp=chrome&encryption=none#%E7%BE%8E%E5%9B%BD+CloudFlare%E8%8A%82%E7%82%B9?serverDescription=RnJlZUZvcllvdW5nIFRMUyAwMSDCtyA2N21z
+vless://45ceaca9-30f4-4035-85b7-8f83493911d8@104.17.184.104:443?fp=chrome&host=tamoai.ccwu.cc&path=%2Fproxyip%3D163.192.47.40%2C47.57.181.17%2C34.83.245.149%2C4.155.83.212%2C64.227.62.172%2C24.144.68.139%2C161.35.232.123%2C107.170.248.68&security=tls&sni=tamoai.ccwu.cc&type=ws#CA?serverDescription=RnJlZUZvcllvdW5nIFRMUyAwMiDCtyAxMTRtcw==
+ss://YWVzLTI1Ni1nY206WlJwZ2FCZUd4dEVOSVhndmhwa1pCS3o5R25XUlMyZFljeDlPK2EyaXdOND0@185.230.230.18:19999#shadowsocks-1875023016?serverDescription=RnJlZUZvcllvdW5nIFNTIDAzIMK3IDYzbXM=
+trojan://humanity@212.183.88.136:443?path=//assignment&security=tls&insecure=0&host=www.calmlunch.com&type=ws&allowInsecure=0&sni=www.calmlunch.com#برای?serverDescription=RnJlZUZvcllvdW5nIFRST0pBTiAwNCDCtyAzODNtcw==
+trojan://humanity@212.183.88.136:443?path=//assignment&security=tls&insecure=0&host=www.calmlunch.com&type=ws&allowInsecure=0&sni=www.calmlunch.com#EPODONIOS?serverDescription=RnJlZUZvcllvdW5nIFRST0pBTiAwNSDCtyAzOTZtcw==
+trojan://humanity@45.130.125.160:443?type=ws&path=/assignment&host=www.calmlunch.com#@tootffarangi🍓?serverDescription=RnJlZUZvcllvdW5nIFRST0pBTiAwNiDCtyAzOThtcw==
+trojan://humanity@45.130.125.160:443?type=ws&path=/assignment&host=www.calmlunch.com#EPODONIOS?serverDescription=RnJlZUZvcllvdW5nIFRST0pBTiAwNyDCtyA0MDBtcw==
+trojan://humanity@172.64.145.133:443?path=/assignment&security=tls&insecure=0&host=www.pleadcourt.org&type=ws&allowInsecure=0&sni=www.pleadcourt.org#@tootffarangi🍓?serverDescription=RnJlZUZvcllvdW5nIFRST0pBTiAwOCDCtyA0MzVtcw==
+trojan://humanity@8.47.69.0:443?path=/assignment&security=tls&alpn=http/1.1&insecure=0&host=www.pleadcourt.org&type=ws&allowInsecure=0&sni=www.pleadcourt.org#YFZ?serverDescription=RnJlZUZvcllvdW5nIFRST0pBTiAwOSDCtyA0MjZtcw==
+trojan://humanity@109.234.211.232:443?path=/assignment&security=tls&alpn=http/1.1&insecure=0&host=www.pleadcourt.org&type=ws&allowInsecure=0&sni=www.pleadcourt.org#@meliproxyy?serverDescription=RnJlZUZvcllvdW5nIFRST0pBTiAxMCDCtyA0NDFtcw==
+trojan://humanity@172.66.1.36:443?path=/assignment&security=tls&alpn=http/1.1&host=www.pleadcourt.org&type=ws&sni=www.pleadcourt.org#🔥Join+Telegram:@Farah_VPN🟣?serverDescription=RnJlZUZvcllvdW5nIFRST0pBTiAxMSDCtyA0NzZtcw==
+vless://4e4f1f70-5e56-4a76-bb9d-db087f4690c4@104.24.31.89:443?fp=chrome&host=jp3.yohototo.top&path=%2Ftyxyws&security=tls&sni=jp3.yohototo.top&type=ws#vless-1853972214?serverDescription=RnJlZUZvcllvdW5nIFRMUyAxMiDCtyAxMzk3bXM=
