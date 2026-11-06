@@ -1,7 +1,2 @@
-1. score=1750.0 | ping=31.9ms | real=3/3 | protocol=TROJAN | endpoint=66.163.112.121:443
-2. score=1750.0 | ping=34.2ms | real=3/3 | protocol=TROJAN | endpoint=66.163.112.242:443
-3. score=1725.0 | ping=27.9ms | real=3/3 | protocol=SS | endpoint=95.215.201.18:19999
-4. score=1580.0 | ping=152.3ms | real=3/3 | protocol=VLESS | endpoint=185.225.195.30:8880
-5. score=1490.0 | ping=390.8ms | real=3/3 | protocol=VLESS-TLS | endpoint=146.75.59.186:443
-6. score=1420.0 | ping=1242.3ms | real=3/3 | protocol=VLESS-TLS | endpoint=104.16.10.22:443
-7. score=1420.0 | ping=1294.7ms | real=3/3 | protocol=VLESS-TLS | endpoint=199.232.78.159:443
+1. score=1705.0 | ping=74.2ms | real=3/3 | protocol=SS | endpoint=45.86.51.18:19999
+2. score=1020.0 | ping=374.9ms | real=2/3 | protocol=TROJAN | endpoint=66.163.122.26:443
