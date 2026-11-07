@@ -3,24 +3,48 @@
     "rank": 1,
     "protocol": "SS",
     "uri": "ss://YWVzLTI1Ni1nY206WlJwZ2FCZUd4dEVOSVhndmhwa1pCS3o5R25XUlMyZFljeDlPK2EyaXdOND0@45.86.51.18:19999#shadowsocks-1875022945",
-    "ping": 74.2,
+    "ping": 23.8,
     "real_successes": 3,
     "real_attempts": 3,
     "real_success_rate": 1.0,
-    "score": 1705.0,
+    "score": 1725.0,
     "endpoint": "45.86.51.18:19999",
     "ip": "45.86.51.18"
   },
   {
     "rank": 2,
-    "protocol": "TROJAN",
-    "uri": "trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@66.163.122.26:443?security=tls&insecure=0&headerType=none&type=tcp&allowInsecure=0&sni=blog.searchnationwidecareerchangehelperandguidancetoday.com#US",
-    "ping": 374.9,
+    "protocol": "SS",
+    "uri": "ss://YWVzLTI1Ni1nY206WlJwZ2FCZUd4dEVOSVhndmhwa1pCS3o5R25XUlMyZFljeDlPK2EyaXdOND0@185.230.230.18:19999#shadowsocks-1875023016",
+    "ping": 25.8,
+    "real_successes": 3,
+    "real_attempts": 3,
+    "real_success_rate": 1.0,
+    "score": 1725.0,
+    "endpoint": "185.230.230.18:19999",
+    "ip": "185.230.230.18"
+  },
+  {
+    "rank": 3,
+    "protocol": "SS",
+    "uri": "ss://YWVzLTI1Ni1nY206cEtFVzhKUEJ5VFZUTHRN@15.204.247.206:4444#shadowsocks-1827147591",
+    "ping": 788.2,
+    "real_successes": 3,
+    "real_attempts": 3,
+    "real_success_rate": 1.0,
+    "score": 1395.0,
+    "endpoint": "15.204.247.206:4444",
+    "ip": "15.204.247.206"
+  },
+  {
+    "rank": 4,
+    "protocol": "VLESS-TLS",
+    "uri": "vless://91ad30e9-ab06-4b4c-9fb9-1c2aa97d8b3a@n04.jinggai.online:8443?fp=chrome&host=n04.jinggai.online&path=%2Fnvl-n04-ws%2Fe0577fe8fd7c8823&security=tls&sni=n04.jinggai.online&type=ws#vless-1943108707",
+    "ping": 1372.5,
     "real_successes": 2,
     "real_attempts": 3,
     "real_success_rate": 0.6666666666666666,
-    "score": 1020.0,
-    "endpoint": "66.163.122.26:443",
-    "ip": "66.163.122.26"
+    "score": 1004.44,
+    "endpoint": "n04.jinggai.online:8443",
+    "ip": "n04.jinggai.online"
   }
 ]

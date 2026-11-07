@@ -8,5 +8,7 @@
 #check-url-via-proxy: https://cp.cloudflare.com/generate_204
 #proxy-ping-mode: keepalive
 #ping-result: time
-ss://YWVzLTI1Ni1nY206WlJwZ2FCZUd4dEVOSVhndmhwa1pCS3o5R25XUlMyZFljeDlPK2EyaXdOND0@45.86.51.18:19999#shadowsocks-1875022945?serverDescription=RnJlZUZvcllvdW5nIFNTIDAxIMK3IDc0bXM=
-trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@66.163.122.26:443?security=tls&insecure=0&headerType=none&type=tcp&allowInsecure=0&sni=blog.searchnationwidecareerchangehelperandguidancetoday.com#US?serverDescription=RnJlZUZvcllvdW5nIFRST0pBTiAwMiDCtyAzNzVtcw==
+ss://YWVzLTI1Ni1nY206WlJwZ2FCZUd4dEVOSVhndmhwa1pCS3o5R25XUlMyZFljeDlPK2EyaXdOND0@45.86.51.18:19999#shadowsocks-1875022945?serverDescription=RnJlZUZvcllvdW5nIFNTIDAxIMK3IDI0bXM=
+ss://YWVzLTI1Ni1nY206WlJwZ2FCZUd4dEVOSVhndmhwa1pCS3o5R25XUlMyZFljeDlPK2EyaXdOND0@185.230.230.18:19999#shadowsocks-1875023016?serverDescription=RnJlZUZvcllvdW5nIFNTIDAyIMK3IDI2bXM=
+ss://YWVzLTI1Ni1nY206cEtFVzhKUEJ5VFZUTHRN@15.204.247.206:4444#shadowsocks-1827147591?serverDescription=RnJlZUZvcllvdW5nIFNTIDAzIMK3IDc4OG1z
+vless://91ad30e9-ab06-4b4c-9fb9-1c2aa97d8b3a@n04.jinggai.online:8443?fp=chrome&host=n04.jinggai.online&path=%2Fnvl-n04-ws%2Fe0577fe8fd7c8823&security=tls&sni=n04.jinggai.online&type=ws#vless-1943108707?serverDescription=RnJlZUZvcllvdW5nIFRMUyAwNCDCtyAxMzcybXM=
