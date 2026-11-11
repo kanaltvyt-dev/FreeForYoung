@@ -1,26 +1,14 @@
 [
   {
     "rank": 1,
-    "protocol": "SS",
-    "uri": "ss://YWVzLTI1Ni1nY206WlJwZ2FCZUd4dEVOSVhndmhwa1pCS3o5R25XUlMyZFljeDlPK2EyaXdOND0@45.86.51.18:19999#shadowsocks-1875022945",
-    "ping": 63.7,
+    "protocol": "VLESS-TLS",
+    "uri": "vless://9443badf-414f-4b12-b19a-7cc2c7431163@190.93.247.95:8443?path=/man&security=tls&encryption=none&insecure=0&host=moz.ar-marz.fun&fp=chrome&type=ws&allowInsecure=0&sni=moz.ar-marz.fun#🔥Join+Telegram:@Farah_VPN🟣",
+    "ping": 1076.5,
     "real_successes": 3,
     "real_attempts": 3,
     "real_success_rate": 1.0,
-    "score": 1705.0,
-    "endpoint": "45.86.51.18:19999",
-    "ip": "45.86.51.18"
-  },
-  {
-    "rank": 2,
-    "protocol": "SS",
-    "uri": "ss://YWVzLTI1Ni1nY206WlJwZ2FCZUd4dEVOSVhndmhwa1pCS3o5R25XUlMyZFljeDlPK2EyaXdOND0@45.86.51.18:19999#@i10VPN⁷",
-    "ping": 64.6,
-    "real_successes": 3,
-    "real_attempts": 3,
-    "real_success_rate": 1.0,
-    "score": 1705.0,
-    "endpoint": "45.86.51.18:19999",
-    "ip": "45.86.51.18"
+    "score": 1500.0,
+    "endpoint": "190.93.247.95:8443",
+    "ip": "190.93.247.95"
   }
 ]
