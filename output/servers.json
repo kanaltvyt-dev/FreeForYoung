@@ -2,8 +2,44 @@
   {
     "rank": 1,
     "protocol": "VLESS-TLS",
+    "uri": "vless://99c5b713-dedf-4a10-8070-916ff3f49b0e@172.67.74.177:443?path=/&security=tls&encryption=none&insecure=0&host=fs.qicai99.com&fp=chrome&type=ws&allowInsecure=0&sni=fs.qicai99.com#🔥Join+Telegram:@Farah_VPN🟣",
+    "ping": 119.3,
+    "real_successes": 3,
+    "real_attempts": 3,
+    "real_success_rate": 1.0,
+    "score": 1740.0,
+    "endpoint": "172.67.74.177:443",
+    "ip": "172.67.74.177"
+  },
+  {
+    "rank": 2,
+    "protocol": "VLESS-TLS",
+    "uri": "vless://99c5b713-dedf-4a10-8070-916ff3f49b0e@172.67.193.217:443?path=%2F&security=tls&alpn=h3%2Ch2%2Chttp%2F1.1&host=fs.qicai99.com&fp=chrome&type=ws&sni=fs.qicai99.com#CA",
+    "ping": 116.9,
+    "real_successes": 3,
+    "real_attempts": 3,
+    "real_success_rate": 1.0,
+    "score": 1695.0,
+    "endpoint": "172.67.193.217:443",
+    "ip": "172.67.193.217"
+  },
+  {
+    "rank": 3,
+    "protocol": "VLESS-TLS",
+    "uri": "vless://1043634e-8d9d-4736-83fa-f14ddc9d464c@188.114.97.6:443?path=/id-amz&security=tls&encryption=none&insecure=0&host=dfsuporte.garena.com.ex33r.eu.cc&type=ws&allowInsecure=0&sni=dfsuporte.garena.com.ex33r.eu.cc#🔥Join+Telegram:@Farah_VPN🟣",
+    "ping": 120.2,
+    "real_successes": 3,
+    "real_attempts": 3,
+    "real_success_rate": 1.0,
+    "score": 1555.0,
+    "endpoint": "188.114.97.6:443",
+    "ip": "188.114.97.6"
+  },
+  {
+    "rank": 4,
+    "protocol": "VLESS-TLS",
     "uri": "vless://efd11a89-7506-44ce-95b6-6654859f155b@170.114.46.6:2096?security=tls&encryption=none&host=pcloud.z-tas.com&fp=chrome&type=ws&allowInsecure=0&sni=pcloud.z-tas.com#hamedp71%3A%3A%F0%9F%87%B8%F0%9F%87%AC",
-    "ping": 1496.7,
+    "ping": 1194.6,
     "real_successes": 3,
     "real_attempts": 3,
     "real_success_rate": 1.0,
@@ -12,15 +48,63 @@
     "ip": "170.114.46.6"
   },
   {
-    "rank": 2,
+    "rank": 5,
     "protocol": "VLESS-TLS",
-    "uri": "vless://efd11a89-7506-44ce-95b6-6654859f155b@170.114.45.6:2096?security=tls&encryption=none&host=pcloud.z-tas.com&fp=chrome&type=ws&allowInsecure=0&sni=pcloud.z-tas.com#hamedp71%3A%3A%F0%9F%87%B8%F0%9F%87%AC",
-    "ping": 1474.4,
+    "uri": "vless://9443badf-414f-4b12-b19a-7cc2c7431163@190.93.247.95:8443?path=/man&security=tls&encryption=none&host=moz.ar-marz.fun&type=ws&sni=moz.ar-marz.fun#🔥Join+Telegram:@Farah_VPN🟣",
+    "ping": 1121.2,
     "real_successes": 3,
     "real_attempts": 3,
     "real_success_rate": 1.0,
     "score": 1500.0,
-    "endpoint": "170.114.45.6:2096",
-    "ip": "170.114.45.6"
+    "endpoint": "190.93.247.95:8443",
+    "ip": "190.93.247.95"
+  },
+  {
+    "rank": 6,
+    "protocol": "VLESS-TLS",
+    "uri": "vless://9443badf-414f-4b12-b19a-7cc2c7431163@190.93.247.95:8443?path=/man&security=tls&encryption=none&insecure=0&host=moz.ar-marz.fun&fp=chrome&type=ws&allowInsecure=0&sni=moz.ar-marz.fun#@v2ray313",
+    "ping": 1117.3,
+    "real_successes": 3,
+    "real_attempts": 3,
+    "real_success_rate": 1.0,
+    "score": 1420.0,
+    "endpoint": "190.93.247.95:8443",
+    "ip": "190.93.247.95"
+  },
+  {
+    "rank": 7,
+    "protocol": "VLESS-TLS",
+    "uri": "vless://9443badf-414f-4b12-b19a-7cc2c7431163@190.93.244.47:8443?encryption=none&fp=chrome&host=moz.ar-marz.fun&path=/man&security=tls&sni=moz.ar-marz.fun&type=ws#hamedp71%3A%3A%F0%9F%87%A9%F0%9F%87%AA",
+    "ping": 1118.1,
+    "real_successes": 3,
+    "real_attempts": 3,
+    "real_success_rate": 1.0,
+    "score": 1420.0,
+    "endpoint": "190.93.244.47:8443",
+    "ip": "190.93.244.47"
+  },
+  {
+    "rank": 8,
+    "protocol": "VLESS",
+    "uri": "vless://eaf76557-2219-4799-8171-d7020adfefd0@103.133.1.160:80?&type=ws&headerType=none&host=soft-shadow-1e33.xicav73335.workers.dev&path=/ws#🇳🇱",
+    "ping": 1372.5,
+    "real_successes": 3,
+    "real_attempts": 3,
+    "real_success_rate": 1.0,
+    "score": 1400.0,
+    "endpoint": "103.133.1.160:80",
+    "ip": "103.133.1.160"
+  },
+  {
+    "rank": 9,
+    "protocol": "VLESS-TLS",
+    "uri": "vless://9443badf-414f-4b12-b19a-7cc2c7431163@190.93.244.47:8443?encryption=none&security=tls&sni=moz.ar-marz.fun&fp=firefox&type=ws&host=moz.ar-marz.fun&path=%2Fman#🔥Join+Telegram:@Farah_VPN🟣",
+    "ping": 1113.7,
+    "real_successes": 3,
+    "real_attempts": 3,
+    "real_success_rate": 1.0,
+    "score": 1390.0,
+    "endpoint": "190.93.244.47:8443",
+    "ip": "190.93.244.47"
   }
 ]
