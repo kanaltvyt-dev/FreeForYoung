@@ -8,4 +8,7 @@
 #check-url-via-proxy: https://cp.cloudflare.com/generate_204
 #proxy-ping-mode: keepalive
 #ping-result: time
-vless://ab5a19cf-cadc-4648-a5e9-b510aca8f732@104.18.20.212:8080?encryption=none&type=ws&host=akanode.madvpn.us.kg&headerType=none&path=/#hamedp71%3A%3A%F0%9F%87%B8%F0%9F%87%AC?serverDescription=RnJlZUZvcllvdW5nIFZMRVNTIDAxIMK3IDgwMG1z
+trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@66.163.112.242:443?allowInsecure=1&sni=api.nextjobopportunityandclaimyouridealrole.com&type=tcp#trojan-1935612269?serverDescription=RnJlZUZvcllvdW5nIFRST0pBTiAwMSDCtyA1OG1z
+trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@66.163.112.121:443?allowInsecure=1&sni=66.163.112.121&type=tcp#trojan-1946215896?serverDescription=RnJlZUZvcllvdW5nIFRST0pBTiAwMiDCtyA2MW1z
+ss://YWVzLTI1Ni1nY206WlJwZ2FCZUd4dEVOSVhndmhwa1pCS3o5R25XUlMyZFljeDlPK2EyaXdOND0@95.215.201.18:19999#shadowsocks-1875129452?serverDescription=RnJlZUZvcllvdW5nIFNTIDAzIMK3IDU0bXM=
+vless://efd11a89-7506-44ce-95b6-6654859f155b@170.114.46.6:2096?path=/?TELEGRAM--MARAMBASHI--MARAMBASHI--MARAMBASHI--MARAMBASHI?ed=2048&security=tls&encryption=none&insecure=0&host=pcloud.z-tas.com&fp=chrome&type=ws&allowInsecure=0&sni=pcloud.z-tas.com#US?serverDescription=RnJlZUZvcllvdW5nIFRMUyAwNCDCtyAxMDAwbXM=

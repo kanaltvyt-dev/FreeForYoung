@@ -1,14 +1,50 @@
 [
   {
     "rank": 1,
-    "protocol": "VLESS",
-    "uri": "vless://ab5a19cf-cadc-4648-a5e9-b510aca8f732@104.18.20.212:8080?encryption=none&type=ws&host=akanode.madvpn.us.kg&headerType=none&path=/#hamedp71%3A%3A%F0%9F%87%B8%F0%9F%87%AC",
-    "ping": 800.4,
+    "protocol": "TROJAN",
+    "uri": "trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@66.163.112.242:443?allowInsecure=1&sni=api.nextjobopportunityandclaimyouridealrole.com&type=tcp#trojan-1935612269",
+    "ping": 57.5,
     "real_successes": 3,
     "real_attempts": 3,
     "real_success_rate": 1.0,
-    "score": 1500.0,
-    "endpoint": "104.18.20.212:8080",
-    "ip": "104.18.20.212"
+    "score": 1730.0,
+    "endpoint": "66.163.112.242:443",
+    "ip": "66.163.112.242"
+  },
+  {
+    "rank": 2,
+    "protocol": "TROJAN",
+    "uri": "trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@66.163.112.121:443?allowInsecure=1&sni=66.163.112.121&type=tcp#trojan-1946215896",
+    "ping": 60.6,
+    "real_successes": 3,
+    "real_attempts": 3,
+    "real_success_rate": 1.0,
+    "score": 1730.0,
+    "endpoint": "66.163.112.121:443",
+    "ip": "66.163.112.121"
+  },
+  {
+    "rank": 3,
+    "protocol": "SS",
+    "uri": "ss://YWVzLTI1Ni1nY206WlJwZ2FCZUd4dEVOSVhndmhwa1pCS3o5R25XUlMyZFljeDlPK2EyaXdOND0@95.215.201.18:19999#shadowsocks-1875129452",
+    "ping": 53.8,
+    "real_successes": 3,
+    "real_attempts": 3,
+    "real_success_rate": 1.0,
+    "score": 1705.0,
+    "endpoint": "95.215.201.18:19999",
+    "ip": "95.215.201.18"
+  },
+  {
+    "rank": 4,
+    "protocol": "VLESS-TLS",
+    "uri": "vless://efd11a89-7506-44ce-95b6-6654859f155b@170.114.46.6:2096?path=/?TELEGRAM--MARAMBASHI--MARAMBASHI--MARAMBASHI--MARAMBASHI?ed=2048&security=tls&encryption=none&insecure=0&host=pcloud.z-tas.com&fp=chrome&type=ws&allowInsecure=0&sni=pcloud.z-tas.com#US",
+    "ping": 1000.2,
+    "real_successes": 3,
+    "real_attempts": 3,
+    "real_success_rate": 1.0,
+    "score": 1475.0,
+    "endpoint": "170.114.46.6:2096",
+    "ip": "170.114.46.6"
   }
 ]
