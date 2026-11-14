@@ -1,7 +1,7 @@
-1. score=1705.0 | ping=72.3ms | real=3/3 | protocol=SS | endpoint=172.111.38.72:19999
-2. score=1705.0 | ping=76.4ms | real=3/3 | protocol=SS | endpoint=45.86.51.18:19999
-3. score=1690.0 | ping=177.4ms | real=3/3 | protocol=VLESS-TLS | endpoint=172.67.74.177:443
-4. score=1665.0 | ping=128.4ms | real=3/3 | protocol=VLESS-TLS | endpoint=162.159.198.1:443
-5. score=1610.0 | ping=164.1ms | real=3/3 | protocol=VLESS-TLS | endpoint=162.159.198.1:443
-6. score=1550.0 | ping=708.8ms | real=3/3 | protocol=VLESS-TLS | endpoint=190.93.244.47:8443
-7. score=1550.0 | ping=735.8ms | real=3/3 | protocol=VLESS-TLS | endpoint=190.93.244.47:8443
+1. score=1750.0 | ping=44.3ms | real=3/3 | protocol=TROJAN | endpoint=66.163.122.26:443
+2. score=1730.0 | ping=53.8ms | real=3/3 | protocol=TROJAN | endpoint=66.163.122.26:443
+3. score=1725.0 | ping=33.5ms | real=3/3 | protocol=SS | endpoint=45.86.51.18:19999
+4. score=1690.0 | ping=120.2ms | real=3/3 | protocol=VLESS-TLS | endpoint=162.159.198.1:443
+5. score=1690.0 | ping=120.7ms | real=3/3 | protocol=VLESS-TLS | endpoint=162.159.198.1:443
+6. score=1476.67 | ping=687.7ms | real=3/3 | protocol=VLESS-TLS | endpoint=190.93.247.95:8443
+7. score=1365.0 | ping=774.9ms | real=3/3 | protocol=VLESS-TLS | endpoint=190.93.247.95:8443
