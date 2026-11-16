@@ -2,61 +2,37 @@
   {
     "rank": 1,
     "protocol": "SS",
-    "uri": "ss://YWVzLTEyOC1nY206c2hhZG93c29ja3M@156.146.38.168:443#shadowsocks-1827146815",
-    "ping": 49.3,
+    "uri": "ss://YWVzLTEyOC1nY206c2hhZG93c29ja3M@156.146.38.167:443#shadowsocks-1827146556",
+    "ping": 51.7,
     "real_successes": 3,
     "real_attempts": 3,
     "real_success_rate": 1.0,
-    "score": 1725.0,
-    "endpoint": "156.146.38.168:443",
-    "ip": "156.146.38.168"
+    "score": 1705.0,
+    "endpoint": "156.146.38.167:443",
+    "ip": "156.146.38.167"
   },
   {
     "rank": 2,
     "protocol": "SS",
-    "uri": "ss://YWVzLTEyOC1nY206c2hhZG93c29ja3M=@156.146.38.170:443#⚡",
-    "ping": 49.9,
+    "uri": "ss://YWVzLTEyOC1nY206c2hhZG93c29ja3M@156.146.38.170:443#shadowsocks-1827146549",
+    "ping": 52.4,
     "real_successes": 3,
     "real_attempts": 3,
     "real_success_rate": 1.0,
-    "score": 1725.0,
+    "score": 1705.0,
     "endpoint": "156.146.38.170:443",
     "ip": "156.146.38.170"
   },
   {
     "rank": 3,
     "protocol": "SS",
-    "uri": "ss://YWVzLTEyOC1nY206c2hhZG93c29ja3M@156.146.38.170:443#shadowsocks-1827146549",
-    "ping": 50.4,
+    "uri": "ss://YWVzLTEyOC1nY206c2hhZG93c29ja3M@156.146.38.168:443#shadowsocks-1827146815",
+    "ping": 55.0,
     "real_successes": 3,
     "real_attempts": 3,
     "real_success_rate": 1.0,
     "score": 1705.0,
-    "endpoint": "156.146.38.170:443",
-    "ip": "156.146.38.170"
-  },
-  {
-    "rank": 4,
-    "protocol": "SS",
-    "uri": "ss://YWVzLTEyOC1nY206c2hhZG93c29ja3M@156.146.38.169:443#V2raySaman",
-    "ping": 55.6,
-    "real_successes": 3,
-    "real_attempts": 3,
-    "real_success_rate": 1.0,
-    "score": 1705.0,
-    "endpoint": "156.146.38.169:443",
-    "ip": "156.146.38.169"
-  },
-  {
-    "rank": 5,
-    "protocol": "VLESS-TLS",
-    "uri": "vless://eaf76557-2219-4799-8171-d7020adfefd0@104.18.151.231:443?security=tls&encryption=none&insecure=0&host=shiny-base-4d9a.mifolan4697928.workers.dev&fp=chrome&type=ws&allowInsecure=0#🔥Join+Telegram:@Farah_VPN🟣",
-    "ping": 1338.3,
-    "real_successes": 3,
-    "real_attempts": 3,
-    "real_success_rate": 1.0,
-    "score": 1520.0,
-    "endpoint": "104.18.151.231:443",
-    "ip": "104.18.151.231"
+    "endpoint": "156.146.38.168:443",
+    "ip": "156.146.38.168"
   }
 ]
