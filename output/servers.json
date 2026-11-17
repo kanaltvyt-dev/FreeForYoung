@@ -1,38 +1,14 @@
 [
   {
     "rank": 1,
-    "protocol": "SS",
-    "uri": "ss://YWVzLTEyOC1nY206c2hhZG93c29ja3M@156.146.38.167:443#shadowsocks-1827146556",
-    "ping": 51.7,
+    "protocol": "TROJAN",
+    "uri": "trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.106.186.46:443?security=tls&insecure=0&headerType=none&fp=chrome&type=tcp&allowInsecure=0&sni=cdn.findlocaljobnetworkandbuildcommunityconnections.com#Channel",
+    "ping": 68.3,
     "real_successes": 3,
     "real_attempts": 3,
     "real_success_rate": 1.0,
-    "score": 1705.0,
-    "endpoint": "156.146.38.167:443",
-    "ip": "156.146.38.167"
-  },
-  {
-    "rank": 2,
-    "protocol": "SS",
-    "uri": "ss://YWVzLTEyOC1nY206c2hhZG93c29ja3M@156.146.38.170:443#shadowsocks-1827146549",
-    "ping": 52.4,
-    "real_successes": 3,
-    "real_attempts": 3,
-    "real_success_rate": 1.0,
-    "score": 1705.0,
-    "endpoint": "156.146.38.170:443",
-    "ip": "156.146.38.170"
-  },
-  {
-    "rank": 3,
-    "protocol": "SS",
-    "uri": "ss://YWVzLTEyOC1nY206c2hhZG93c29ja3M@156.146.38.168:443#shadowsocks-1827146815",
-    "ping": 55.0,
-    "real_successes": 3,
-    "real_attempts": 3,
-    "real_success_rate": 1.0,
-    "score": 1705.0,
-    "endpoint": "156.146.38.168:443",
-    "ip": "156.146.38.168"
+    "score": 1730.0,
+    "endpoint": "216.106.186.46:443",
+    "ip": "216.106.186.46"
   }
 ]

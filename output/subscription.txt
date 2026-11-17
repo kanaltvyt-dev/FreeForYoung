@@ -8,6 +8,4 @@
 #check-url-via-proxy: https://cp.cloudflare.com/generate_204
 #proxy-ping-mode: keepalive
 #ping-result: time
-ss://YWVzLTEyOC1nY206c2hhZG93c29ja3M@156.146.38.167:443#shadowsocks-1827146556?serverDescription=RnJlZUZvcllvdW5nIFNTIDAxIMK3IDUybXM=
-ss://YWVzLTEyOC1nY206c2hhZG93c29ja3M@156.146.38.170:443#shadowsocks-1827146549?serverDescription=RnJlZUZvcllvdW5nIFNTIDAyIMK3IDUybXM=
-ss://YWVzLTEyOC1nY206c2hhZG93c29ja3M@156.146.38.168:443#shadowsocks-1827146815?serverDescription=RnJlZUZvcllvdW5nIFNTIDAzIMK3IDU1bXM=
+trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.106.186.46:443?security=tls&insecure=0&headerType=none&fp=chrome&type=tcp&allowInsecure=0&sni=cdn.findlocaljobnetworkandbuildcommunityconnections.com#Channel?serverDescription=RnJlZUZvcllvdW5nIFRST0pBTiAwMSDCtyA2OG1z
