@@ -2,49 +2,61 @@
   {
     "rank": 1,
     "protocol": "SS",
-    "uri": "ss://YWVzLTI1Ni1nY206WlJwZ2FCZUd4dEVOSVhndmhwa1pCS3o5R25XUlMyZFljeDlPK2EyaXdOND0=@185.230.230.18:19999#🔥Join+Telegram:@Farah_VPN🟣",
-    "ping": 61.0,
+    "uri": "ss://YWVzLTI1Ni1nY206cEtFVzhKUEJ5VFZUTHRN@15.204.247.206:4444#shadowsocks-1827147591",
+    "ping": 91.4,
     "real_successes": 3,
     "real_attempts": 3,
     "real_success_rate": 1.0,
-    "score": 1705.0,
-    "endpoint": "185.230.230.18:19999",
-    "ip": "185.230.230.18"
+    "score": 1685.0,
+    "endpoint": "15.204.247.206:4444",
+    "ip": "15.204.247.206"
   },
   {
     "rank": 2,
-    "protocol": "SS",
-    "uri": "ss://YWVzLTI1Ni1nY206WlJwZ2FCZUd4dEVOSVhndmhwa1pCS3o5R25XUlMyZFljeDlPK2EyaXdOND0=@172.111.38.72:19999#🔥Join+Telegram:@Farah_VPN🟣",
-    "ping": 62.2,
+    "protocol": "TROJAN",
+    "uri": "trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@66.163.122.30:443?security=tls&sni=resources.searchnationwidecareerchangehelperandguidancetoday.com&type=tcp&headerType=none#%F0%9F%8F%B3%EF%B8%8F%20ShatakVPN%20496085",
+    "ping": 171.6,
     "real_successes": 3,
     "real_attempts": 3,
     "real_success_rate": 1.0,
-    "score": 1705.0,
-    "endpoint": "172.111.38.72:19999",
-    "ip": "172.111.38.72"
+    "score": 1660.0,
+    "endpoint": "66.163.122.30:443",
+    "ip": "66.163.122.30"
   },
   {
     "rank": 3,
-    "protocol": "SS",
-    "uri": "ss://YWVzLTI1Ni1nY206WlJwZ2FCZUd4dEVOSVhndmhwa1pCS3o5R25XUlMyZFljeDlPK2EyaXdOND0@45.86.51.18:19999#shadowsocks-1875022945",
-    "ping": 63.3,
+    "protocol": "VLESS-TLS",
+    "uri": "vless://740b2630-b42d-425c-bacd-37e7e30d78f1@92.223.84.254:443?encryption=none&fp=chrome&host=subgift.gcorecdn.com&path=/t.me-SubGift&security=tls&sni=subgift.gcorecdn.com&type=ws#🔥Join+Telegram:@Farah_VPN🟣",
+    "ping": 668.1,
     "real_successes": 3,
     "real_attempts": 3,
     "real_success_rate": 1.0,
-    "score": 1705.0,
-    "endpoint": "45.86.51.18:19999",
-    "ip": "45.86.51.18"
+    "score": 1530.0,
+    "endpoint": "92.223.84.254:443",
+    "ip": "92.223.84.254"
   },
   {
     "rank": 4,
     "protocol": "VLESS-TLS",
-    "uri": "vless://e98a123b-7a6f-444d-985d-ad2c389a85ec@159.60.146.82:443?alpn=http%2F1.1&path=%2Fws%3Fip%3D159.60.146.82%3A443&security=tls&type=ws&encryption=none&fp=chrome&fragment=120-1500%2C1-4%2Ctlshello&insecure=0&fm=%7B%22udp%22%3A%5B%7B%22type%22%3A%22noise%22%2C%22settings%22%3A%7B%22reset%22%3A%2228%22%2C%22noise%22%3A%5B%7B%22rand%22%3A%221200-1230%22%2C%22delay%22%3A%2210%22%7D%2C%7B%22rand%22%3A%221200-1230%22%2C%22delay%22%3A%2210%22%7D%2C%7B%22rand%22%3A%2212&sni=flow-vault-hiizyn.pages.dev&allowInsecure=0&host=flow-vault-hiizyn.pages.dev#⚡",
-    "ping": 355.0,
+    "uri": "vless://740b2630-b42d-425c-bacd-37e7e30d78f1@92.223.84.254:443?encryption=none&fp=firefox&host=subgift.gcorecdn.com&path=/t.me-SubGift&security=tls&sni=subgift.gcorecdn.com&type=ws#LU",
+    "ping": 732.1,
     "real_successes": 3,
     "real_attempts": 3,
     "real_success_rate": 1.0,
-    "score": 1515.0,
-    "endpoint": "159.60.146.82:443",
-    "ip": "159.60.146.82"
+    "score": 1450.0,
+    "endpoint": "92.223.84.254:443",
+    "ip": "92.223.84.254"
+  },
+  {
+    "rank": 5,
+    "protocol": "VLESS",
+    "uri": "vless://f028d829-249a-4692-b45f-1b4cde8ef0c7@170.114.46.6:80?security=none&type=ws&path=%2F&host=free.sahanwickramasinghe.com&encryption=none#hamedp71%3A%3A%F0%9F%87%A9%F0%9F%87%AA",
+    "ping": 744.8,
+    "real_successes": 3,
+    "real_attempts": 3,
+    "real_success_rate": 1.0,
+    "score": 1430.0,
+    "endpoint": "170.114.46.6:80",
+    "ip": "170.114.46.6"
   }
 ]
