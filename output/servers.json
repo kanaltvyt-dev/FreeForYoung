@@ -1,38 +1,62 @@
 [
   {
     "rank": 1,
-    "protocol": "VLESS",
-    "uri": "vless://f028d829-249a-4692-b45f-1b4cde8ef0c7@170.114.46.6:80?path=%2F&security=&encryption=none&host=free.sahanwickramasinghe.com&type=ws#hamedp71%3A%3A%F0%9F%8F%B4%E2%80%8D%E2%98%A0%EF%B8%8F",
-    "ping": 965.4,
+    "protocol": "SS",
+    "uri": "ss://YWVzLTI1Ni1nY206WlJwZ2FCZUd4dEVOSVhndmhwa1pCS3o5R25XUlMyZFljeDlPK2EyaXdOND0@45.86.51.18:19999#shadowsocks-1875022945",
+    "ping": 64.7,
     "real_successes": 3,
     "real_attempts": 3,
     "real_success_rate": 1.0,
-    "score": 1425.0,
-    "endpoint": "170.114.46.6:80",
-    "ip": "170.114.46.6"
+    "score": 1705.0,
+    "endpoint": "45.86.51.18:19999",
+    "ip": "45.86.51.18"
   },
   {
     "rank": 2,
-    "protocol": "VLESS-TLS",
-    "uri": "vless://740b2630-b42d-425c-bacd-37e7e30d78f1@92.223.84.254:443?encryption=none&fp=chrome&host=subgift.gcorecdn.com&path=/t.me-SubGift&security=tls&sni=subgift.gcorecdn.com&type=ws#🇱🇺218700",
-    "ping": 1195.1,
+    "protocol": "SS",
+    "uri": "ss://YWVzLTI1Ni1nY206WlJwZ2FCZUd4dEVOSVhndmhwa1pCS3o5R25XUlMyZFljeDlPK2EyaXdOND0=@45.86.51.18:19999#⚡",
+    "ping": 65.1,
     "real_successes": 3,
     "real_attempts": 3,
     "real_success_rate": 1.0,
-    "score": 1420.0,
-    "endpoint": "92.223.84.254:443",
-    "ip": "92.223.84.254"
+    "score": 1705.0,
+    "endpoint": "45.86.51.18:19999",
+    "ip": "45.86.51.18"
   },
   {
     "rank": 3,
     "protocol": "VLESS-TLS",
-    "uri": "vless://740b2630-b42d-425c-bacd-37e7e30d78f1@92.223.84.254:443?encryption=none&fp=chrome&host=subgift.gcorecdn.com&path=/t.me-SubGift&security=tls&sni=subgift.gcorecdn.com&type=ws#🔥Join+Telegram:@Farah_VPN🟣",
-    "ping": 1241.5,
+    "uri": "vless://740b2630-b42d-425c-bacd-37e7e30d78f1@92.223.84.254:443?encryption=none&fp=chrome&host=subgift.gcorecdn.com&path=/t.me-SubGift&security=tls&sni=subgift.gcorecdn.com&type=ws#🔹70@oneclickvpnkeys",
+    "ping": 1120.9,
     "real_successes": 3,
     "real_attempts": 3,
     "real_success_rate": 1.0,
-    "score": 1420.0,
+    "score": 1520.0,
     "endpoint": "92.223.84.254:443",
     "ip": "92.223.84.254"
+  },
+  {
+    "rank": 4,
+    "protocol": "VLESS-TLS",
+    "uri": "vless://740b2630-b42d-425c-bacd-37e7e30d78f1@92.223.84.254:443?encryption=none&fp=firefox&host=subgift.gcorecdn.com&path=%2Ft.me-SubGift&security=tls&sni=subgift.gcorecdn.com&type=ws#hamedp71%3A%3A%F0%9F%8F%B4%E2%80%8D%E2%98%A0%EF%B8%8F",
+    "ping": 1299.7,
+    "real_successes": 3,
+    "real_attempts": 3,
+    "real_success_rate": 1.0,
+    "score": 1475.0,
+    "endpoint": "92.223.84.254:443",
+    "ip": "92.223.84.254"
+  },
+  {
+    "rank": 5,
+    "protocol": "VLESS",
+    "uri": "vless://5744e593-1cc8-48fa-b8ca-57cd494fe35b@172.67.146.84:2052?encryption=none&security=none&type=ws&path=%2Frain1226&host=eu02.123450908.xyz#🔥Join+Telegram:@Farah_VPN🟣",
+    "ping": 1453.8,
+    "real_successes": 3,
+    "real_attempts": 3,
+    "real_success_rate": 1.0,
+    "score": 1400.0,
+    "endpoint": "172.67.146.84:2052",
+    "ip": "172.67.146.84"
   }
 ]
