@@ -1,26 +1,26 @@
 [
   {
     "rank": 1,
-    "protocol": "SS",
-    "uri": "ss://YWVzLTI1Ni1nY206WlJwZ2FCZUd4dEVOSVhndmhwa1pCS3o5R25XUlMyZFljeDlPK2EyaXdOND0@95.215.201.18:19999#shadowsocks-1875129452",
-    "ping": 36.8,
+    "protocol": "VLESS-TLS",
+    "uri": "vless://10997f19-2951-4a9b-a26f-611a6bd72d02@185.18.250.2:443?encryption=none&fp=chrome&host=worker3.sicoro1729.workers.dev&path=/&security=tls&sni=worker3.sicoro1729.workers.dev&type=ws#🔥Join+Telegram:@Farah_VPN🟣",
+    "ping": 71.9,
     "real_successes": 3,
     "real_attempts": 3,
     "real_success_rate": 1.0,
-    "score": 1725.0,
-    "endpoint": "95.215.201.18:19999",
-    "ip": "95.215.201.18"
+    "score": 1760.0,
+    "endpoint": "185.18.250.2:443",
+    "ip": "185.18.250.2"
   },
   {
     "rank": 2,
-    "protocol": "SS",
-    "uri": "ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpKVVhzeTc4ZFNzNlJPa2FzaWttb2FM@104.238.140.45:11051#🇺🇸",
-    "ping": 47.0,
+    "protocol": "VLESS-TLS",
+    "uri": "vless://10997f19-2951-4a9b-a26f-611a6bd72d02@185.18.250.2:443?path=/&security=tls&encryption=none&insecure=0&host=worker3.sicoro1729.workers.dev&fp=chrome&type=ws&allowInsecure=0&sni=worker3.sicoro1729.workers.dev#📗38@ConfigV2RayNG",
+    "ping": 83.5,
     "real_successes": 3,
     "real_attempts": 3,
     "real_success_rate": 1.0,
-    "score": 1725.0,
-    "endpoint": "104.238.140.45:11051",
-    "ip": "104.238.140.45"
+    "score": 1740.0,
+    "endpoint": "185.18.250.2:443",
+    "ip": "185.18.250.2"
   }
 ]
