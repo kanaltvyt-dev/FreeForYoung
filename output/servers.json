@@ -1,26 +1,38 @@
 [
   {
     "rank": 1,
-    "protocol": "VLESS-TLS",
-    "uri": "vless://10997f19-2951-4a9b-a26f-611a6bd72d02@185.18.250.2:443?encryption=none&fp=chrome&host=worker3.sicoro1729.workers.dev&path=/&security=tls&sni=worker3.sicoro1729.workers.dev&type=ws#🔥Join+Telegram:@Farah_VPN🟣",
-    "ping": 71.9,
+    "protocol": "TROJAN",
+    "uri": "trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.152.155.54:443?security=tls&insecure=0&headerType=none&type=tcp&allowInsecure=0&sni=learn.nextjobopportunityandclaimyouridealrole.com#vpnbaz",
+    "ping": 48.8,
     "real_successes": 3,
     "real_attempts": 3,
     "real_success_rate": 1.0,
-    "score": 1760.0,
-    "endpoint": "185.18.250.2:443",
-    "ip": "185.18.250.2"
+    "score": 1750.0,
+    "endpoint": "216.152.155.54:443",
+    "ip": "216.152.155.54"
   },
   {
     "rank": 2,
     "protocol": "VLESS-TLS",
-    "uri": "vless://10997f19-2951-4a9b-a26f-611a6bd72d02@185.18.250.2:443?path=/&security=tls&encryption=none&insecure=0&host=worker3.sicoro1729.workers.dev&fp=chrome&type=ws&allowInsecure=0&sni=worker3.sicoro1729.workers.dev#📗38@ConfigV2RayNG",
-    "ping": 83.5,
+    "uri": "vless://53bbdad4-2f4e-45db-8df4-fa491a6a7227@172.64.154.113:8443?path=/?TELEGRAM--MARAMBASHI--MARAMBASHI--MARAMBASHI--MARAMBASHI?ed=512&security=tls&encryption=none&insecure=0&host=freeceshi6.frii.site&fp=chrome&type=ws&allowInsecure=0&sni=freeceshi6.frii.site#Tel@MARAMBASHI",
+    "ping": 95.7,
     "real_successes": 3,
     "real_attempts": 3,
     "real_success_rate": 1.0,
-    "score": 1740.0,
-    "endpoint": "185.18.250.2:443",
-    "ip": "185.18.250.2"
+    "score": 1695.0,
+    "endpoint": "172.64.154.113:8443",
+    "ip": "172.64.154.113"
+  },
+  {
+    "rank": 3,
+    "protocol": "TROJAN",
+    "uri": "trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.152.155.131:443?security=tls&insecure=0&headerType=none&type=tcp&allowInsecure=0&sni=www.nextjobopportunityandclaimyouridealrole.com#US",
+    "ping": 58.4,
+    "real_successes": 3,
+    "real_attempts": 3,
+    "real_success_rate": 1.0,
+    "score": 1630.0,
+    "endpoint": "216.152.155.131:443",
+    "ip": "216.152.155.131"
   }
 ]
