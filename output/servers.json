@@ -2,8 +2,8 @@
   {
     "rank": 1,
     "protocol": "VLESS-TLS",
-    "uri": "vless://53bbdad4-2f4e-45db-8df4-fa491a6a7227@172.64.154.113:8443?path=/?TELEGRAM--MARAMBASHI--MARAMBASHI--MARAMBASHI--MARAMBASHI?ed=512&security=tls&encryption=none&insecure=0&host=freeceshi6.frii.site&fp=chrome&type=ws&allowInsecure=0&sni=freeceshi6.frii.site#Tel@MARAMBASHI",
-    "ping": 104.6,
+    "uri": "vless://53bbdad4-2f4e-45db-8df4-fa491a6a7227@172.64.154.113:8443?encryption=none&security=tls&sni=freeceshi6.frii.site&type=ws&host=freeceshi6.frii.site&path=/proxyip#Channel",
+    "ping": 92.9,
     "real_successes": 3,
     "real_attempts": 3,
     "real_success_rate": 1.0,
@@ -13,26 +13,50 @@
   },
   {
     "rank": 2,
-    "protocol": "SS",
-    "uri": "ss://YWVzLTI1Ni1nY206WlJwZ2FCZUd4dEVOSVhndmhwa1pCS3o5R25XUlMyZFljeDlPK2EyaXdOND0@95.215.201.18:19999#🇫🇷",
-    "ping": 49.6,
+    "protocol": "VLESS-TLS",
+    "uri": "vless://53bbdad4-2f4e-45db-8df4-fa491a6a7227@172.64.154.113:8443?path=/proxyip&security=tls&encryption=none&host=freeceshi6.frii.site&type=ws&sni=freeceshi6.frii.site#✧𝗝𝗼𝗶𝗻",
+    "ping": 96.3,
     "real_successes": 3,
     "real_attempts": 3,
     "real_success_rate": 1.0,
-    "score": 1725.0,
-    "endpoint": "95.215.201.18:19999",
-    "ip": "95.215.201.18"
+    "score": 1740.0,
+    "endpoint": "172.64.154.113:8443",
+    "ip": "172.64.154.113"
   },
   {
     "rank": 3,
     "protocol": "SS",
     "uri": "ss://YWVzLTI1Ni1nY206WlJwZ2FCZUd4dEVOSVhndmhwa1pCS3o5R25XUlMyZFljeDlPK2EyaXdOND0@95.215.201.18:19999#shadowsocks-1875129452",
-    "ping": 50.9,
+    "ping": 50.5,
     "real_successes": 3,
     "real_attempts": 3,
     "real_success_rate": 1.0,
     "score": 1705.0,
     "endpoint": "95.215.201.18:19999",
     "ip": "95.215.201.18"
+  },
+  {
+    "rank": 4,
+    "protocol": "VLESS-TLS",
+    "uri": "vless://db906786-8c49-4b17-9182-cea680ef954d@104.25.128.15:443?&security=tls&fp=chrome&sni=krc.80782636.xyz&type=ws&headerType=none&host=krc.80782636.xyz&path=%2Fkw7x2mq9#%F0%9F%87%B0%F0%9F%87%B7%20%E9%9F%A9%E5%9B%BD%20%7C%20KOR",
+    "ping": 985.4,
+    "real_successes": 3,
+    "real_attempts": 3,
+    "real_success_rate": 1.0,
+    "score": 1520.0,
+    "endpoint": "104.25.128.15:443",
+    "ip": "104.25.128.15"
+  },
+  {
+    "rank": 5,
+    "protocol": "VLESS-TLS",
+    "uri": "vless://bd6c11e0-0233-4fb1-ba97-8d5f16d7155f@172.64.150.205:2083?security=tls&fp=chrome&sni=site.check-looks.space&type=ws&headerType=none&host=site.check-looks.space&path=/#🚀@VPNine1",
+    "ping": 937.8,
+    "real_successes": 3,
+    "real_attempts": 3,
+    "real_success_rate": 1.0,
+    "score": 1475.0,
+    "endpoint": "172.64.150.205:2083",
+    "ip": "172.64.150.205"
   }
 ]
