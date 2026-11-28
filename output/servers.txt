@@ -1,3 +1,9 @@
-1. score=1740.0 | ping=96.7ms | real=3/3 | protocol=VLESS-TLS | endpoint=172.64.154.113:8443
-2. score=1740.0 | ping=98.0ms | real=3/3 | protocol=VLESS-TLS | endpoint=172.64.154.113:8443
-3. score=1410.22 | ping=1310.0ms | real=3/3 | protocol=VLESS-TLS | endpoint=188.114.97.6:443
+1. score=1710.0 | ping=150.1ms | real=3/3 | protocol=VLESS-TLS | endpoint=188.114.98.0:443
+2. score=1690.0 | ping=134.1ms | real=3/3 | protocol=VLESS-TLS | endpoint=172.64.154.113:8443
+3. score=1670.0 | ping=192.4ms | real=3/3 | protocol=VLESS-TLS | endpoint=172.64.154.113:8443
+4. score=1520.0 | ping=1418.6ms | real=3/3 | protocol=VLESS-TLS | endpoint=154.198.173.7:8443
+5. score=1520.0 | ping=1462.1ms | real=3/3 | protocol=VLESS-TLS | endpoint=188.42.89.7:8443
+6. score=1425.0 | ping=823.7ms | real=3/3 | protocol=VLESS | endpoint=185.16.110.62:2052
+7. score=1400.0 | ping=1491.1ms | real=3/3 | protocol=VLESS | endpoint=170.114.45.6:80
+8. score=1246.0 | ping=1034.8ms | real=3/3 | protocol=VLESS | endpoint=170.114.46.6:8080
+9. score=1236.43 | ping=1012.7ms | real=3/3 | protocol=VLESS | endpoint=support.zoom.us:8080
